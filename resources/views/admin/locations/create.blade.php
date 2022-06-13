@@ -14,7 +14,7 @@
 			<span class="sr-only"></span>
 			</a>
 			<div class="dropdown-menu" role="menu">
-				<a href="{{ aurl('videos') }}"  style="color:#343a40"  class="dropdown-item">
+				<a href="{{ aurl('locations') }}"  style="color:#343a40"  class="dropdown-item">
 				<i class="fas fa-list"></i> {{ trans('admin.show_all') }}</a>
 			</div>
 		</div>
@@ -27,13 +27,31 @@
 	<!-- /.card-header -->
 	<div class="card-body">
 								
-{!! Form::open(['url'=>aurl('/videos'),'id'=>'videos','files'=>true,'class'=>'form-horizontal form-row-seperated']) !!}
+{!! Form::open(['url'=>aurl('/locations'),'id'=>'locations','files'=>true,'class'=>'form-horizontal form-row-seperated']) !!}
 <div class="row">
 
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
     <div class="form-group">
-        {!! Form::label('link',trans('admin.link'),['class'=>' control-label']) !!}
-            {!! Form::text('link',old('link'),['class'=>'form-control','placeholder'=>trans('admin.link')]) !!}
+        {!! Form::label('name',trans('admin.name'),['class'=>' control-label']) !!}
+            {!! Form::text('name',old('name'),['class'=>'form-control','placeholder'=>trans('admin.name')]) !!}
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('location',trans('admin.location'),['class'=>' control-label']) !!}
+            {!! Form::text('location',old('location'),['class'=>'form-control','placeholder'=>trans('admin.location')]) !!}
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('lat',trans('admin.lat'),['class'=>' control-label']) !!}
+            {!! Form::text('lat',old('lat'),['class'=>'form-control','placeholder'=>trans('admin.lat')]) !!}
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('lng',trans('admin.lng'),['class'=>' control-label']) !!}
+            {!! Form::text('lng',old('lng'),['class'=>'form-control','placeholder'=>trans('admin.lng')]) !!}
     </div>
 </div>
 

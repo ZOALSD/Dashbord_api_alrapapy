@@ -51,6 +51,8 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		
 		Route::resource('images','Admin\Images'); 
 		Route::post('images/multi_delete','Admin\Images@multi_delete'); 
+		Route::resource('locations','Admin\Locations'); 
+		Route::post('locations/multi_delete','Admin\Locations@multi_delete'); 
 		////////AdminRoutes/*End*///////////////
 	});
 

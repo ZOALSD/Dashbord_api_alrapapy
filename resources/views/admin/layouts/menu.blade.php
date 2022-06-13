@@ -184,3 +184,31 @@ with font-awesome or any other icon font library -->
 </li>
 @endif
 <!--images_end_route-->
+
+<!--locations_start_route-->
+@if(admin()->user()->role("locations_show"))
+<li class="nav-item {{active_link('locations','menu-open')}} ">
+  <a href="#" class="nav-link {{active_link('locations','active')}}">
+    <i class="nav-icon fa fa-icons"></i>
+    <p>
+      {{trans('admin.locations')}} 
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{aurl('locations')}}" class="nav-link  {{active_link('locations','active')}}">
+        <i class="fa fa-icons nav-icon"></i>
+        <p>{{trans('admin.locations')}} </p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ aurl('locations/create') }}" class="nav-link">
+        <i class="fas fa-plus nav-icon"></i>
+        <p>{{trans('admin.create')}} </p>
+      </a>
+    </li>
+  </ul>
+</li>
+@endif
+<!--locations_end_route-->

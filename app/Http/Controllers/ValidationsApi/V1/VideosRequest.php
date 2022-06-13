@@ -25,14 +25,12 @@ class VideosRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
-             'video'=>'required|file|video',
 		];
 	}
 
 
 	protected function onUpdate() {
 		return [
-             'video'=>'required|file|video',
 		];
 	}
 
@@ -50,7 +48,6 @@ class VideosRequest extends FormRequest {
 	 */
 	public function attributes() {
 		return [
-             'video'=>trans('admin.video'),
 		];
 	}
 

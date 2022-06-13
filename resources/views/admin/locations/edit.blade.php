@@ -12,22 +12,22 @@
 			<span class="sr-only"></span>
 			</a>
 			<div class="dropdown-menu" role="menu">
-				<a href="{{aurl('videos')}}" class="dropdown-item" style="color:#343a40">
+				<a href="{{aurl('locations')}}" class="dropdown-item" style="color:#343a40">
 				<i class="fas fa-list"></i> {{trans('admin.show_all')}} </a>
-				<a href="{{aurl('videos/'.$videos->id)}}" class="dropdown-item" style="color:#343a40">
+				<a href="{{aurl('locations/'.$locations->id)}}" class="dropdown-item" style="color:#343a40">
 				<i class="fa fa-eye"></i> {{trans('admin.show')}} </a>
-				<a class="dropdown-item" style="color:#343a40" href="{{aurl('videos/create')}}">
+				<a class="dropdown-item" style="color:#343a40" href="{{aurl('locations/create')}}">
 					<i class="fa fa-plus"></i> {{trans('admin.create')}}
 				</a>
 				<div class="dropdown-divider"></div>
-				<a data-toggle="modal" data-target="#deleteRecord{{$videos->id}}" class="dropdown-item" style="color:#343a40" href="#">
+				<a data-toggle="modal" data-target="#deleteRecord{{$locations->id}}" class="dropdown-item" style="color:#343a40" href="#">
 					<i class="fa fa-trash"></i> {{trans('admin.delete')}}
 				</a>
 			</div>
 		</div>
 		</h3>
 		@push('js')
-		<div class="modal fade" id="deleteRecord{{$videos->id}}">
+		<div class="modal fade" id="deleteRecord{{$locations->id}}">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -35,12 +35,12 @@
 						<button class="close" data-dismiss="modal">x</button>
 					</div>
 					<div class="modal-body">
-						<i class="fa fa-exclamation-triangle"></i>   {{trans('admin.ask_del')}} {{trans('admin.id')}}  ({{$videos->id}})
+						<i class="fa fa-exclamation-triangle"></i>   {{trans('admin.ask_del')}} {{trans('admin.id')}}  ({{$locations->id}})
 					</div>
 					<div class="modal-footer">
 						{!! Form::open([
 						'method' => 'DELETE',
-						'route' => ['videos.destroy', $videos->id]
+						'route' => ['locations.destroy', $locations->id]
 						]) !!}
 						{!! Form::submit(trans('admin.approval'), ['class' => 'btn btn-danger btn-flat']) !!}
 						<a class="btn btn-default btn-flat" data-dismiss="modal">{{trans('admin.cancel')}}</a>
@@ -58,13 +58,31 @@
 	<!-- /.card-header -->
 	<div class="card-body">
 										
-{!! Form::open(['url'=>aurl('/videos/'.$videos->id),'method'=>'put','id'=>'videos','files'=>true,'class'=>'form-horizontal form-row-seperated']) !!}
+{!! Form::open(['url'=>aurl('/locations/'.$locations->id),'method'=>'put','id'=>'locations','files'=>true,'class'=>'form-horizontal form-row-seperated']) !!}
 <div class="row">
 
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
     <div class="form-group">
-        {!! Form::label('link',trans('admin.link'),['class'=>'control-label']) !!}
-        {!! Form::text('link', $videos->link ,['class'=>'form-control','placeholder'=>trans('admin.link')]) !!}
+        {!! Form::label('name',trans('admin.name'),['class'=>'control-label']) !!}
+        {!! Form::text('name', $locations->name ,['class'=>'form-control','placeholder'=>trans('admin.name')]) !!}
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('location',trans('admin.location'),['class'=>'control-label']) !!}
+        {!! Form::text('location', $locations->location ,['class'=>'form-control','placeholder'=>trans('admin.location')]) !!}
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('lat',trans('admin.lat'),['class'=>'control-label']) !!}
+        {!! Form::text('lat', $locations->lat ,['class'=>'form-control','placeholder'=>trans('admin.lat')]) !!}
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('lng',trans('admin.lng'),['class'=>'control-label']) !!}
+        {!! Form::text('lng', $locations->lng ,['class'=>'form-control','placeholder'=>trans('admin.lng')]) !!}
     </div>
 </div>
 

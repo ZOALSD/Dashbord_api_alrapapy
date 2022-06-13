@@ -1,29 +1,29 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\DataTables\VideosDataTable;
+use App\DataTables\LocationsDataTable;
 use Carbon\Carbon;
-use App\Models\video;
+use App\Models\Location;
 
-use App\Http\Controllers\Validations\VideosRequest;
+use App\Http\Controllers\Validations\LocationsRequest;
 // Auto Controller Maker By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
-class Videos extends Controller
+class Locations extends Controller
 {
 
 	public function __construct() {
 
-		$this->middleware('AdminRole:videos_show', [
+		$this->middleware('AdminRole:locations_show', [
 			'only' => ['index', 'show'],
 		]);
-		$this->middleware('AdminRole:videos_add', [
+		$this->middleware('AdminRole:locations_add', [
 			'only' => ['create', 'store'],
 		]);
-		$this->middleware('AdminRole:videos_edit', [
+		$this->middleware('AdminRole:locations_edit', [
 			'only' => ['edit', 'update'],
 		]);
-		$this->middleware('AdminRole:videos_delete', [
+		$this->middleware('AdminRole:locations_delete', [
 			'only' => ['destroy', 'multi_delete'],
 		]);
 	}
@@ -35,9 +35,9 @@ class Videos extends Controller
              * Display a listing of the resource.
              * @return \Illuminate\Http\Response
              */
-            public function index(VideosDataTable $videos)
+            public function index(LocationsDataTable $locations)
             {
-               return $videos->render('admin.videos.index',['title'=>trans('admin.videos')]);
+               return $locations->render('admin.locations.index',['title'=>trans('admin.locations')]);
             }
 
 
@@ -49,7 +49,7 @@ class Videos extends Controller
             public function create()
             {
             	
-               return view('admin.videos.create',['title'=>trans('admin.create')]);
+               return view('admin.locations.create',['title'=>trans('admin.create')]);
             }
 
             /**
@@ -58,13 +58,12 @@ class Videos extends Controller
              * @param  \Illuminate\Http\Request  $request
              * @return \Illuminate\Http\Response Or Redirect
              */
-            public function store(VideosRequest $request)
+            public function store(LocationsRequest $request)
             {
                 $data = $request->except("_token", "_method");
-            	$data['admin_id'] = admin()->id(); 
-		  		$videos = video::create($data); 
+            			  		$locations = Location::create($data); 
                 $redirect = isset($request["add_back"])?"/create":"";
-                return redirectWithSuccess(aurl('videos'.$redirect), trans('admin.added')); }
+                return redirectWithSuccess(aurl('locations'.$redirect), trans('admin.added')); }
 
             /**
              * Display the specified resource.
@@ -74,12 +73,12 @@ class Videos extends Controller
              */
             public function show($id)
             {
-        		$videos =  video::find($id);
-        		return is_null($videos) || empty($videos)?
-        		backWithError(trans("admin.undefinedRecord"),aurl("videos")) :
-        		view('admin.videos.show',[
+        		$locations =  Location::find($id);
+        		return is_null($locations) || empty($locations)?
+        		backWithError(trans("admin.undefinedRecord"),aurl("locations")) :
+        		view('admin.locations.show',[
 				    'title'=>trans('admin.show'),
-					'videos'=>$videos
+					'locations'=>$locations
         		]);
             }
 
@@ -91,12 +90,12 @@ class Videos extends Controller
              */
             public function edit($id)
             {
-        		$videos =  video::find($id);
-        		return is_null($videos) || empty($videos)?
-        		backWithError(trans("admin.undefinedRecord"),aurl("videos")) :
-        		view('admin.videos.edit',[
+        		$locations =  Location::find($id);
+        		return is_null($locations) || empty($locations)?
+        		backWithError(trans("admin.undefinedRecord"),aurl("locations")) :
+        		view('admin.locations.edit',[
 				  'title'=>trans('admin.edit'),
-				  'videos'=>$videos
+				  'locations'=>$locations
         		]);
             }
 
@@ -109,7 +108,7 @@ class Videos extends Controller
              */
             public function updateFillableColumns() {
 				$fillableCols = [];
-				foreach (array_keys((new VideosRequest)->attributes()) as $fillableUpdate) {
+				foreach (array_keys((new LocationsRequest)->attributes()) as $fillableUpdate) {
 					if (!is_null(request($fillableUpdate))) {
 						$fillableCols[$fillableUpdate] = request($fillableUpdate);
 					}
@@ -117,18 +116,17 @@ class Videos extends Controller
 				return $fillableCols;
 			}
 
-            public function update(VideosRequest $request,$id)
+            public function update(LocationsRequest $request,$id)
             {
               // Check Record Exists
-              $videos =  video::find($id);
-              if(is_null($videos) || empty($videos)){
-              	return backWithError(trans("admin.undefinedRecord"),aurl("videos"));
+              $locations =  Location::find($id);
+              if(is_null($locations) || empty($locations)){
+              	return backWithError(trans("admin.undefinedRecord"),aurl("locations"));
               }
               $data = $this->updateFillableColumns(); 
-              $data['admin_id'] = admin()->id(); 
-              video::where('id',$id)->update($data);
+              Location::where('id',$id)->update($data);
               $redirect = isset($request["save_back"])?"/".$id."/edit":"";
-              return redirectWithSuccess(aurl('videos'.$redirect), trans('admin.updated'));
+              return redirectWithSuccess(aurl('locations'.$redirect), trans('admin.updated'));
             }
 
             /**
@@ -138,14 +136,14 @@ class Videos extends Controller
              * @return \Illuminate\Http\Response
              */
 	public function destroy($id){
-		$videos = video::find($id);
-		if(is_null($videos) || empty($videos)){
-			return backWithSuccess(trans('admin.undefinedRecord'),aurl("videos"));
+		$locations = Location::find($id);
+		if(is_null($locations) || empty($locations)){
+			return backWithSuccess(trans('admin.undefinedRecord'),aurl("locations"));
 		}
                
-		it()->delete('video',$id);
-		$videos->delete();
-		return redirectWithSuccess(aurl("videos"),trans('admin.deleted'));
+		it()->delete('location',$id);
+		$locations->delete();
+		return redirectWithSuccess(aurl("locations"),trans('admin.deleted'));
 	}
 
 
@@ -153,24 +151,24 @@ class Videos extends Controller
 		$data = request('selected_data');
 		if(is_array($data)){
 			foreach($data as $id){
-				$videos = video::find($id);
-				if(is_null($videos) || empty($videos)){
-					return backWithError(trans('admin.undefinedRecord'),aurl("videos"));
+				$locations = Location::find($id);
+				if(is_null($locations) || empty($locations)){
+					return backWithError(trans('admin.undefinedRecord'),aurl("locations"));
 				}
                     	
-				it()->delete('video',$id);
-				$videos->delete();
+				it()->delete('location',$id);
+				$locations->delete();
 			}
-			return redirectWithSuccess(aurl("videos"),trans('admin.deleted'));
+			return redirectWithSuccess(aurl("locations"),trans('admin.deleted'));
 		}else {
-			$videos = video::find($data);
-			if(is_null($videos) || empty($videos)){
-				return backWithError(trans('admin.undefinedRecord'),aurl("videos"));
+			$locations = Location::find($data);
+			if(is_null($locations) || empty($locations)){
+				return backWithError(trans('admin.undefinedRecord'),aurl("locations"));
 			}
                     
-			it()->delete('video',$data);
-			$videos->delete();
-			return redirectWithSuccess(aurl("videos"),trans('admin.deleted'));
+			it()->delete('location',$data);
+			$locations->delete();
+			return redirectWithSuccess(aurl("locations"),trans('admin.deleted'));
 		}
 	}
             

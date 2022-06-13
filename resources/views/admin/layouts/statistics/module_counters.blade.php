@@ -92,3 +92,18 @@
     </div>
 </div>
 <!--images_end-->
+<!--locations_start-->
+<div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-primary">
+      <div class="inner">
+        <h3>{{ mK(App\Models\Location::count()) }}</h3>
+        <p>{{ trans("admin.locations") }}</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-icons"></i>
+      </div>
+      <a href="{{ aurl("locations") }}" class="small-box-footer">{{ trans("admin.locations") }} <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!--locations_end-->

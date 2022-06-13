@@ -1,12 +1,12 @@
 <?php
 namespace App\DataTables;
-use App\Models\video;
+use App\Models\Location;
 use Yajra\DataTables\DataTables;
 use Yajra\DataTables\Services\DataTable;
 // Auto DataTable By Baboon Script
 // Baboon Maker has been Created And Developed By [it v 1.6.40]
 // Copyright Reserved [it v 1.6.40]
-class VideosDataTable extends DataTable
+class LocationsDataTable extends DataTable
 {
     	
 
@@ -18,7 +18,7 @@ class VideosDataTable extends DataTable
     public function dataTable(DataTables $dataTables, $query)
     {
         return datatables($query)
-            ->addColumn('actions', 'admin.videos.buttons.actions')
+            ->addColumn('actions', 'admin.locations.buttons.actions')
    		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
@@ -34,7 +34,7 @@ class VideosDataTable extends DataTable
      */
 	public function query()
     {
-        return video::query()->select("videos.*");
+        return Location::query()->select("locations.*");
 
     }
     	
@@ -50,10 +50,10 @@ class VideosDataTable extends DataTable
             ->columns($this->getColumns())
             //->ajax('')
             ->parameters([
-               'searching'   => true,
+               'searching'   => false,
                'paging'   => true,
-               'bLengthChange'   => true,
-               'bInfo'   => true,
+               'bLengthChange'   => false,
+               'bInfo'   => false,
                'responsive'   => true,
                 'dom' => 'Blfrtip',
                 "lengthMenu" => [[10, 25, 50,100, -1], [10, 25, 50,100, trans('admin.all_records')]],
@@ -146,9 +146,14 @@ class VideosDataTable extends DataTable
                 'aaSorting'      => 'none'
             ],
 				[
-                 'name'=>'link',
-                 'data'=>'link',
-                 'title'=>trans('admin.link'),
+                 'name'=>'name',
+                 'data'=>'name',
+                 'title'=>trans('admin.name'),
+		    ],
+				[
+                 'name'=>'location',
+                 'data'=>'location',
+                 'title'=>trans('admin.location'),
 		    ],
             [
 	                'name' => 'created_at',
@@ -178,7 +183,7 @@ class VideosDataTable extends DataTable
 	     */
 	    protected function filename()
 	    {
-	        return 'videos_' . time();
+	        return 'locations_' . time();
 	    }
     	
 }

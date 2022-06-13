@@ -1,11 +1,11 @@
 <?php
-namespace App\Http\Controllers\Validations;
+namespace App\Http\Controllers\ValidationsApi\V1;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class VideosRequest extends FormRequest {
+class LocationsRequest extends FormRequest {
 
 	/**
 	 * Baboon Script By [it v 1.6.40]
@@ -25,13 +25,20 @@ class VideosRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
-             'link'=>'required|url',
+             'name'=>'required|string',
+             'location'=>'required|string',
+             'lat'=>'integer',
+             'lng'=>'integer',
 		];
 	}
 
+
 	protected function onUpdate() {
 		return [
-             'link'=>'required|url',
+             'name'=>'required|string',
+             'location'=>'required|string',
+             'lat'=>'integer',
+             'lng'=>'integer',
 		];
 	}
 
@@ -49,7 +56,10 @@ class VideosRequest extends FormRequest {
 	 */
 	public function attributes() {
 		return [
-             'link'=>trans('admin.link'),
+             'name'=>trans('admin.name'),
+             'location'=>trans('admin.location'),
+             'lat'=>trans('admin.lat'),
+             'lng'=>trans('admin.lng'),
 		];
 	}
 

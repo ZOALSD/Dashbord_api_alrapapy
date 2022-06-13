@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 // Auto Schema  By Baboon Script
 // Baboon Maker has been Created And Developed By [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
-class CreatevideosTable extends Migration
+class CreateLocationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,14 @@ class CreatevideosTable extends Migration
      */
     public function up()
     {
-        Schema::create('videos', function (Blueprint $table) {
+        Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id');
-$table->foreignId("admin_id")->constrained("admins")->onUpdate("cascade")->onDelete("cascade");
-            $table->string('link');
-			$table->timestamps();
+            $table->string('name');
+            $table->string('location');
+            $table->string('lat')->nullable();
+            $table->string('lng')->nullable();
+			$table->softDeletes();
+			$table->timestamps();
         });
     }
 
@@ -29,6 +32,6 @@ $table->foreignId("admin_id")->constrained("admins")->onUpdate("cascade")->onDel
      */
     public function down()
     {
-        Schema::dropIfExists('videos');
+        Schema::dropIfExists('locations');
     }
 }

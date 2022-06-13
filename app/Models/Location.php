@@ -1,31 +1,27 @@
 <?php
 namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 // Auto Models By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
-class video extends Model {
+class Location extends Model {
+	use SoftDeletes;
+	protected $dates = ['deleted_at'];
 
-protected $table    = 'videos';
+protected $table    = 'locations';
 protected $fillable = [
 		'id',
 		'admin_id',
-        'link',
+        'name',
+        'location',
+        'lat',
+        'lng',
 		'created_at',
 		'updated_at',
+		'deleted_at',
 	];
-
-	/**
-	 * admin id relation method to get how add this data
-	 * @type hasOne
-	 * @param void
-	 * @return object data
-	 */
-   public function admin_id() {
-	   return $this->hasOne(\App\Models\Admin::class, 'id', 'admin_id');
-   }
-	
 
  	/**
     * Static Boot method to delete or update or sort Data
@@ -35,7 +31,7 @@ protected $fillable = [
    protected static function boot() {
       parent::boot();
       // if you disable constraints should by run this static method to Delete children data
-         static::deleting(function($video) {
+         static::deleting(function($location) {
          });
    }
 		

@@ -38,6 +38,8 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 			// Route::post("videos/multi_delete","VideosApi@multi_delete"); 
 			Route::apiResource("images","ImagesApi", ["as" => "api.images"]); 
 			Route::post("images/multi_delete","ImagesApi@multi_delete"); 
+			Route::apiResource("locations","LocationsApi", ["as" => "api.locations"]); 
+			Route::post("locations/multi_delete","LocationsApi@multi_delete"); 
 			//Auth-Api-End//
 	});
 
@@ -53,7 +55,8 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 	// Route::post("image/delete/file","ImageControllerApi@delete_file"); 
 
 	Route::apiResource("categories","categoriesControllerApi", ["as" => "api.categories"]); 
-	Route::post("categories/multi_delete","categoriesControllerApi@multi_delete"); 
-	
-	// Insert your Api Here End //
+//	Route::post("categories/multi_delete","categoriesControllerApi@multi_delete"); 
+	Route::get('supcategories/{id}','Api\categoriesApi@SupCategorise');
+
+	// Insert your Api Here End //GGVP+9QH, Khartoum, Sudan //GGVP+9QH، الخرطوم
 });

@@ -4,15 +4,19 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-use App\Models\video;
+use App\Models\Location;
 use Validator;
-use App\Http\Controllers\ValidationsApi\V1\VideosRequest;
+use App\Http\Controllers\ValidationsApi\V1\LocationsRequest;
 // Auto Controller Maker By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
-class VideosApi extends Controller{
+class LocationsApi extends Controller{
 	protected $selectColumns = [
 		"id",
+		"name",
+		"location",
+		"lat",
+		"lng",
 	];
 
             /**
@@ -32,8 +36,8 @@ class VideosApi extends Controller{
              */
             public function index()
             {
-            	$video = video::select($this->selectColumns)->with($this->arrWith())->orderBy("id","desc")->paginate(15);
-               return successResponseJson(["data"=>$video]);
+            	$Location = Location::select($this->selectColumns)->with($this->arrWith())->orderBy("id","desc")->paginate(15);
+               return successResponseJson(["data"=>$Location]);
             }
 
 
@@ -42,17 +46,16 @@ class VideosApi extends Controller{
              * Store a newly created resource in storage. Api
              * @return \Illuminate\Http\Response
              */
-    public function store(VideosRequest $request)
+    public function store(LocationsRequest $request)
     {
     	$data = $request->except("_token");
     	
-              $data["user_id"] = auth()->id(); 
-        $video = video::create($data); 
+        $Location = Location::create($data); 
 
-		  $video = video::with($this->arrWith())->find($video->id,$this->selectColumns);
+		  $Location = Location::with($this->arrWith())->find($Location->id,$this->selectColumns);
         return successResponseJson([
             "message"=>trans("admin.added"),
-            "data"=>$video
+            "data"=>$Location
         ]);
     }
 
@@ -65,15 +68,15 @@ class VideosApi extends Controller{
              */
             public function show($id)
             {
-                $video = video::with($this->arrWith())->find($id,$this->selectColumns);
-            	if(is_null($video) || empty($video)){
+                $Location = Location::with($this->arrWith())->find($id,$this->selectColumns);
+            	if(is_null($Location) || empty($Location)){
             	 return errorResponseJson([
             	  "message"=>trans("admin.undefinedRecord")
             	 ]);
             	}
 
                  return successResponseJson([
-              "data"=> $video
+              "data"=> $Location
               ]);  ;
             }
 
@@ -85,7 +88,7 @@ class VideosApi extends Controller{
              */
             public function updateFillableColumns() {
 				       $fillableCols = [];
-				       foreach (array_keys((new VideosRequest)->attributes()) as $fillableUpdate) {
+				       foreach (array_keys((new LocationsRequest)->attributes()) as $fillableUpdate) {
   				        if (!is_null(request($fillableUpdate))) {
 						  $fillableCols[$fillableUpdate] = request($fillableUpdate);
 						}
@@ -93,10 +96,10 @@ class VideosApi extends Controller{
   				     return $fillableCols;
   	     		}
 
-            public function update(VideosRequest $request,$id)
+            public function update(LocationsRequest $request,$id)
             {
-            	$video = video::find($id);
-            	if(is_null($video) || empty($video)){
+            	$Location = Location::find($id);
+            	if(is_null($Location) || empty($Location)){
             	 return errorResponseJson([
             	  "message"=>trans("admin.undefinedRecord")
             	 ]);
@@ -104,13 +107,12 @@ class VideosApi extends Controller{
 
             	$data = $this->updateFillableColumns();
                  
-              $data["user_id"] = auth()->id(); 
-              video::where("id",$id)->update($data);
+              Location::where("id",$id)->update($data);
 
-              $video = video::with($this->arrWith())->find($id,$this->selectColumns);
+              $Location = Location::with($this->arrWith())->find($id,$this->selectColumns);
               return successResponseJson([
                "message"=>trans("admin.updated"),
-               "data"=> $video
+               "data"=> $Location
                ]);
             }
 
@@ -121,17 +123,17 @@ class VideosApi extends Controller{
              */
             public function destroy($id)
             {
-               $videos = video::find($id);
-            	if(is_null($videos) || empty($videos)){
+               $locations = Location::find($id);
+            	if(is_null($locations) || empty($locations)){
             	 return errorResponseJson([
             	  "message"=>trans("admin.undefinedRecord")
             	 ]);
             	}
 
 
-               it()->delete("video",$id);
+               it()->delete("location",$id);
 
-               $videos->delete();
+               $locations->delete();
                return successResponseJson([
                 "message"=>trans("admin.deleted")
                ]);
@@ -144,30 +146,30 @@ class VideosApi extends Controller{
                 $data = request("selected_data");
                 if(is_array($data)){
                     foreach($data as $id){
-                    $videos = video::find($id);
-	            	if(is_null($videos) || empty($videos)){
+                    $locations = Location::find($id);
+	            	if(is_null($locations) || empty($locations)){
 	            	 return errorResponseJson([
 	            	  "message"=>trans("admin.undefinedRecord")
 	            	 ]);
 	            	}
 
-                    	it()->delete("video",$id);
-                    	$videos->delete();
+                    	it()->delete("location",$id);
+                    	$locations->delete();
                     }
                     return successResponseJson([
                      "message"=>trans("admin.deleted")
                     ]);
                 }else {
-                    $videos = video::find($data);
-	            	if(is_null($videos) || empty($videos)){
+                    $locations = Location::find($data);
+	            	if(is_null($locations) || empty($locations)){
 	            	 return errorResponseJson([
 	            	  "message"=>trans("admin.undefinedRecord")
 	            	 ]);
 	            	}
  
-                    	it()->delete("video",$data);
+                    	it()->delete("location",$data);
 
-                    $videos->delete();
+                    $locations->delete();
                     return successResponseJson([
                      "message"=>trans("admin.deleted")
                     ]);

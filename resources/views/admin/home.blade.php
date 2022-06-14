@@ -22,7 +22,7 @@
   <!-- Left col -->
   <section class="col-lg-6 connectedSortable">
     <!-- Custom tabs (Charts with tabs)-->
-    <div class="card" item_name="sales">
+    {{-- <div class="card" item_name="sales">
       <div class="card-header d-flex p-0">
         <h3 class="card-title p-3">
         <i class="fas fa-chart-pie mr-1"></i>
@@ -509,6 +509,6 @@
         <!-- /.card -->
       </section>
       <!-- right col -->
-    </div>
+    </div> --}}
     <!-- /.row (main row) -->
     @endsection

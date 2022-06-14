@@ -12,13 +12,7 @@
   <!-- /.control-sidebar -->
 
 <footer class="main-footer">
-<strong>&copy; {{ date('Y') }} {{ setting()->{l('sitename')} }}</strong>
-<div class="float-right d-none d-sm-inline-block">
-@if(function_exists('it_version'))
-<a href="https://github.com/arabnewscms/it" target="_blank"><b>(IT Package)</b> {{ it_version() }} ❤️</a> <br />
-don't forget to remove me
-@endif
-</div>
+<strong>&copy; {{ date('Y') }}</strong>
 </footer>
 <!-- Control Sidebar -->
 <aside class="control-sidebar control-sidebar-dark">

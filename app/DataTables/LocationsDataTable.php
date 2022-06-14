@@ -63,9 +63,6 @@ class LocationsDataTable extends DataTable
 					'className' => 'btn btn-outline',
 					'text' => '<i class="fa fa-sync-alt"></i> '.trans('admin.reload')
 					],	[
-						'text' => '<i class="fa fa-trash"></i> '.trans('admin.delete'),
-						'className'    => 'btn btn-outline deleteBtn',
-                    ], 	[
                         'text' => '<i class="fa fa-plus"></i> '.trans('admin.add'),
                         'className'    => 'btn btn-primary',
                         'action'    => 'function(){
@@ -124,20 +121,6 @@ class LocationsDataTable extends DataTable
 	    {
 	        return [
 	       	
- [
-                'name' => 'checkbox',
-                'data' => 'checkbox',
-                'title' => '<div  class="icheck-danger">
-                  <input type="checkbox" class="select-all" id="select-all"  onclick="select_all()" >
-                  <label for="select-all"></label>
-                </div>',
-                'orderable'      => false,
-                'searchable'     => false,
-                'exportable'     => false,
-                'printable'      => false,
-                'width'          => '10px',
-                'aaSorting'      => 'none'
-            ],
 [
                 'name' => 'id',
                 'data' => 'id',
@@ -154,6 +137,16 @@ class LocationsDataTable extends DataTable
                  'name'=>'location',
                  'data'=>'location',
                  'title'=>trans('admin.location'),
+		    ],
+				[
+                 'name'=>'lat',
+                 'data'=>'lat',
+                 'title'=>trans('admin.lat'),
+		    ],
+				[
+                 'name'=>'lng',
+                 'data'=>'lng',
+                 'title'=>trans('admin.lng'),
 		    ],
             [
 	                'name' => 'created_at',

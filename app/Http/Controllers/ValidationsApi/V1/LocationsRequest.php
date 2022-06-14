@@ -27,8 +27,8 @@ class LocationsRequest extends FormRequest {
 		return [
              'name'=>'required|string',
              'location'=>'required|string',
-             'lat'=>'integer',
-             'lng'=>'integer',
+             'lat'=>'string',
+             'lng'=>'string',
 		];
 	}
 
@@ -37,8 +37,8 @@ class LocationsRequest extends FormRequest {
 		return [
              'name'=>'required|string',
              'location'=>'required|string',
-             'lat'=>'integer',
-             'lng'=>'integer',
+             'lat'=>'string',
+             'lng'=>'string',
 		];
 	}
 

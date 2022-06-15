@@ -41,7 +41,7 @@ class productsControllrtApi extends Controller
     public function index()
     {
         $product = product::select($this->selectColumns)->with($this->arrWith())->orderBy("id", "desc")->paginate(15);
-        return successResponseJson($product);
+         return response()->json($product, 200);;
     }
 
 

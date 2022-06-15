@@ -18,7 +18,7 @@ class categoriesApi extends Controller
     protected $selectColumns = [
         "id",
         "name",
-        "parent_id",
+        // "parent_id",
         "image"
     ];
 

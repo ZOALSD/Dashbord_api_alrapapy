@@ -45,7 +45,8 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 
 
 	Route::apiResource("productscontrollrt","productsControllrtApi", ["as" => "api.productscontrollrt"]); 
-	Route::post("productscontrollrt/multi_delete","productsControllrtApi@multi_delete"); 
+	Route::get('search/{name}','productsControllrtApi@search');
+	// Route::post("productscontrollrt/multi_delete","productsControllrtApi@multi_delete"); 
 	Route::get("image","ImageControllerApi@index");
 	Route::apiResource("videos","VideosApi", ["as" => "api.videos"]); 
 

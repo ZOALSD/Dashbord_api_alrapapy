@@ -18,7 +18,7 @@ class categoriesApi extends Controller
     protected $selectColumns = [
         "id",
         "name",
-        // "parent_id",
+        //  "parent_id",
         "image"
     ];
 
@@ -40,7 +40,7 @@ class categoriesApi extends Controller
      */
     public function index()
     {
-        $category = category::select($this->selectColumns)->with($this->arrWith())->orderBy("id", "desc")->paginate(15);
+        $category = category::select($this->selectColumns)->where('parent_id',null)->orderBy("id", "desc")->get();
         return successResponseJson(["data" => $category]);
     }
 

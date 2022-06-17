@@ -36,7 +36,7 @@ class LocationsApi extends Controller{
              */
             public function index()
             {
-            	$Location = Location::select($this->selectColumns)->with($this->arrWith())->orderBy("id","desc")->paginate(15);
+            	$Location = Location::select($this->selectColumns)->get();
                return successResponseJson(["data"=>$Location]);
             }
 

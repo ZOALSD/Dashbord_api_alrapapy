@@ -43,8 +43,6 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		
 		
 		
-		Route::resource('image','Admin\ImageController');
-		Route::post('image/multi_delete','Admin\ImageController@multi_delete');
 		Route::resource('videos','Admin\Videos');
 		Route::post('videos/multi_delete','Admin\Videos@multi_delete');
 		

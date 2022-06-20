@@ -13,9 +13,9 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 	Route::group(['middleware' => 'auth:sanctum'], function () {
 		Route::get('account', 'Auth\AuthAndLogin@account')->name('api.account');
 		Route::post('logout', 'Auth\AuthAndLogin@logout')->name('api.logout');
-		Route::post('login','Auth\Register@login');
 		Route::post('UserUpdate','Auth\Register@UserUpdate');
 	});
+	Route::post('login','Auth\Register@login');
 
 
 	Route::apiResource("images", "ImagesApi", ["as" => "api.images"]);

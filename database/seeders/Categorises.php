@@ -15,13 +15,37 @@ class Categorises extends Seeder
     public function run()
     {
 
-        category::create([
-            'name' => 'screens'
-            
-        ]);
-    //     conditioners
-    //     mixers
-    //     washing machines
-    //     refrigerators
+        $devices = [
+            'conditioners',
+            'mixers',
+            'washing',
+            'refrigerators',
+            'screens',
+            'scree',
+            'mixers2',
+
+        ];
+        foreach ($devices as $key => $value) {
+            # code...
+            category::create([
+                'name' => $value,
+                'admin_id' => 1,
+                'parent_id' => null,
+                'image' => 'categories/' . ($key + 1) . '.jpg',
+            ]);
+        }
+
+        foreach ($devices as $key => $value) {
+            # code...
+            category::create([
+                'name' => $value.'_sup',
+                'admin_id' => 1,
+                'parent_id' => $key + 1,
+                'image' => 'categories/' . ($key + 1) . '.jpg',
+            ]);
+        }
+
+
+
     }
 }

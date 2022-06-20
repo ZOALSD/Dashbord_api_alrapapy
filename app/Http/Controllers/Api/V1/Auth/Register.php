@@ -44,7 +44,9 @@ class Register extends Controller {
 	public function Sigin(Request $request)
     {
 		$data = $request->validate([
-            'name' => 'required|string|min:3',
+            'first_name' => 'required|string|min:3',
+            'last_name' => 'required|string|min:3',
+            'address' => 'string|min:3',
             'email' => 'required|email|unique:users',
             'phone' => 'required|unique:users|numeric',
             // 'device_name' => 'required',
@@ -65,7 +67,9 @@ class Register extends Controller {
         $id = Auth::user()->id;
 
         $request->validate([
-            'name' => 'nullable|string|min:3',
+			'first_name' => 'required|string|min:3',
+            'last_name' => 'required|string|min:3',
+            'address' => 'string|min:3',
             'email' => 'nullable|email|unique:users,email,' . $id,
             'phone' => 'nullable|numeric|unique:users,phone,' . $id,
         ]);
@@ -76,10 +80,16 @@ class Register extends Controller {
             $email = $request->email;
         }
 
-        if ($request->name == null) {
-            $name = User::where('id', $id)->value('name');
+        if ($request->first_name == null) {
+            $first_name = User::where('id', $id)->value('first_name');
         } else {
-            $name = $request->name;
+            $first_name = $request->first_name;
+        }
+
+		if ($request->last_name == null) {
+            $last_name = User::where('id', $id)->value('last_name');
+        } else {
+            $last_name = $request->last_name;
         }
 
         if ($request->phone == null) {
@@ -89,7 +99,8 @@ class Register extends Controller {
         }
 
                 $user = User::find($id);
-                $user->name = $name;
+                $user->first_name = $first_name;
+                $user->last_name = $last_name;
                 $user->email = $email;
                 $user->phone = $phone;
                 $user->save();

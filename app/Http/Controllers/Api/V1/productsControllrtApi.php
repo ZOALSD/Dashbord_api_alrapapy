@@ -29,7 +29,7 @@ class productsControllrtApi extends Controller
      */
     public function arrWith()
     {
-        return ['category_id',];
+        return [];//['category_id',];
     }
 
 

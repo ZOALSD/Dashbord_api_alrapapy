@@ -18,7 +18,8 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 	Route::post('login','Auth\Register@login');
 
 
-	Route::apiResource("image", "ImagesApi", ["as" => "api.images"]);
+	Route::get("images",'ImagesApi@index');
+	Route::get("images/{id}",'ImagesApi@show');
 
 	Route::apiResource("productscontrollrt", "productsControllrtApi", ["as" => "api.productscontrollrt"]);
 	Route::get('search/{name}', 'productsControllrtApi@search');

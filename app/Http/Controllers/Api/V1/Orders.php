@@ -37,6 +37,8 @@ class Orders extends Controller
         
         }
     }
+
+       Card::where('id',$card_id)->update(['total' => Order::where('card_id',$card_id)->sum('summation')]);
         return response()->json("Done", 200,);
     }
 }/*

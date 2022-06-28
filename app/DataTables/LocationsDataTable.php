@@ -129,9 +129,9 @@ class LocationsDataTable extends DataTable
                 'aaSorting'      => 'none'
             ],
 				[
-                 'name'=>'name',
-                 'data'=>'name',
-                 'title'=>trans('admin.name'),
+                 'name'=>'days_wrok',
+                 'data'=>'days_wrok',
+                 'title'=>trans('admin.days_wrok'),
 		    ],
 				[
                  'name'=>'location',
@@ -147,6 +147,11 @@ class LocationsDataTable extends DataTable
                  'name'=>'lng',
                  'data'=>'lng',
                  'title'=>trans('admin.lng'),
+		    ],
+				[
+                 'name'=>'hours_work',
+                 'data'=>'hours_work',
+                 'title'=>trans('admin.hours_work'),
 		    ],
             [
 	                'name' => 'created_at',

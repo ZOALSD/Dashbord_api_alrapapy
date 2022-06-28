@@ -14,10 +14,11 @@ protected $table    = 'locations';
 protected $fillable = [
 		'id',
 		'admin_id',
-        'name',
+        'days_wrok',
         'location',
         'lat',
         'lng',
+        'hours_work',
 		'created_at',
 		'updated_at',
 		'deleted_at',

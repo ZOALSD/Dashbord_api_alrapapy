@@ -63,8 +63,8 @@
 			<div class="clearfix"></div>
 			<hr />
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.name')}} :</b>
-				{!! $locations->name !!}
+				<b>{{trans('admin.days_wrok')}} :</b>
+				{!! $locations->days_wrok !!}
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<b>{{trans('admin.location')}} :</b>
@@ -77,6 +77,10 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<b>{{trans('admin.lng')}} :</b>
 				{!! $locations->lng !!}
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<b>{{trans('admin.hours_work')}} :</b>
+				{!! $locations->hours_work !!}
 			</div>
 			<!-- /.row -->
 		</div>

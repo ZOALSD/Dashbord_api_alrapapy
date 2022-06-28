@@ -140,10 +140,12 @@
 		"images"	=>		"Images",
 		"link"	=>		"video",
 		"videos"	=>		"Videos",
+		"name"	=>		"name",
+		"hours_work"	=>		"Hours works",
 		"lng"	=>		"lng",
 		"lat"	=>		"lat",
 		"location"	=>		"Location",
-		"name"	=>		"name",
+		"days_wrok"	=>		"Days Works",
 		"locations"	=>		"Our Locations",
 
 ];

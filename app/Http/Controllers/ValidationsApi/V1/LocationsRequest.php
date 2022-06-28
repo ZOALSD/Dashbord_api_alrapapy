@@ -25,7 +25,6 @@ class LocationsRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
-             'name'=>'required|string',
              'location'=>'required|string',
              'lat'=>'string',
              'lng'=>'string',
@@ -35,7 +34,6 @@ class LocationsRequest extends FormRequest {
 
 	protected function onUpdate() {
 		return [
-             'name'=>'required|string',
              'location'=>'required|string',
              'lat'=>'string',
              'lng'=>'string',
@@ -56,7 +54,6 @@ class LocationsRequest extends FormRequest {
 	 */
 	public function attributes() {
 		return [
-             'name'=>trans('admin.name'),
              'location'=>trans('admin.location'),
              'lat'=>trans('admin.lat'),
              'lng'=>trans('admin.lng'),

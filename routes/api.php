@@ -14,6 +14,7 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 		Route::get('account', 'Auth\AuthAndLogin@account')->name('api.account');
 		Route::post('logout', 'Auth\AuthAndLogin@logout')->name('api.logout');
 		Route::post('UserUpdate','Auth\Register@UserUpdate');
+		Route::post('order','Orders@card');
 	});
 	Route::post('login','Auth\Register@login');
 

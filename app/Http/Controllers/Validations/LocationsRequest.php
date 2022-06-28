@@ -25,19 +25,21 @@ class LocationsRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
-             'name'=>'required|string',
+             'days_wrok'=>'required|timezone',
              'location'=>'required|string',
              'lat'=>'string',
              'lng'=>'string',
+             'hours_work'=>'required|timezone',
 		];
 	}
 
 	protected function onUpdate() {
 		return [
-             'name'=>'required|string',
+             'days_wrok'=>'required|timezone',
              'location'=>'required|string',
              'lat'=>'string',
              'lng'=>'string',
+             'hours_work'=>'required|timezone',
 		];
 	}
 
@@ -55,10 +57,11 @@ class LocationsRequest extends FormRequest {
 	 */
 	public function attributes() {
 		return [
-             'name'=>trans('admin.name'),
+             'days_wrok'=>trans('admin.days_wrok'),
              'location'=>trans('admin.location'),
              'lat'=>trans('admin.lat'),
              'lng'=>trans('admin.lng'),
+             'hours_work'=>trans('admin.hours_work'),
 		];
 	}
 

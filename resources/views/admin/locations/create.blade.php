@@ -31,10 +31,20 @@
 <div class="row">
 
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <!-- Date range -->
     <div class="form-group">
-        {!! Form::label('name',trans('admin.name'),['class'=>' control-label']) !!}
-            {!! Form::text('name',old('name'),['class'=>'form-control','placeholder'=>trans('admin.name')]) !!}
+        {!! Form::label('days_wrok',trans('admin.days_wrok')) !!}
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="far fa-calendar-alt"></i>
+                </span>
+            </div>
+            {!! Form::text('days_wrok',old('days_wrok'),['class'=>'form-control float-right date_time_picker','placeholder'=>trans('admin.days_wrok'),'readonly'=>'readonly']) !!}
+        </div>
+        <!-- /.input group -->
     </div>
+    <!-- /.form group -->
 </div>
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
     <div class="form-group">
@@ -53,6 +63,22 @@
         {!! Form::label('lng',trans('admin.lng'),['class'=>' control-label']) !!}
             {!! Form::text('lng',old('lng'),['class'=>'form-control','placeholder'=>trans('admin.lng')]) !!}
     </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <!-- Date range -->
+    <div class="form-group">
+        {!! Form::label('hours_work',trans('admin.hours_work')) !!}
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">
+                    <i class="far fa-calendar-alt"></i>
+                </span>
+            </div>
+            {!! Form::text('hours_work',old('hours_work'),['class'=>'form-control float-right date_time_picker','placeholder'=>trans('admin.hours_work'),'readonly'=>'readonly']) !!}
+        </div>
+        <!-- /.input group -->
+    </div>
+    <!-- /.form group -->
 </div>
 
 </div>

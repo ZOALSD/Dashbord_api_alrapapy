@@ -39,13 +39,16 @@ class Orders extends Controller
     }
 
        Card::where('id',$card_id)->update(['total' => Order::where('card_id',$card_id)->sum('summation')]);
-        return response()->json("Done", 200,);
+        return response()->json("Oder Id" + $card_id, 200,);
     }
-}/*
 
- 'card_id',
-        'product_id',
-        'quantity',
-        'price',
-        'summation'
-*/
+    public function pay(Request $req){
+     
+       $card =  Card::where('id',$req->order_id);
+       if (request()->hasFile("image")) {
+       $card->image_notification = it()->upload("image", "pay/" . $req->order_id);
+       }
+       $card->number_notification = $req->number_notification;
+       $card->save();
+    }
+}

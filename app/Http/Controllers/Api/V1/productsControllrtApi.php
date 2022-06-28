@@ -61,6 +61,7 @@ class productsControllrtApi extends Controller
 
         $data["user_id"] = auth()->id();
         $data["image"] = "";
+        
         $product = product::create($data);
         if (request()->hasFile("image")) {
             $product->image = it()->upload("image", "productscontrollrt/" . $product->id);

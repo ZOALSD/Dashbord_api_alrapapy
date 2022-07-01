@@ -39,7 +39,7 @@ class Orders extends Controller
     }
 
        Card::where('id',$card_id)->update(['total' => Order::where('card_id',$card_id)->sum('summation')]);
-        return response()->json("Oder Id" + $card_id, 200,);
+        return response()->json(["Oder_Id" => $card_id] , 200,);
     }
 
     public function pay(Request $req){

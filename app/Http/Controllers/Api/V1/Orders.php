@@ -47,7 +47,7 @@ class Orders extends Controller
         $check = Card::where('id',$req->order_id)->count();
 
         if($check == 0){
-        return response()->json(['You Order ID Not Found',null], 200,);
+        return response()->json(['You Order ID Not Found',null], 201,);
         }
 
         $image = "" ;

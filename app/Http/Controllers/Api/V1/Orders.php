@@ -42,20 +42,26 @@ class Orders extends Controller
     public function myOrders()
     {
 
-        $card =   Card::where('user_id', auth('sanctum')->id())->with('order')->get();
+        $card =   Card::where('user_id', auth('sanctum')->id())->with('order')->orderBy('id', 'desc')->get();
         $data =  cardResource::collection($card);
 
         return response()->json($data, 200);
     }
 
-    public function pay(Request $req)
+    public function confirmOrder(Request $req)
     {
 
-        $card =  Card::where('id', $req->order_id);
+        $image = "" ;
+        
         if (request()->hasFile("image")) {
-            $card->image_notification = it()->upload("image", "pay/" . $req->order_id);
+            $image = it()->upload("image", "pay/" . $req->order_id);
         }
-        $card->number_notification = $req->number_notification;
-        $card->save();
+
+        $card =  Card::where('id', $req->order_id)->update([
+            "image_notification" => $image,
+            "number_notification" => $req->number_notification
+        ]);
+
+        return response()->json(['Successfully Comfiram ORder' , $card ], 200);
     }
 }

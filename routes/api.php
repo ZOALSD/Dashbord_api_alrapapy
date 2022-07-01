@@ -16,6 +16,7 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 		Route::post('UserUpdate','Auth\Register@UserUpdate');
 		Route::post('Order','Orders@card');
 		Route::get('myOrder','Orders@myOrders');
+		Route::post('confirmOrder','Orders@confirmOrder');
 
 	});
 	Route::post('login','Auth\Register@login');

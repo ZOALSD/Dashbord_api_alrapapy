@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Models\Card;
+use App\Models\Order;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\cardResource;
-use App\Models\Card;
-use Illuminate\Http\Request;
 
 class Orders extends Controller
 {

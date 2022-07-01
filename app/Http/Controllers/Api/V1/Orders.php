@@ -59,9 +59,13 @@ class Orders extends Controller
 
         $card =  Card::where('id', $req->order_id)->update([
             "image_notification" => $image,
-            "number_notification" => $req->number_notification
+            "number_notification" => $req->number_notification,
+            "status" => true
         ]);
 
-        return response()->json(['Successfully Comfiram ORder' , $card ], 200);
+        $card =   Card::where('id',$req->order_id)->with('order')->get();
+        $data =  cardResource::collection($card);
+
+        return response()->json(['Successfully Comfiram Order' , $data ], 200);
     }
 }

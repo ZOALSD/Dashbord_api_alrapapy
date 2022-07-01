@@ -20,7 +20,7 @@ class Card extends Model
 
     public function order()
     {
-       return $this->hasMany(\App\Models\order::class);
+       return $this->hasMany(\App\Models\Order::class);
     }
     
 }

@@ -39,14 +39,7 @@ class Orders extends Controller
         return response()->json(["Oder_Id" => $card_id, 'orders' => $orders], 200);
     }
 
-    public function myOrders()
-    {
-
-        $card =   Card::where('user_id', auth('sanctum')->id())->with('order')->orderBy('id', 'desc')->get();
-        $data =  cardResource::collection($card);
-
-        return response()->json($data, 200);
-    }
+   
 
     public function confirmOrder(Request $req)
     {

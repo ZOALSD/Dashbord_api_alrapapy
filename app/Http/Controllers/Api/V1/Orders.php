@@ -44,6 +44,13 @@ class Orders extends Controller
     public function confirmOrder(Request $req)
     {
 
+        $check = Card::where('id',$req->order_id)->count();
+
+        
+        if($check == 0){
+        return response()->json(['You Order ID Not Found',null], 200,);
+        }
+
         $image = "" ;
         
         if (request()->hasFile("image")) {

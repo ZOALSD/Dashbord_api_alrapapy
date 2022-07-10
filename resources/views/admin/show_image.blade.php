@@ -4,7 +4,7 @@ $random = Str::random(5);
 @endphp
 <div style="margin-top: 5px;display: inline-block;">
   <a href="#" data-toggle="modal" data-target="#img_{{ $random }}">
-    <img src="{{ it()->url($image) }}" style="width: 48px;height: 48px;object-fit: cover;border-radius: 50%;" class="img-thumbnail rounded-circle" alt="">
+    <img src="{{ it()->url('/app/public/'.$image) }}" style="width: 48px;height: 48px;object-fit: cover;border-radius: 50%;" class="img-thumbnail rounded-circle" alt="">
   </a>
 </div>
 <div id="img_{{ $random }}" class="modal fade" role="dialog">
@@ -15,7 +15,7 @@ $random = Str::random(5);
       </div>
       <div class="modal-body">
         <center>
-        <img src="{{ it()->url($image) }}" style="width:100%;height:100%;" />
+        <img src="{{ it()->url('storage/app/public/'.$image) }}" style="width:100%;height:100%;" />
         </center>
       </div>
     </div>

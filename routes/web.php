@@ -23,10 +23,23 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::middleware(ProtectAgainstSpam::class)->group(function () {
-	Auth::routes(['verify' => true]);
-
+Route::any('https://sharp-sudan.com/storage/app/public/',function(){
+	abort(404);
 });
-Auth::routes();
+
+
+Route::any('https://sharp-sudan.com/storage/app/',function(){
+	abort(404);
+});
+
+Route::any('https://sharp-sudan.com/storage/',function(){
+	abort(404);
+});
+
+// Route::middleware(ProtectAgainstSpam::class)->group(function () {
+// 	Auth::routes(['verify' => true]);
+
+// });
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

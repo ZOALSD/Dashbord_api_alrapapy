@@ -25,12 +25,14 @@ class ImagesRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
+             'image'=>'required|file|image',
 		];
 	}
 
 
 	protected function onUpdate() {
 		return [
+             'image'=>'required|file|image',
 		];
 	}
 
@@ -48,6 +50,7 @@ class ImagesRequest extends FormRequest {
 	 */
 	public function attributes() {
 		return [
+             'image'=>trans('admin.image'),
 		];
 	}
 

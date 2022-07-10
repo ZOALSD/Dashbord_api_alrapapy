@@ -39,7 +39,7 @@ class categoriesDataTable extends DataTable
      */
     public function query()
     {
-        return category::query()->select("categories.*");
+        return category::query()->select("categories.*")->with('parent');
     }
 
 
@@ -155,7 +155,7 @@ class categoriesDataTable extends DataTable
             ],
             [
                 'name' => 'parent_id',
-                'data' => 'parent_id',
+                'data' => 'parent.name',
                 'title' => trans('admin.parent_id'),
             ],
             [

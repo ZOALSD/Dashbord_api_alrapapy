@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
 class category extends Model {
-	use SoftDeletes;
+
+	use SoftDeletes;
 	protected $dates = ['deleted_at'];
 
 protected $table    = 'categories';
@@ -32,6 +33,11 @@ protected $fillable = [
 	   return $this->hasOne(\App\Models\Admin::class, 'id', 'admin_id');
    }
 	
+ 
+	public function parent()
+	{
+	   return $this->hasOne(\App\Models\category::class, 'id', 'parent_id');
+	}
 
  	/**
     * Static Boot method to delete or update or sort Data

@@ -62,25 +62,34 @@
 			</div>
 			<div class="clearfix"></div>
 			<hr />
-			@if(!empty($categories->admin_id()->first()))
+
+			@if(!empty($categories->admin_id()->first()))
 			<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
 				<b>{{trans('admin.admin_id')}} :</b>
 				{{ $categories->admin_id()->first()->name }}
 			</div>
 			@endif
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<b>{{trans('admin.name')}} :</b>
 				{!! $categories->name !!}
 			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<b>{{trans('admin.parent_id')}} :</b>
-				{!! $categories->parent_id !!}
+				{{-- {!! $categories->parent_id->parent !!} --}}
+				@if(!empty($categories->parent()->first()))
+				{{ $categories->parent()->first()->name }}
+				@endif
+
 			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<b>{{trans('admin.image')}} :</b>
 				@include("admin.show_image",["image"=>$categories->image])
 			</div>
-			<!-- /.row -->
+
+			<!-- /.row -->
 		</div>
 	</div>
 	<!-- /.card-body -->

@@ -39,7 +39,7 @@
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
     <div class="form-group">
         {!! Form::label('parent_id',trans('admin.parent_id'),['class'=>' control-label']) !!}
-            {!! Form::text('parent_id',old('parent_id'),['class'=>'form-control','placeholder'=>trans('admin.parent_id')]) !!}
+		{!! Form::select('parent_id',App\Models\category::pluck('name','id'),old('parent_id'),['class'=>'form-control select2','placeholder'=>trans('admin.choose')]) !!}
     </div>
 </div>
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 image">

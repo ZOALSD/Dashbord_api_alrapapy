@@ -23,16 +23,16 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::any('https://sharp-sudan.com/storage/app/public/',function(){
+// Route::any('storage/app/*',function(){
+// 	abort(404);
+// });
+
+
+Route::any('storage/*',function(){
 	abort(404);
 });
 
-
-Route::any('https://sharp-sudan.com/storage/app/',function(){
-	abort(404);
-});
-
-Route::any('https://sharp-sudan.com/storage/',function(){
+Route::any('storage',function(){
 	abort(404);
 });
 

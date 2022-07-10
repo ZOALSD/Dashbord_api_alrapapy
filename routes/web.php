@@ -13,11 +13,14 @@ use Spatie\Honeypot\ProtectAgainstSpam;
 | contains the "web" middleware group. Now create something great!
 |
  */
-Route::group(['middleware' => 'auth'],
+
+Route::group(
+	['middleware' => 'auth'],
 
 	function () {
 		Route::any('logout', 'Auth\LoginController@logout')->name('web.logout');
-	});
+	}
+);
 
 Route::get('/', function () {
 	return view('welcome');
@@ -28,12 +31,12 @@ Route::get('/', function () {
 // });
 
 
-Route::any('storage/*',function(){
-	abort(404);
+Route::any('storage/*', function () {
+	return abort(404);
 });
 
-Route::any('storage',function(){
-	abort(404);
+Route::any('storage', function () {
+	return	abort(404);
 });
 
 // Route::middleware(ProtectAgainstSpam::class)->group(function () {

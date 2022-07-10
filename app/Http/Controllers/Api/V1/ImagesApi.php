@@ -33,7 +33,7 @@ class ImagesApi extends Controller{
              */
             public function index()
             {
-            	$Image = Image::select($this->selectColumns)->with($this->arrWith())->orderBy("id","desc")->paginate(15);
+            	$Image = Image::select($this->selectColumns)->orderBy("id","desc")->get();
                return successResponseJson(["data"=>$Image]);
             }
 

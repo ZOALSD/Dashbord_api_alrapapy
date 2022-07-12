@@ -19,7 +19,8 @@ class LocationsDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('actions', 'admin.locations.buttons.actions')
-   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
+
+   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
@@ -153,15 +154,15 @@ class LocationsDataTable extends DataTable
                  'data'=>'hours_work',
                  'title'=>trans('admin.hours_work'),
 		    ],
-            [
-	                'name' => 'created_at',
-	                'data' => 'created_at',
-	                'title' => trans('admin.created_at'),
-	                'exportable' => false,
-	                'printable'  => false,
-	                'searchable' => false,
-	                'orderable'  => false,
-	            ],
+            // [
+	        //         'name' => 'created_at',
+	        //         'data' => 'created_at',
+	        //         'title' => trans('admin.created_at'),
+	        //         'exportable' => false,
+	        //         'printable'  => false,
+	        //         'searchable' => false,
+	        //         'orderable'  => false,
+	        //     ],
 	                    [
 	                'name' => 'actions',
 	                'data' => 'actions',

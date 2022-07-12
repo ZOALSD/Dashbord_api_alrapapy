@@ -19,8 +19,10 @@ class productsControllrtDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('actions', 'admin.productscontrollrt.buttons.actions')
-            ->addColumn('image', '{!! view("admin.show_image",["image"=>$image])->render() !!}')
-   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
+
+            ->addColumn('image', '{!! view("admin.show_image",["image"=>$image])->render() !!}')
+
+   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
@@ -170,24 +172,24 @@ class productsControllrtDataTable extends DataTable
                  'data'=>'image',
                  'title'=>trans('admin.image'),
 		    ],
-            [
-	                'name' => 'created_at',
-	                'data' => 'created_at',
-	                'title' => trans('admin.created_at'),
-	                'exportable' => false,
-	                'printable'  => false,
-	                'searchable' => false,
-	                'orderable'  => false,
-	            ],
-	                    [
-	                'name' => 'updated_at',
-	                'data' => 'updated_at',
-	                'title' => trans('admin.updated_at'),
-	                'exportable' => false,
-	                'printable'  => false,
-	                'searchable' => false,
-	                'orderable'  => false,
-	            ],
+            // [
+	        //         'name' => 'created_at',
+	        //         'data' => 'created_at',
+	        //         'title' => trans('admin.created_at'),
+	        //         'exportable' => false,
+	        //         'printable'  => false,
+	        //         'searchable' => false,
+	        //         'orderable'  => false,
+	        //     ],
+	        //             [
+	        //         'name' => 'updated_at',
+	        //         'data' => 'updated_at',
+	        //         'title' => trans('admin.updated_at'),
+	        //         'exportable' => false,
+	        //         'printable'  => false,
+	        //         'searchable' => false,
+	        //         'orderable'  => false,
+	        //     ],
 	                    [
 	                'name' => 'actions',
 	                'data' => 'actions',

@@ -61,8 +61,13 @@ class Videos extends Controller
             public function store(VideosRequest $request)
             {
                 $data = $request->except("_token", "_method");
-            	$data['admin_id'] = admin()->id(); 
+            	$data['link'] = "";
+$data['admin_id'] = admin()->id(); 
 		  		$videos = video::create($data); 
+               if(request()->hasFile('link')){
+              $videos->link = it()->upload('link','videos/'.$videos->id);
+              $videos->save();
+              }
                 $redirect = isset($request["add_back"])?"/create":"";
                 return redirectWithSuccess(aurl('videos'.$redirect), trans('admin.added')); }
 
@@ -126,6 +131,10 @@ class Videos extends Controller
               }
               $data = $this->updateFillableColumns(); 
               $data['admin_id'] = admin()->id(); 
+               if(request()->hasFile('link')){
+              it()->delete($videos->link);
+              $data['link'] = it()->upload('link','videos');
+               } 
               video::where('id',$id)->update($data);
               $redirect = isset($request["save_back"])?"/".$id."/edit":"";
               return redirectWithSuccess(aurl('videos'.$redirect), trans('admin.updated'));
@@ -142,7 +151,9 @@ class Videos extends Controller
 		if(is_null($videos) || empty($videos)){
 			return backWithSuccess(trans('admin.undefinedRecord'),aurl("videos"));
 		}
-               
+               		if(!empty($videos->link)){
+			it()->delete($videos->link);		}
+
 		it()->delete('video',$id);
 		$videos->delete();
 		return redirectWithSuccess(aurl("videos"),trans('admin.deleted'));
@@ -157,7 +168,9 @@ class Videos extends Controller
 				if(is_null($videos) || empty($videos)){
 					return backWithError(trans('admin.undefinedRecord'),aurl("videos"));
 				}
-                    	
+                    					if(!empty($videos->link)){
+				  it()->delete($videos->link);
+				}
 				it()->delete('video',$id);
 				$videos->delete();
 			}
@@ -168,7 +181,9 @@ class Videos extends Controller
 				return backWithError(trans('admin.undefinedRecord'),aurl("videos"));
 			}
                     
-			it()->delete('video',$data);
+			if(!empty($videos->link)){
+			 it()->delete($videos->link);
+			}			it()->delete('video',$data);
 			$videos->delete();
 			return redirectWithSuccess(aurl("videos"),trans('admin.deleted'));
 		}

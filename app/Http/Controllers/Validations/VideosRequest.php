@@ -25,13 +25,13 @@ class VideosRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
-             'link'=>'required|url',
+             'link'=>'required|file|video',
 		];
 	}
 
 	protected function onUpdate() {
 		return [
-             'link'=>'required|url',
+             'link'=>'required|file|video',
 		];
 	}
 

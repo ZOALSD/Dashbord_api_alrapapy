@@ -19,12 +19,12 @@ class VideosDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('actions', 'admin.videos.buttons.actions')
-
-   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
+            ->addColumn('link', '{!! view("admin.show_video",["video"=>$link])->render() !!}')
+   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
-            ->rawColumns(['checkbox','actions',]);
+            ->rawColumns(['checkbox','actions',"link",]);
     }
   
 
@@ -64,9 +64,6 @@ class VideosDataTable extends DataTable
 					'className' => 'btn btn-outline',
 					'text' => '<i class="fa fa-sync-alt"></i> '.trans('admin.reload')
 					],	[
-						'text' => '<i class="fa fa-trash"></i> '.trans('admin.delete'),
-						'className'    => 'btn btn-outline deleteBtn',
-                    ], 	[
                         'text' => '<i class="fa fa-plus"></i> '.trans('admin.add'),
                         'className'    => 'btn btn-primary',
                         'action'    => 'function(){
@@ -151,16 +148,7 @@ class VideosDataTable extends DataTable
                  'data'=>'link',
                  'title'=>trans('admin.link'),
 		    ],
-            // [
-	        //         'name' => 'created_at',
-	        //         'data' => 'created_at',
-	        //         'title' => trans('admin.created_at'),
-	        //         'exportable' => false,
-	        //         'printable'  => false,
-	        //         'searchable' => false,
-	        //         'orderable'  => false,
-	        //     ],
-	                    [
+            [
 	                'name' => 'actions',
 	                'data' => 'actions',
 	                'title' => trans('admin.actions'),

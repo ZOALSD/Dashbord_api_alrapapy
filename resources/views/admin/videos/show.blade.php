@@ -69,8 +69,17 @@
 			</div>
 			@endif
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.link')}} :</b>
-				{!! $videos->link !!}
+				<div class="row">
+					<div class="col-md-8 col-lg-4 col-xs-12">
+					  <b>{{trans('admin.link')}} :</b>
+					</div>
+					<div class="col-md-2 col-lg-2 col-xs-12">
+						@include("admin.show_video",["video"=>$videos->link])
+					</div>
+					<div class="col-md-2 col-lg-2 col-xs-12">
+						<a href="{{ it()->url($videos->link) }}" target="_blank"><i class="fa fa-download fa-2x"></i></a>
+					</div>
+				</div>
 			</div>
 			<!-- /.row -->
 		</div>

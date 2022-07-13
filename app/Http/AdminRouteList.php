@@ -6,9 +6,9 @@
 * [it v 1.6.40]
 */
 return [
+	"videos"=>["create","read","update","delete"],
 	"images"=>["create","read","update","delete"],
 	"locations"=>["create","read","update","delete"],
-	"videos"=>["create","read","update","delete"],
 	"categories"=>["create","read","update","delete"],
 	"image"=>["create","read","update","delete"],
 	"productscontrollrt"=>["create","read","update","delete"],

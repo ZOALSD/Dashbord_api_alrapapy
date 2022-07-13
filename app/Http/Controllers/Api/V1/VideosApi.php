@@ -13,7 +13,6 @@ use App\Http\Controllers\ValidationsApi\V1\VideosRequest;
 class VideosApi extends Controller{
 	protected $selectColumns = [
 		"id",
-        "link"
 	];
 
             /**
@@ -33,7 +32,7 @@ class VideosApi extends Controller{
              */
             public function index()
             {
-            	$video = video::select($this->selectColumns)->with($this->arrWith())->orderBy("id","desc")->paginate(15);
+            	$video = video::select($this->selectColumns)->orderBy("id","desc")->get();
                return successResponseJson(["data"=>$video]);
             }
 
@@ -130,6 +129,9 @@ class VideosApi extends Controller{
             	}
 
 
+              if(!empty($videos->link)){
+               it()->delete($videos->link);
+              }
                it()->delete("video",$id);
 
                $videos->delete();
@@ -152,6 +154,9 @@ class VideosApi extends Controller{
 	            	 ]);
 	            	}
 
+                    	if(!empty($videos->link)){
+                    	it()->delete($videos->link);
+                    	}
                     	it()->delete("video",$id);
                     	$videos->delete();
                     }
@@ -166,6 +171,9 @@ class VideosApi extends Controller{
 	            	 ]);
 	            	}
  
+                    	if(!empty($videos->link)){
+                    	it()->delete($videos->link);
+                    	}
                     	it()->delete("video",$data);
 
                     $videos->delete();

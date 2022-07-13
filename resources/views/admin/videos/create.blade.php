@@ -30,10 +30,18 @@
 {!! Form::open(['url'=>aurl('/videos'),'id'=>'videos','files'=>true,'class'=>'form-horizontal form-row-seperated']) !!}
 <div class="row">
 
-<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12 link">
     <div class="form-group">
-        {!! Form::label('link',trans('admin.link'),['class'=>' control-label']) !!}
-            {!! Form::text('link',old('link'),['class'=>'form-control','placeholder'=>trans('admin.link')]) !!}
+        <label for="'link'">{{ trans('admin.link') }}</label>
+        <div class="input-group">
+            <div class="custom-file">
+                {!! Form::file('link',['class'=>'custom-file-input','placeholder'=>trans('admin.link'),"accept"=>it()->acceptedMimeTypes("video"),"id"=>"link"]) !!}
+                {!! Form::label('link',trans('admin.link'),['class'=>'custom-file-label']) !!}
+            </div>
+            <div class="input-group-append">
+                <span class="input-group-text" id="">{{ trans('admin.upload') }}</span>
+            </div>
+        </div>
     </div>
 </div>
 

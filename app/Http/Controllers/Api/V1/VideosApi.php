@@ -13,6 +13,7 @@ use App\Http\Controllers\ValidationsApi\V1\VideosRequest;
 class VideosApi extends Controller{
 	protected $selectColumns = [
 		"id",
+        "link"
 	];
 
             /**

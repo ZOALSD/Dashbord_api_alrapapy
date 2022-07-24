@@ -178,6 +178,8 @@ $.fn.dataTable.ext.errMode = 'none';
 });
 </script>
 
+
 @stack('js')
+@livewireScripts
 </body>
 </html>

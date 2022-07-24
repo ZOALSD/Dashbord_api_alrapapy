@@ -66,6 +66,7 @@
     <!-- Cairo Font -->
     <link rel="stylesheet" href="{{ url('assets') }}/css/cairo.css">
     <style type="text/css">
+
     .buttons-print{
     color: #fff;
     background-color: #007bff;
@@ -100,6 +101,9 @@
 <script src="{{url('assets/js/jquery.min.js')}}" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="{{url('assets/plugins/dropzone/min/dropzone.min.css')}}">
 <link rel="stylesheet" type="text/css" href="{{url('assets/plugins/dropzone/min/basic.css')}}">
+
+@livewireStyles
+
   </head>
  <body class="hold-transition sidebar-mini layout-navbar-fixed layout-fixed">
     <div class="wrapper">

@@ -151,8 +151,6 @@ class productsControllrtApi extends Controller
                 "message" => trans("admin.undefinedRecord")
             ]);
         }
-
-
         if (!empty($productscontrollrt->image)) {
             it()->delete($productscontrollrt->image);
         }
@@ -166,44 +164,45 @@ class productsControllrtApi extends Controller
 
 
 
-    public function multi_delete()
-    {
-        $data = request("selected_data");
-        if (is_array($data)) {
-            foreach ($data as $id) {
-                $productscontrollrt = product::find($id);
-                if (is_null($productscontrollrt) || empty($productscontrollrt)) {
-                    return errorResponseJson([
-                        "message" => trans("admin.undefinedRecord")
-                    ]);
-                }
+    // public function multi_delete()
+    // {
+    //     $data = request("selected_data");
+    //     if (is_array($data)) {
+    //         foreach ($data as $id) {
+    //             $productscontrollrt = product::find($id);
+    //             if (is_null($productscontrollrt) || empty($productscontrollrt)) {
+    //                 return errorResponseJson([
+    //                     "message" => trans("admin.undefinedRecord")
+    //                 ]);
+    //             }
 
-                if (!empty($productscontrollrt->image)) {
-                    it()->delete($productscontrollrt->image);
-                }
-                it()->delete("product", $id);
-                $productscontrollrt->delete();
-            }
-            return successResponseJson([
-                "message" => trans("admin.deleted")
-            ]);
-        } else {
-            $productscontrollrt = product::find($data);
-            if (is_null($productscontrollrt) || empty($productscontrollrt)) {
-                return errorResponseJson([
-                    "message" => trans("admin.undefinedRecord")
-                ]);
-            }
+    //             if (!empty($productscontrollrt->image)) {
+    //                 it()->delete($productscontrollrt->image);
+    //             }
+    //             it()->delete("product", $id);
+    //             $productscontrollrt->delete();
+    //         }
+    //         return successResponseJson([
+    //             "message" => trans("admin.deleted")
+    //         ]);
+    //     } else {
+    //         $productscontrollrt = product::find($data);
+    //         if (is_null($productscontrollrt) || empty($productscontrollrt)) {
+    //             return errorResponseJson([
+    //                 "message" => trans("admin.undefinedRecord")
+    //             ]);
+    //         }
 
-            if (!empty($productscontrollrt->image)) {
-                it()->delete($productscontrollrt->image);
-            }
-            it()->delete("product", $data);
+    //         if (!empty($productscontrollrt->image)) {
+    //             it()->delete($productscontrollrt->image);
+    //         }
+    //         it()->delete("product", $data);
 
-            $productscontrollrt->delete();
-            return successResponseJson([
-                "message" => trans("admin.deleted")
-            ]);
-        }
-    }
+    //         $productscontrollrt->delete();
+    //         return successResponseJson([
+    //             "message" => trans("admin.deleted")
+    //         ]);
+    //     }
+    // }
+
 }

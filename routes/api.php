@@ -6,6 +6,7 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 
 	Route::get('/', function () {
 	});
+
 	Route::group(['middleware' => 'guest'], function () {
 		Route::post('login', 'Auth\AuthAndLogin@login')->name('api.login');
 	});
@@ -14,7 +15,10 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 		Route::get('account', 'Auth\AuthAndLogin@account')->name('api.account');
 		Route::post('logout', 'Auth\AuthAndLogin@logout')->name('api.logout');
 		Route::post('UserUpdate','Auth\Register@UserUpdate');
+		
 		Route::post('Order','Orders@card');
+		Route::post('OrderOne','Orders@cardTake');
+		
 		Route::get('myOrder','MyOrder@getMyOrder');
 		Route::post('confirmOrder','Orders@confirmOrder');
 	});

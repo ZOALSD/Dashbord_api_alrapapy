@@ -11,12 +11,12 @@ class ShowInvoices extends Component
     public $count;
     public function render()
     {
+        $this->count = Card::where('seen',false)->count();
         return view('livewire.show-invoices');
     }
 
     public function mount(){
 
-        $this->count = Card::where('seen',false)->count();
 
     }
 }

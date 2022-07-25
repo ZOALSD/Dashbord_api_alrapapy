@@ -107,3 +107,18 @@
     </div>
 </div>
 <!--locations_end-->
+<!--contacts_start-->
+<div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-primary">
+      <div class="inner">
+        <h3>{{ mK(App\Models\Contact::count()) }}</h3>
+        <p>{{ trans("admin.contacts") }}</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-icons"></i>
+      </div>
+      <a href="{{ aurl("contacts") }}" class="small-box-footer">{{ trans("admin.contacts") }} <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!--contacts_end-->

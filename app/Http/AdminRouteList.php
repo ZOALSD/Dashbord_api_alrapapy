@@ -6,6 +6,7 @@
 * [it v 1.6.40]
 */
 return [
+	"contacts"=>["create","read","update","delete"],
 	"videos"=>["create","read","update","delete"],
 	"images"=>["create","read","update","delete"],
 	"locations"=>["create","read","update","delete"],

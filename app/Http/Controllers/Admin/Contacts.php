@@ -17,15 +17,15 @@ class Contacts extends Controller
 		$this->middleware('AdminRole:contacts_show', [
 			'only' => ['index', 'show'],
 		]);
-		$this->middleware('AdminRole:contacts_add', [
-			'only' => ['create', 'store'],
-		]);
-		$this->middleware('AdminRole:contacts_edit', [
-			'only' => ['edit', 'update'],
-		]);
-		$this->middleware('AdminRole:contacts_delete', [
-			'only' => ['destroy', 'multi_delete'],
-		]);
+		// $this->middleware('AdminRole:contacts_add', [
+		// 	'only' => ['create', 'store'],
+		// ]);
+		// $this->middleware('AdminRole:contacts_edit', [
+		// 	'only' => ['edit', 'update'],
+		// ]);
+		// $this->middleware('AdminRole:contacts_delete', [
+		// 	'only' => ['destroy', 'multi_delete'],
+		// ]);
 	}
 
 	

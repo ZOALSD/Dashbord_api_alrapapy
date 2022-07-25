@@ -215,7 +215,15 @@ with font-awesome or any other icon font library -->
 
 <!--contacts_start_route-->
 @if(admin()->user()->role("contacts_show"))
-<li class="nav-item {{active_link('contacts','menu-open')}} ">
+
+<li class="nav-item">
+  <a href="{{aurl('contacts')}}" class="nav-link  {{active_link('contacts','active')}}">
+    <i class="fa fa-icons nav-icon"></i>
+    <p>{{trans('admin.contacts')}} </p>
+  </a>
+</li>
+
+{{-- <li class="nav-item {{active_link('contacts','menu-open')}} ">
   <a href="#" class="nav-link {{active_link('contacts','active')}}">
     <i class="nav-icon fa fa-icons"></i>
     <p>
@@ -237,6 +245,6 @@ with font-awesome or any other icon font library -->
       </a>
     </li>
   </ul>
-</li>
+</li> --}}
 @endif
 <!--contacts_end_route-->

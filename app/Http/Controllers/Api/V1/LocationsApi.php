@@ -13,9 +13,12 @@ use App\Http\Controllers\ValidationsApi\V1\LocationsRequest;
 class LocationsApi extends Controller{
 	protected $selectColumns = [
 		"id",
+        "days_wrok",
 		"location",
 		"lat",
 		"lng",
+        "hour_start",
+        "hour_end"
 	];
 
             /**
@@ -35,7 +38,7 @@ class LocationsApi extends Controller{
              */
             public function index()
             {
-            	$Location = Location::select($this->selectColumns)->with($this->arrWith())->orderBy("id","desc")->paginate(15);
+            	$Location = Location::select($this->selectColumns)->with($this->arrWith())->orderBy("id","desc")->get();
                return successResponseJson(["data"=>$Location]);
             }
 

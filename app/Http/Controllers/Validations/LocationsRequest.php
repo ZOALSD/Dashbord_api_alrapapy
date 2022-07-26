@@ -25,21 +25,23 @@ class LocationsRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
-             'days_wrok'=>'required|timezone',
+             'days_wrok'=>'required|array',
              'location'=>'required|string',
              'lat'=>'string',
              'lng'=>'string',
-             'hours_work'=>'required|timezone',
+             'hour_start'=>'required',
+             'hour_end'=>'required',
 		];
 	}
 
 	protected function onUpdate() {
 		return [
-             'days_wrok'=>'required|timezone',
+             'days_wrok'=>'required|array',
              'location'=>'required|string',
              'lat'=>'string',
              'lng'=>'string',
-             'hours_work'=>'required|timezone',
+             'hour_start'=>'required',
+             'hour_end'=>'required',
 		];
 	}
 
@@ -61,7 +63,8 @@ class LocationsRequest extends FormRequest {
              'location'=>trans('admin.location'),
              'lat'=>trans('admin.lat'),
              'lng'=>trans('admin.lng'),
-             'hours_work'=>trans('admin.hours_work'),
+             'hour_start'=>trans('admin.hour_start'),
+             'hour_end'=>trans('admin.hour_end'),
 		];
 	}
 

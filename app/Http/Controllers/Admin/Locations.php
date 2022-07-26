@@ -63,9 +63,12 @@ class Locations extends Controller
    */
   public function store(LocationsRequest $request)
   {
+
+    
     $data = $request->except("_token", "_method");
-    $data['days_wrok'] = date('Y-m-d H:i', strtotime(request('days_wrok')));
-    $data['hours_work'] = date('Y-m-d H:i', strtotime(request('hours_work')));
+    $data['hour_start'] = date('H:i', strtotime(request('hour_start')));
+    $data['hour_end'] = date('H:i', strtotime(request('hour_end')));
+    $data['days_wrok'] = json_encode($data['days_wrok']);
     $locations = Location::create($data);
     $redirect = isset($request["add_back"]) ? "/create" : "";
     return redirectWithSuccess(aurl('locations' . $redirect), trans('admin.added'));
@@ -131,8 +134,8 @@ class Locations extends Controller
       return backWithError(trans("admin.undefinedRecord"), aurl("locations"));
     }
     $data = $this->updateFillableColumns();
-    $data['days_wrok'] = date('Y-m-d H:i', strtotime(request('days_wrok')));
-    $data['hours_work'] = date('Y-m-d H:i', strtotime(request('hours_work')));
+    $data['hour_start'] = date('H:i', strtotime(request('hour_start')));
+    $data['hour_end'] = date('H:i', strtotime(request('hour_end')));
     Location::where('id', $id)->update($data);
     $redirect = isset($request["save_back"]) ? "/" . $id . "/edit" : "";
     return redirectWithSuccess(aurl('locations' . $redirect), trans('admin.updated'));

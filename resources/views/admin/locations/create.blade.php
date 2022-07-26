@@ -30,22 +30,28 @@
 {!! Form::open(['url'=>aurl('/locations'),'id'=>'locations','files'=>true,'class'=>'form-horizontal form-row-seperated']) !!}
 <div class="row">
 
-<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-    <!-- Date range -->
+{{-- <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
     <div class="form-group">
-        {!! Form::label('days_wrok',trans('admin.days_wrok')) !!}
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <i class="far fa-calendar-alt"></i>
-                </span>
-            </div>
-            {!! Form::text('days_wrok',old('days_wrok'),['class'=>'form-control float-right date_time_picker','placeholder'=>trans('admin.days_wrok'),'readonly'=>'readonly']) !!}
-        </div>
-        <!-- /.input group -->
+        {!! Form::label('days_wrok',trans('admin.days_wrok'),['class'=>' control-label']) !!}
+            {!! Form::text('days_wrok',old('days_wrok'),['class'=>'form-control','placeholder'=>trans('admin.days_wrok')]) !!}
     </div>
-    <!-- /.form group -->
-</div>
+
+</div> --}}
+
+<div class="col-md">
+    <div class="form-group">
+      <label>Multiple</label>
+      <select name="days_wrok[]" class="select2"  multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+        <option selected>Saturday</option>
+        <option selected>Sunday</option>
+        <option selected>Monday</option>
+        <option selected>Tuesday</option>
+        <option selected>Wednesday</option>
+        <option selected>Thursday</option>
+        <option>Friday</option>
+      </select>
+    </div>
+
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
     <div class="form-group">
         {!! Form::label('location',trans('admin.location'),['class'=>' control-label']) !!}
@@ -65,20 +71,20 @@
     </div>
 </div>
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-    <!-- Date range -->
-    <div class="form-group">
-        {!! Form::label('hours_work',trans('admin.hours_work')) !!}
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text">
-                    <i class="far fa-calendar-alt"></i>
-                </span>
-            </div>
-            {!! Form::text('hours_work',old('hours_work'),['class'=>'form-control float-right date_time_picker','placeholder'=>trans('admin.hours_work'),'readonly'=>'readonly']) !!}
-        </div>
-        <!-- /.input group -->
-    </div>
-    <!-- /.form group -->
+  <div class="form-group">
+    {!! Form::label('hour_start',trans('admin.hour_start')) !!}
+    <input type="time" name="hour_start" value="old('hour_start')" class="form-control">
+    <!-- /.input group -->
+  </div>
+  <!-- /.form group -->
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+  <div class="form-group">
+    {!! Form::label('hour_end',trans('admin.hour_end')) !!}
+    <input type="time" name="hour_end" value="old('hour_end')" class="form-control">
+    <!-- /.input group -->
+  </div>
+  <!-- /.form group -->
 </div>
 
 </div>

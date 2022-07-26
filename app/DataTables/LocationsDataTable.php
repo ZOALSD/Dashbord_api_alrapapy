@@ -149,21 +149,17 @@ class LocationsDataTable extends DataTable
                  'data'=>'lng',
                  'title'=>trans('admin.lng'),
 		    ],
-				[
-                 'name'=>'hours_work',
-                 'data'=>'hours_work',
-                 'title'=>trans('admin.hours_work'),
-		    ],
-            // [
-	        //         'name' => 'created_at',
-	        //         'data' => 'created_at',
-	        //         'title' => trans('admin.created_at'),
-	        //         'exportable' => false,
-	        //         'printable'  => false,
-	        //         'searchable' => false,
-	        //         'orderable'  => false,
-	        //     ],
-	                    [
+			[
+				'name'=>'hour_start',
+				'data'=>'hour_start',
+				'title'=>trans('admin.hour_start'),
+		   ],
+		   [
+			'name'=>'hour_end',
+			'data'=>'hour_end',
+			'title'=>trans('admin.hour_end'),
+	   ],
+            [
 	                'name' => 'actions',
 	                'data' => 'actions',
 	                'title' => trans('admin.actions'),

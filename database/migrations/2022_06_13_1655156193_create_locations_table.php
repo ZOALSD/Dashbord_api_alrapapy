@@ -16,11 +16,12 @@ class CreateLocationsTable extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->dateTime('days_wrok');
+            $table->string('days_wrok');
             $table->string('location');
             $table->string('lat')->nullable();
             $table->string('lng')->nullable();
-            $table->dateTime('hours_work');
+            $table->time('hour_start');
+            $table->time('hour_end');
 			$table->softDeletes();
 			$table->timestamps();
         });

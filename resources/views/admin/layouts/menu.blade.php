@@ -248,3 +248,39 @@ with font-awesome or any other icon font library -->
 </li> --}}
 @endif
 <!--contacts_end_route-->
+
+<!--favorites_start_route-->
+@if(admin()->user()->role("favorites_show"))
+
+{{-- <li class="nav-item">
+  <a href="{{aurl('favorites')}}" class="nav-link  {{active_link('favorites','active')}}">
+    <i class="fa fa-icons nav-icon"></i>
+    <p>{{trans('admin.favorites')}} </p>
+  </a>
+</li> --}}
+
+{{-- <li class="nav-item {{active_link('favorites','menu-open')}} ">
+  <a href="#" class="nav-link {{active_link('favorites','active')}}">
+    <i class="nav-icon fa fa-icons"></i>
+    <p>
+      {{trans('admin.favorites')}} 
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{aurl('favorites')}}" class="nav-link  {{active_link('favorites','active')}}">
+        <i class="fa fa-icons nav-icon"></i>
+        <p>{{trans('admin.favorites')}} </p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ aurl('favorites/create') }}" class="nav-link">
+        <i class="fas fa-plus nav-icon"></i>
+        <p>{{trans('admin.create')}} </p>
+      </a>
+    </li>
+  </ul>
+</li> --}}
+@endif
+<!--favorites_end_route-->

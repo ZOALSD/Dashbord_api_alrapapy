@@ -151,5 +151,8 @@
 		"location"	=>		"Location",
 		"days_wrok"	=>		"Days Works",
 		"locations"	=>		"Our Locations",
+		"user_id"	=>		"user_id",
+		"pro_id"	=>		"pro_id",
+		"favorites"	=>		"favorite",
 
 ];

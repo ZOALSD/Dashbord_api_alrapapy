@@ -21,6 +21,9 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 		
 		Route::get('myOrder','MyOrder@getMyOrder');
 		Route::post('confirmOrder','Orders@confirmOrder');
+		Route::apiResource("favorites", "favoritesApi", ["as" => "api.favorites"]);
+
+
 	});
 
 	Route::post('login','Auth\Register@login');

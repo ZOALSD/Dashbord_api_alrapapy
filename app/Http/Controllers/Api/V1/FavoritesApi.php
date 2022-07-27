@@ -49,7 +49,7 @@ class FavoritesApi extends Controller{
     {
     	// $data = $request->except("_token");
     	
-        $Favorite = Favorite::create(['user_id' => auth('sanctum')->id() , 'products_id' => $request->pro_id]); 
+        $Favorite = Favorite::create(['user_id' => auth('sanctum')->id() , 'products_id' => $request->products_id]); 
 
 		  $Favorite = Favorite::with($this->arrWith())->find($Favorite->id,$this->selectColumns);
         return successResponseJson([

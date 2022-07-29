@@ -77,6 +77,18 @@
 				{!! $productscontrollrt->price !!}
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<b>{{trans('admin.color')}} :</b>
+				{!! $productscontrollrt->color !!}
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<b>{{trans('admin.desc_en')}} :</b>
+				{!! $productscontrollrt->desc_en !!}
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<b>{{trans('admin.desc_ar')}} :</b>
+				{!! $productscontrollrt->desc_ar !!}
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<b>{{trans('admin.category_id')}} :</b>
 				@if(!empty($productscontrollrt->category_id()->first()))
 			{{ $productscontrollrt->category_id()->first()->name }}
@@ -85,6 +97,12 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				<b>{{trans('admin.image')}} :</b>
 				@include("admin.show_image",["image"=>$productscontrollrt->image])
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<b>{{trans('admin.size_id')}} :</b>
+				@if(!empty($productscontrollrt->size_id()->first()))
+			{{ $productscontrollrt->size_id()->first()->size }}
+			@endif
 			</div>
 			<!-- /.row -->
 		</div>

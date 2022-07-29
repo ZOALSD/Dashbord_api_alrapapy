@@ -62,6 +62,40 @@
         </div>
     </div>
 </div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <!-- Color Picker -->
+    <div class="col-md-11 col-sm-11 col-lg-11 col-xs-11">
+        <div class="form-group">
+            {!! Form::label('color',trans('admin.color')) !!}
+            <div class="input-group colorpicker">
+                {!! Form::text('color',old('color'),['class'=>'form-control','placeholder'=>trans('admin.color'),"readonly"=>"readonly"]) !!}
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-square"></i></span>
+                </div>
+            </div>
+            <!-- /.input group -->
+        </div>
+        <!-- /.form group -->
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+	<div class="form-group">
+		{!! Form::label('size_id',trans('admin.size_id')) !!}
+		{!! Form::select('size_id',App\Models\Size::pluck('size','id'),old('size_id'),['class'=>'form-control select2','placeholder'=>trans('admin.choose')]) !!}
+	</div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('desc_en',trans('admin.desc_en'),['class'=>'control-label']) !!}
+            {!! Form::textarea('desc_en',old('desc_en'),['class'=>'form-control','placeholder'=>trans('admin.desc_en')]) !!}
+    </div>
+</div>
+<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+    <div class="form-group">
+        {!! Form::label('desc_ar',trans('admin.desc_ar'),['class'=>'control-label']) !!}
+            {!! Form::textarea('desc_ar',old('desc_ar'),['class'=>'form-control','placeholder'=>trans('admin.desc_ar')]) !!}
+    </div>
+</div>
 
 </div>
 		<!-- /.row -->

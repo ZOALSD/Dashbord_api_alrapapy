@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -17,14 +16,17 @@ class CreateproductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId("admin_id")->constrained("admins")->onUpdate("cascade")->onDelete("cascade");
+$table->foreignId("admin_id")->constrained("admins")->onUpdate("cascade")->onDelete("cascade");
             $table->string('name');
             $table->string('price')->nullable();
             $table->foreignId("category_id")->nullable()->constrained("categories")->references("id")->onDelete("cascade");
             $table->string('image')->nullable();
-            $table->softDeletes();
-
-            $table->timestamps();
+            $table->string('color');
+            $table->foreignId("size_id")->nullable()->constrained("sizes")->references("id");
+            $table->longtext('desc_en');
+            $table->longtext('desc_ar')->nullable();
+			$table->softDeletes();
+			$table->timestamps();
         });
     }
 

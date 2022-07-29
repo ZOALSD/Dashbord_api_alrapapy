@@ -29,6 +29,10 @@ class productsControllrtRequest extends FormRequest {
              'price'=>'sometimes|nullable|integer',
              'category_id'=>'sometimes|nullable|numeric',
              'image'=>'sometimes|nullable|file|image',
+             'color'=>'required|string',
+             'size_id'=>'required|integer',
+             'desc_en'=>'required|string',
+             'desc_ar'=>'',
 		];
 	}
 
@@ -38,6 +42,10 @@ class productsControllrtRequest extends FormRequest {
              'price'=>'sometimes|nullable|integer',
              'category_id'=>'sometimes|nullable|numeric',
              'image'=>'sometimes|nullable|file|image',
+             'color'=>'required|string',
+             'size_id'=>'required|integer',
+             'desc_en'=>'required|string',
+             'desc_ar'=>'',
 		];
 	}
 
@@ -59,6 +67,10 @@ class productsControllrtRequest extends FormRequest {
              'price'=>trans('admin.price'),
              'category_id'=>trans('admin.category_id'),
              'image'=>trans('admin.image'),
+             'color'=>trans('admin.color'),
+             'size_id'=>trans('admin.size_id'),
+             'desc_en'=>trans('admin.desc_en'),
+             'desc_ar'=>trans('admin.desc_ar'),
 		];
 	}
 

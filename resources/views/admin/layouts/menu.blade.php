@@ -213,6 +213,34 @@ with font-awesome or any other icon font library -->
 @endif
 <!--locations_end_route-->
 
+<!--sizes_start_route-->
+@if(admin()->user()->role("sizes_show"))
+<li class="nav-item {{active_link('sizes','menu-open')}} ">
+  <a href="#" class="nav-link {{active_link('sizes','active')}}">
+    <i class="nav-icon fa fa-icons"></i>
+    <p>
+      {{trans('admin.sizes')}} 
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{aurl('sizes')}}" class="nav-link  {{active_link('sizes','active')}}">
+        <i class="fa fa-icons nav-icon"></i>
+        <p>{{trans('admin.sizes')}} </p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ aurl('sizes/create') }}" class="nav-link">
+        <i class="fas fa-plus nav-icon"></i>
+        <p>{{trans('admin.create')}} </p>
+      </a>
+    </li>
+  </ul>
+</li>
+@endif
+<!--sizes_end_route-->
+
 <!--contacts_start_route-->
 @if(admin()->user()->role("contacts_show"))
 
@@ -248,6 +276,7 @@ with font-awesome or any other icon font library -->
 </li> --}}
 @endif
 <!--contacts_end_route-->
+
 
 <!--favorites_start_route-->
 @if(admin()->user()->role("favorites_show"))
@@ -287,7 +316,15 @@ with font-awesome or any other icon font library -->
 
 <!--services_start_route-->
 @if(admin()->user()->role("services_show"))
-<li class="nav-item {{active_link('services','menu-open')}} ">
+
+<li class="nav-item">
+  <a href="{{aurl('services')}}" class="nav-link  {{active_link('services','active')}}">
+    <i class="fa fa-icons nav-icon"></i>
+    <p>{{trans('admin.services')}} </p>
+  </a>
+</li>
+
+{{-- <li class="nav-item {{active_link('services','menu-open')}} ">
   <a href="#" class="nav-link {{active_link('services','active')}}">
     <i class="nav-icon fa fa-icons"></i>
     <p>
@@ -309,6 +346,8 @@ with font-awesome or any other icon font library -->
       </a>
     </li>
   </ul>
-</li>
+</li> --}}
 @endif
 <!--services_end_route-->
+
+

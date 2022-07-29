@@ -1,12 +1,12 @@
 <?php
 namespace App\DataTables;
-use App\Models\product;
+use App\Models\Size;
 use Yajra\DataTables\DataTables;
 use Yajra\DataTables\Services\DataTable;
 // Auto DataTable By Baboon Script
 // Baboon Maker has been Created And Developed By [it v 1.6.40]
 // Copyright Reserved [it v 1.6.40]
-class productsControllrtDataTable extends DataTable
+class SizesDataTable extends DataTable
 {
     	
 
@@ -18,13 +18,12 @@ class productsControllrtDataTable extends DataTable
     public function dataTable(DataTables $dataTables, $query)
     {
         return datatables($query)
-            ->addColumn('actions', 'admin.productscontrollrt.buttons.actions')
-            ->addColumn('image', '{!! view("admin.show_image",["image"=>$image])->render() !!}')
+            ->addColumn('actions', 'admin.sizes.buttons.actions')
    		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
-            ->rawColumns(['checkbox','actions',"image",]);
+            ->rawColumns(['checkbox','actions',]);
     }
   
 
@@ -35,7 +34,7 @@ class productsControllrtDataTable extends DataTable
      */
 	public function query()
     {
-        return product::query()->with(['category_id','size_id',])->select("products.*");
+        return Size::query()->select("sizes.*");
 
     }
     	
@@ -60,10 +59,6 @@ class productsControllrtDataTable extends DataTable
                 "lengthMenu" => [[10, 25, 50,100, -1], [10, 25, 50,100, trans('admin.all_records')]],
                 'buttons' => [
                 	[
-					'extend' => 'reload',
-					'className' => 'btn btn-outline',
-					'text' => '<i class="fa fa-sync-alt"></i> '.trans('admin.reload')
-					],	[
                         'text' => '<i class="fa fa-plus"></i> '.trans('admin.add'),
                         'className'    => 'btn btn-primary',
                         'action'    => 'function(){
@@ -75,13 +70,7 @@ class productsControllrtDataTable extends DataTable
 
 
             
-            ". filterElement('1,2,3,6', 'input') . "
-
-                        //category_idname,price,category_id,image,color,size_id4
-            ". filterElement('4', 'select', \App\Models\category::pluck("name","name")) . "
-            //size_idname,price,category_id,image,color,size_id7
-            ". filterElement('7', 'select', \App\Models\Size::pluck("size","size")) . "
-
+            
 
 	            }",
                 'order' => [[1, 'desc']],
@@ -136,45 +125,11 @@ class productsControllrtDataTable extends DataTable
                 'aaSorting'      => 'none'
             ],
 				[
-                 'name'=>'name',
-                 'data'=>'name',
-                 'title'=>trans('admin.name'),
-		    ],
-				[
-                 'name'=>'price',
-                 'data'=>'price',
-                 'title'=>trans('admin.price'),
-		    ],
-				[
-                 'name'=>'category_id.name',
-                 'data'=>'category_id.name',
-                 'title'=>trans('admin.category_id'),
-		    ],
-				[
-                 'name'=>'image',
-                 'data'=>'image',
-                 'title'=>trans('admin.image'),
-		    ],
-				[
-                 'name'=>'color',
-                 'data'=>'color',
-                 'title'=>trans('admin.color'),
-		    ],
-				[
-                 'name'=>'size_id.size',
-                 'data'=>'size_id.size',
-                 'title'=>trans('admin.size_id'),
+                 'name'=>'size',
+                 'data'=>'size',
+                 'title'=>trans('admin.size'),
 		    ],
             [
-	                'name' => 'created_at',
-	                'data' => 'created_at',
-	                'title' => trans('admin.created_at'),
-	                'exportable' => false,
-	                'printable'  => false,
-	                'searchable' => false,
-	                'orderable'  => false,
-	            ],
-	                    [
 	                'name' => 'actions',
 	                'data' => 'actions',
 	                'title' => trans('admin.actions'),
@@ -193,7 +148,7 @@ class productsControllrtDataTable extends DataTable
 	     */
 	    protected function filename()
 	    {
-	        return 'productscontrollrt_' . time();
+	        return 'sizes_' . time();
 	    }
     	
 }

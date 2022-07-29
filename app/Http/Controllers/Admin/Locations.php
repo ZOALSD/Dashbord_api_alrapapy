@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use App\Models\Location;
 
 use App\Http\Controllers\Validations\LocationsRequest;
+use PhpOffice\PhpSpreadsheet\Calculation\TextData\Replace;
+
 // Auto Controller Maker By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
@@ -69,7 +71,8 @@ class Locations extends Controller
     // dd($data);
     $data['hour_start'] = date('H:m', strtotime(request('hour_start')));
     // $data['hour_end'] = date('H:m', strtotime(request('hour_end')));
-    $data['days_wrok'] = json_encode($data['days_wrok']);
+
+    $data['days_wrok'] = implode(',',$data['days_wrok']);
     // dd($data);
     $locations = Location::create($data);
     $redirect = isset($request["add_back"]) ? "/create" : "";

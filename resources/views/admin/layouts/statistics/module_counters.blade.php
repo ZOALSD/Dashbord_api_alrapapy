@@ -137,3 +137,18 @@
     </div>
 </div>
 <!--favorites_end-->
+<!--services_start-->
+<div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-primary">
+      <div class="inner">
+        <h3>{{ mK(App\Models\Service::count()) }}</h3>
+        <p>{{ trans("admin.services") }}</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-icons"></i>
+      </div>
+      <a href="{{ aurl("services") }}" class="small-box-footer">{{ trans("admin.services") }} <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!--services_end-->

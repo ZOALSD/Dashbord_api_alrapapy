@@ -66,9 +66,11 @@ class Locations extends Controller
 
     
     $data = $request->except("_token", "_method");
-    $data['hour_start'] = date('H:i', strtotime(request('hour_start')));
-    $data['hour_end'] = date('H:i', strtotime(request('hour_end')));
+    // dd($data);
+    $data['hour_start'] = date('H:m', strtotime(request('hour_start')));
+    // $data['hour_end'] = date('H:m', strtotime(request('hour_end')));
     $data['days_wrok'] = json_encode($data['days_wrok']);
+    // dd($data);
     $locations = Location::create($data);
     $redirect = isset($request["add_back"]) ? "/create" : "";
     return redirectWithSuccess(aurl('locations' . $redirect), trans('admin.added'));

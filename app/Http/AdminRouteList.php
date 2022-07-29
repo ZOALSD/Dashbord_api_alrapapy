@@ -6,6 +6,7 @@
 * [it v 1.6.40]
 */
 return [
+	"services"=>["create","read","update","delete"],
 	"favorites"=>["create","read","update","delete"],
 	"locations"=>["create","read","update","delete"],
 	"contacts"=>["create","read","update","delete"],

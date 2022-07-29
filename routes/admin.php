@@ -56,6 +56,8 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		Route::post('contacts/multi_delete','Admin\Contacts@multi_delete'); 
 		Route::resource('favorites','Admin\Favorites'); 
 		Route::post('favorites/multi_delete','Admin\Favorites@multi_delete'); 
+		Route::resource('services','Admin\Services'); 
+		Route::post('services/multi_delete','Admin\Services@multi_delete'); 
 		////////AdminRoutes/*End*///////////////
 	});
 

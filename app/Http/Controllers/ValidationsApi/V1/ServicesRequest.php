@@ -27,7 +27,7 @@ class ServicesRequest extends FormRequest {
 		return [
              'name'=>'required|string',
              'email'=>'required|email',
-             'phone'=>'required|integer',
+             'phone'=>'required|numeric',
              'description'=>'',
 		];
 	}
@@ -37,7 +37,7 @@ class ServicesRequest extends FormRequest {
 		return [
              'name'=>'required|string',
              'email'=>'required|email',
-             'phone'=>'required|integer',
+             'phone'=>'required|numeric',
              'description'=>'',
 		];
 	}

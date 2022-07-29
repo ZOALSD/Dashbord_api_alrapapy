@@ -1,7 +1,5 @@
 
-		<a href="{{ aurl('/contacts/'.$id)}}" class="" >  {{trans('admin.show')}}</a>
-
- {{-- <div class="btn-group">
+ <div class="btn-group">
 	<button type="button" class="btn btn-success btn-flat dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench"></i> {{ trans('admin.actions') }}</button>
 	<span class="caret"></span>
 	<span class="sr-only"></span>
@@ -35,5 +33,5 @@
 			</div>
 		</div>
 	</div>
-</div> --}}
+</div>
 		

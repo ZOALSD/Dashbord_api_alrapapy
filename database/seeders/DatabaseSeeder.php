@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 			Admins::class,
 			Users::class,
 			Categorises::class,
-			ProduactSeeder::class
+			//ProduactSeeder::class
 		]);
 	}
 }

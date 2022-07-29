@@ -1,5 +1,5 @@
-
- <div class="btn-group">
+<a href="{{ aurl('/services/'.$id)}}" class="dropdown-item" >{{trans('admin.show')}}</a>
+ {{-- <div class="btn-group">
 	<button type="button" class="btn btn-success btn-flat dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench"></i> {{ trans('admin.actions') }}</button>
 	<span class="caret"></span>
 	<span class="sr-only"></span>
@@ -11,7 +11,7 @@
 		<a data-toggle="modal" data-target="#delete_record{{$id}}" href="#" class="dropdown-item">
 		<i class="fas fa-trash"></i> {{trans('admin.delete')}}</a>
 	</div>
-</div>
+</div> --}}
 <div class="modal fade" id="delete_record{{$id}}">
 	<div class="modal-dialog">
 		<div class="modal-content">

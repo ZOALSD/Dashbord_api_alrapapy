@@ -14,6 +14,7 @@ protected $fillable = [
         'name',
         'email',
         'details',
+        'phone',
 		'created_at',
 		'updated_at',
 	];

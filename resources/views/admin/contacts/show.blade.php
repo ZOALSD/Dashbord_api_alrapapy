@@ -74,6 +74,10 @@
 				<b>{{trans('admin.details')}} :</b>
 				{!! $contacts->details !!}
 			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<b>{{trans('admin.phone')}} :</b>
+				{!! $contacts->phone !!}
+			</div>
 			<!-- /.row -->
 		</div>
 	</div>

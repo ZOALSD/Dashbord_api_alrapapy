@@ -1,11 +1,12 @@
 <?php
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 // Auto Schema  By Baboon Script
 // Baboon Maker has been Created And Developed By [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
-class CreateServicesTable extends Migration
+class CreatecategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +15,15 @@ class CreateServicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('services', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->foreignId("admin_id")->constrained("admins")->onUpdate("cascade")->onDelete("cascade");
             $table->string('name');
-            $table->string('email');
-            $table->bigInteger('phone');
-            $table->longtext('description')->nullable();
-            $table->foreignId("user_id")->nullable()->constrained("users")->references("id")->onDelete("cascade");
-			$table->timestamps();
+            $table->bigInteger('parent_id')->nullable();
+            $table->string('image')->nullable();
+            $table->softDeletes();
+
+            $table->timestamps();
         });
     }
 
@@ -32,6 +34,6 @@ class CreateServicesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('services');
+        Schema::dropIfExists('categories');
     }
 }

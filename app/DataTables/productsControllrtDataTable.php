@@ -19,8 +19,10 @@ class productsControllrtDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('actions', 'admin.productscontrollrt.buttons.actions')
-            ->addColumn('image', '{!! view("admin.show_image",["image"=>$image])->render() !!}')
-   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
+
+            ->addColumn('image', '{!! view("admin.show_image",["image"=>$image])->render() !!}')
+
+   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
@@ -75,12 +77,12 @@ class productsControllrtDataTable extends DataTable
 
 
             
-            ". filterElement('1,2,3,6', 'input') . "
+            ". filterElement('1,2,6', 'input') . "
 
                         //category_idname,price,category_id,image,color,size_id4
-            ". filterElement('4', 'select', \App\Models\category::pluck("name","name")) . "
+            ". filterElement('3', 'select', \App\Models\category::whereNotNull('parent_id')->pluck("name","name")) . "
             //size_idname,price,category_id,image,color,size_id7
-            ". filterElement('7', 'select', \App\Models\Size::pluck("size","size")) . "
+            ". filterElement('6', 'select', \App\Models\Size::pluck("size","size")) . "
 
 
 	            }",

@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "dd720e9c-7710-4bef-baaf-79d0313b7799",
+        "_postman_id": "b4fbcce0-bd9a-4355-a08f-c2332ee3fd78",
         "name": null,
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
@@ -780,6 +780,12 @@
                                     "value": "some string",
                                     "type": "text",
                                     "description": "normal input text"
+                                },
+                                {
+                                    "key": "phone",
+                                    "value": "some string",
+                                    "type": "text",
+                                    "description": "normal input text"
                                 }
                             ]
                         },
@@ -790,73 +796,6 @@
                             ],
                             "path": [
                                 "contacts"
-                            ]
-                        },
-                        "description": "test description"
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Update Record By ID contacts",
-                    "protocolProfileBehavior": {
-                        "disableBodyPruning": true
-                    },
-                    "request": {
-                        "auth": {
-                            "type": "bearer",
-                            "bearer": [
-                                {
-                                    "key": "token",
-                                    "value": "{{token}}",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "type": "text"
-                            }
-                        ],
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "lang",
-                                    "description": "For Return Language Message default Arabic",
-                                    "type": "text",
-                                    "value": "ar"
-                                },
-                                {
-                                    "key": "name",
-                                    "value": "some string",
-                                    "type": "text",
-                                    "description": "normal input text"
-                                },
-                                {
-                                    "key": "email",
-                                    "value": "email@example.com",
-                                    "type": "text",
-                                    "description": "email Input"
-                                },
-                                {
-                                    "key": "details",
-                                    "value": "some string",
-                                    "type": "text",
-                                    "description": "normal input text"
-                                }
-                            ]
-                        },
-                        "url": {
-                            "raw": "{{local}}/contacts/{PUT_YOUR_ID}",
-                            "host": [
-                                "{{local}}"
-                            ],
-                            "path": [
-                                "contacts",
-                                "{PUT_YOUR_ID}"
                             ]
                         },
                         "description": "test description"

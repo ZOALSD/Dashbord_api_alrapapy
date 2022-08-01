@@ -81,9 +81,24 @@
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 	<div class="form-group">
 		{!! Form::label('size_id',trans('admin.size_id')) !!}
-		{!! Form::select('size_id',App\Models\Size::pluck('size','id'),old('size_id'),['class'=>'form-control select2','placeholder'=>trans('admin.choose')]) !!}
-	</div>
+	    {!! Form::select('size_id[]',App\Models\Size::pluck('size','size'),'', ['class'=>'form-control select2' ,'multiple'=> 'multiple' ,'data-placeholder'=>'Select a State']) !!}
+    </div>
 </div>
+
+{{-- <div class="col-md">
+    <div class="form-group">
+      <label>Multiple</label>
+      <select name="days_wrok[]" class="select2"  multiple="multiple" data-placeholder="Select a State" style="width: 100%;">
+        <option selected>Saturday</option>
+        <option selected>Sunday</option>
+        <option selected>Monday</option>
+        <option selected>Tuesday</option>
+        <option selected>Wednesday</option>
+        <option selected>Thursday</option>
+        <option>Friday</option>
+      </select>
+    </div> --}}
+
 <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
     <div class="form-group">
         {!! Form::label('desc_en',trans('admin.desc_en'),['class'=>'control-label']) !!}

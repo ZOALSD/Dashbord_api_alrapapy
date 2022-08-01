@@ -30,9 +30,9 @@ class productsControllrtRequest extends FormRequest {
              'category_id'=>'sometimes|nullable|numeric',
              'image'=>'sometimes|nullable|file|image',
              'color'=>'required|string',
-             'size_id'=>'required|integer',
+             'size_id'=>'required|array',
              'desc_en'=>'required|string',
-             'desc_ar'=>'',
+             'desc_ar'=>'required|string',
 		];
 	}
 

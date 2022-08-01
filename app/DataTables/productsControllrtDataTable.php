@@ -37,7 +37,7 @@ class productsControllrtDataTable extends DataTable
      */
 	public function query()
     {
-        return product::query()->with(['category_id','size_id',])->select("products.*");
+        return product::query()->with(['category'])->select("products.*")->orderById('desc');
 
     }
     	
@@ -77,12 +77,11 @@ class productsControllrtDataTable extends DataTable
 
 
             
-            ". filterElement('1,2,6', 'input') . "
+            ". filterElement('1,2', 'input') . "
 
                         //category_idname,price,category_id,image,color,size_id4
             ". filterElement('3', 'select', \App\Models\category::whereNotNull('parent_id')->pluck("name","name")) . "
             //size_idname,price,category_id,image,color,size_id7
-            ". filterElement('6', 'select', \App\Models\Size::pluck("size","size")) . "
 
 
 	            }",
@@ -162,11 +161,11 @@ class productsControllrtDataTable extends DataTable
                  'data'=>'color',
                  'title'=>trans('admin.color'),
 		    ],
-				[
-                 'name'=>'size_id.size',
-                 'data'=>'size_id.size',
-                 'title'=>trans('admin.size_id'),
-		    ],
+			// 	[
+            //      'name'=>'size_id.size',
+            //      'data'=>'size_id.size',
+            //      'title'=>trans('admin.size_id'),
+		    // ],
             [
 	                'name' => 'created_at',
 	                'data' => 'created_at',

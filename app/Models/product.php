@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
 class product extends Model {
-	use SoftDeletes;
+
+	use SoftDeletes;
 	protected $dates = ['deleted_at'];
 
 protected $table    = 'products';
@@ -20,7 +21,8 @@ protected $fillable = [
 
         'image',
         'color',
-        'size_id',
+      //  'size_id',
+       'sizes',
 
         'desc_en',
         'desc_ar',
@@ -45,7 +47,7 @@ protected $fillable = [
     * @param void
     * @return object data
     */
-   public function category_id(){
+   public function category(){
       return $this->hasOne(\App\Models\category::class,'id','category_id');
    }
 
@@ -54,8 +56,9 @@ protected $fillable = [
     * @param void
     * @return object data
     */
-   public function size_id(){
-      return $this->hasOne(\App\Models\Size::class,'id','size_id');
+
+   public function size(){
+      return $this->hasMany(\App\Models\ProductSizes::class,'products_id','id');
    }
 
  	/**

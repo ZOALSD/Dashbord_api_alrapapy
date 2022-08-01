@@ -22,11 +22,13 @@ $table->foreignId("admin_id")->constrained("admins")->onUpdate("cascade")->onDel
             $table->foreignId("category_id")->nullable()->constrained("categories")->references("id")->onDelete("cascade");
             $table->string('image')->nullable();
             $table->string('color');
-            $table->foreignId("size_id")->nullable()->constrained("sizes")->references("id");
+            $table->string('sizes')->nullable();
+            $table->boolean('available')->default(1);
             $table->longtext('desc_en');
             $table->longtext('desc_ar')->nullable();
 			$table->softDeletes();
-			$table->timestamps();
+
+			$table->timestamps();
         });
     }
 

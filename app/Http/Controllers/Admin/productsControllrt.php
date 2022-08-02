@@ -72,8 +72,7 @@ class productsControllrt extends Controller
 
     
     $productscontrollrt = product::create($data);
-     dd($productscontrollrt);
-
+    
     if (request()->hasFile('image')) {
       $productscontrollrt->image = it()->upload('image', 'productscontrollrt/' . $productscontrollrt->id);
       $productscontrollrt->save();

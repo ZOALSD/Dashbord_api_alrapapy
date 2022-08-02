@@ -60,6 +60,8 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		Route::post('services/multi_delete','Admin\Services@multi_delete'); 
 		Route::resource('sizes','Admin\Sizes'); 
 		Route::post('sizes/multi_delete','Admin\Sizes@multi_delete'); 
+		Route::resource('colors','Admin\Colors'); 
+		Route::post('colors/multi_delete','Admin\Colors@multi_delete'); 
 		////////AdminRoutes/*End*///////////////
 	});
 

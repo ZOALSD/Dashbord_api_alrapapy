@@ -20,7 +20,7 @@ class CreateServicesTable extends Migration
             $table->string('email');
             $table->bigInteger('phone');
             $table->longtext('description')->nullable();
-            $table->foreignId("user_id")->nullable()->constrained("users")->references("id")->onDelete("cascade");
+            $table->foreignId("user_id")->nullable();
 			$table->timestamps();
         });
     }

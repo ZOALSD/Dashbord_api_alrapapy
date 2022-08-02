@@ -351,3 +351,31 @@ with font-awesome or any other icon font library -->
 <!--services_end_route-->
 
 
+
+<!--colors_start_route-->
+@if(admin()->user()->role("colors_show"))
+<li class="nav-item {{active_link('colors','menu-open')}} ">
+  <a href="#" class="nav-link {{active_link('colors','active')}}">
+    <i class="nav-icon fa fa-icons"></i>
+    <p>
+      {{trans('admin.colors')}} 
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{aurl('colors')}}" class="nav-link  {{active_link('colors','active')}}">
+        <i class="fa fa-icons nav-icon"></i>
+        <p>{{trans('admin.colors')}} </p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ aurl('colors/create') }}" class="nav-link">
+        <i class="fas fa-plus nav-icon"></i>
+        <p>{{trans('admin.create')}} </p>
+      </a>
+    </li>
+  </ul>
+</li>
+@endif
+<!--colors_end_route-->

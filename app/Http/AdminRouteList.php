@@ -6,6 +6,7 @@
 * [it v 1.6.40]
 */
 return [
+	"colors"=>["create","read","update","delete"],
 	"services"=>["create","read","update","delete"],
 	"contacts"=>["create","read","update","delete"],
 	"productscontrollrt"=>["create","read","update","delete"],

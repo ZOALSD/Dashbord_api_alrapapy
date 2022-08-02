@@ -5,7 +5,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class productsControllrtRequest extends FormRequest {
+class ColorsRequest extends FormRequest {
 
 	/**
 	 * Baboon Script By [it v 1.6.40]
@@ -25,27 +25,16 @@ class productsControllrtRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
+             'color'=>'required',
+             'code'=>'',
              'name'=>'required|string',
-             'price'=>'sometimes|nullable|integer',
-             'category_id'=>'sometimes|nullable|numeric',
-             'image'=>'sometimes|nullable|file|image',
-             'color_id'=>'required',
-             'sizes'=>'required|array',
-             'desc_en'=>'required|string',
-             'desc_ar'=>'required|string',
 		];
 	}
 
 	protected function onUpdate() {
 		return [
+             'color'=>'required',
              'name'=>'required|string',
-             'price'=>'sometimes|nullable|integer',
-             'category_id'=>'sometimes|nullable|numeric',
-             'image'=>'sometimes|nullable|file|image',
-             'color_id'=>'required',
-             'sizes'=>'required|array',
-             'desc_en'=>'required|string',
-             'desc_ar'=>'',
 		];
 	}
 
@@ -63,14 +52,8 @@ class productsControllrtRequest extends FormRequest {
 	 */
 	public function attributes() {
 		return [
-             'name'=>trans('admin.name'),
-             'price'=>trans('admin.price'),
-             'category_id'=>trans('admin.category_id'),
-             'image'=>trans('admin.image'),
              'color'=>trans('admin.color'),
-             'size_id'=>trans('admin.size_id'),
-             'desc_en'=>trans('admin.desc_en'),
-             'desc_ar'=>trans('admin.desc_ar'),
+             'name'=>trans('admin.name'),
 		];
 	}
 

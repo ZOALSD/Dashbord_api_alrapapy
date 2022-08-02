@@ -167,3 +167,18 @@
     </div>
 </div>
 <!--sizes_end-->
+<!--colors_start-->
+<div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-primary">
+      <div class="inner">
+        <h3>{{ mK(App\Models\Color::count()) }}</h3>
+        <p>{{ trans("admin.colors") }}</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-icons"></i>
+      </div>
+      <a href="{{ aurl("colors") }}" class="small-box-footer">{{ trans("admin.colors") }} <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!--colors_end-->

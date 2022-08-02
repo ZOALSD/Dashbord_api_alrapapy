@@ -17,7 +17,7 @@ class CreatecategoriesTable extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->foreignId("admin_id")->constrained("admins")->onUpdate("cascade")->onDelete("cascade");
+            $table->foreignId("admin_id")->nullable() ;
             $table->string('name');
             $table->bigInteger('parent_id')->nullable();
             $table->string('image')->nullable();

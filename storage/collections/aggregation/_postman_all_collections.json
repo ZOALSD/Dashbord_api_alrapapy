@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "b4fbcce0-bd9a-4355-a08f-c2332ee3fd78",
+        "_postman_id": "957c6eeb-a12a-4d7f-b829-ddb0d7d1e743",
         "name": null,
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
@@ -629,6 +629,10 @@
                     "response": []
                 }
             ]
+        },
+        {
+            "name": "colors",
+            "item": []
         },
         {
             "name": "contacts",

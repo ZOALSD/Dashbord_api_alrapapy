@@ -20,10 +20,10 @@ class productsControllrtApi extends Controller
         "id",
         "name",
         "price",
-        "category_id",
         "image",
-        "color",
-     "sizes",
+        'category_id',
+        'color_id',
+        "sizes",
         "desc_en",
         "desc_ar",
         "available"
@@ -36,7 +36,7 @@ class productsControllrtApi extends Controller
      */
     public function arrWith()
     {
-        return ['category'];//
+        return ['category', 'color']; //
     }
 
 
@@ -48,7 +48,7 @@ class productsControllrtApi extends Controller
     public function index()
     {
         $product = product::select($this->selectColumns)->with($this->arrWith())->orderBy("id", "desc")->get();
-        return successResponseJson(["data" => $product ]);
+        return successResponseJson(["data" => $product]);
     }
 
 

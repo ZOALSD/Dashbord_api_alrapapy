@@ -67,7 +67,7 @@ class productsControllrt extends Controller
     $data = $request->except("_token", "_method");
     $data['image'] = "";
     $data['admin_id'] = admin()->id();
-    $data['sizes'] = implode(',',$data['size_id']);
+    $data['sizes'] = implode(',',$data['sizes']);
 
     $productscontrollrt = product::create($data);
     // dd($productscontrollrt);

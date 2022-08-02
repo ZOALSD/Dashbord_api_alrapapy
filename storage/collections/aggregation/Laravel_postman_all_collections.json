@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "198fdf23-f9ef-4632-b229-06008f92233c",
+        "_postman_id": "68a18dc8-0a0d-4fed-aa27-98c10f90541c",
         "name": "Laravel",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
@@ -15,6 +15,10 @@
         }
     ],
     "item": [
+        {
+            "name": "colors",
+            "item": []
+        },
         {
             "name": "locations",
             "item": [
@@ -631,6 +635,10 @@
             ]
         },
         {
+            "name": "colors",
+            "item": []
+        },
+        {
             "name": "contacts",
             "item": [
                 {
@@ -780,6 +788,12 @@
                                     "value": "some string",
                                     "type": "text",
                                     "description": "normal input text"
+                                },
+                                {
+                                    "key": "phone",
+                                    "value": "some string",
+                                    "type": "text",
+                                    "description": "normal input text"
                                 }
                             ]
                         },
@@ -790,73 +804,6 @@
                             ],
                             "path": [
                                 "contacts"
-                            ]
-                        },
-                        "description": "test description"
-                    },
-                    "response": []
-                },
-                {
-                    "name": "Update Record By ID contacts",
-                    "protocolProfileBehavior": {
-                        "disableBodyPruning": true
-                    },
-                    "request": {
-                        "auth": {
-                            "type": "bearer",
-                            "bearer": [
-                                {
-                                    "key": "token",
-                                    "value": "{{token}}",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        "method": "PUT",
-                        "header": [
-                            {
-                                "key": "Accept",
-                                "value": "application/json",
-                                "type": "text"
-                            }
-                        ],
-                        "body": {
-                            "mode": "formdata",
-                            "formdata": [
-                                {
-                                    "key": "lang",
-                                    "description": "For Return Language Message default Arabic",
-                                    "type": "text",
-                                    "value": "ar"
-                                },
-                                {
-                                    "key": "name",
-                                    "value": "some string",
-                                    "type": "text",
-                                    "description": "normal input text"
-                                },
-                                {
-                                    "key": "email",
-                                    "value": "email@example.com",
-                                    "type": "text",
-                                    "description": "email Input"
-                                },
-                                {
-                                    "key": "details",
-                                    "value": "some string",
-                                    "type": "text",
-                                    "description": "normal input text"
-                                }
-                            ]
-                        },
-                        "url": {
-                            "raw": "{{local}}/contacts/{PUT_YOUR_ID}",
-                            "host": [
-                                "{{local}}"
-                            ],
-                            "path": [
-                                "contacts",
-                                "{PUT_YOUR_ID}"
                             ]
                         },
                         "description": "test description"
@@ -1650,6 +1597,59 @@
                             ],
                             "path": [
                                 "services"
+                            ]
+                        },
+                        "description": "test description"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "sizes",
+            "item": [
+                {
+                    "name": "get all sizes",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "{{token}}",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "lang",
+                                    "description": "For Return Language Message default Arabic",
+                                    "type": "text",
+                                    "value": "ar"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{local}}/sizes",
+                            "host": [
+                                "{{local}}"
+                            ],
+                            "path": [
+                                "sizes"
                             ]
                         },
                         "description": "test description"

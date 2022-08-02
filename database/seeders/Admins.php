@@ -112,8 +112,59 @@ class Admins extends Seeder
 				]);
 
             
+				\App\Models\AdminGroupRole::UpdateOrCreate([
+					'name' => 'colors',
+					'admin_groups_id' => 1,
+					'show' => 'yes',
+					'add' => 'yes',
+					'edit' => 'yes',
+					'delete' => 'yes',
+				]);
 
+				\App\Models\AdminGroupRole::UpdateOrCreate([
+					'name' => 'services',
+					'admin_groups_id' => 1,
+					'show' => 'yes',
+					'add' => 'yes',
+					'edit' => 'yes',
+					'delete' => 'yes',
+				]);
 
+				\App\Models\AdminGroupRole::UpdateOrCreate([
+					'name' => 'favorites',
+					'admin_groups_id' => 1,
+					'show' => 'yes',
+					'add' => 'yes',
+					'edit' => 'yes',
+					'delete' => 'yes',
+				]);
+
+				\App\Models\AdminGroupRole::UpdateOrCreate([
+					'name' => 'contacts',
+					'admin_groups_id' => 1,
+					'show' => 'yes',
+					'add' => 'yes',
+					'edit' => 'yes',
+					'delete' => 'yes',
+				]);
+
+				\App\Models\AdminGroupRole::UpdateOrCreate([
+					'name' => 'sizes',
+					'admin_groups_id' => 1,
+					'show' => 'yes',
+					'add' => 'yes',
+					'edit' => 'yes',
+					'delete' => 'yes',
+				]);
+
+				\App\Models\AdminGroupRole::UpdateOrCreate([
+					'name' => 'image',
+					'admin_groups_id' => 1,
+					'show' => 'yes',
+					'add' => 'yes',
+					'edit' => 'yes',
+					'delete' => 'yes',
+				]);
 			}
 
 		}

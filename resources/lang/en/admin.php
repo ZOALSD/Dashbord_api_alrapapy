@@ -4,7 +4,6 @@
 		"price"	=>		"price",
 		"category_id"	=>		"category",
 		"image"	=>		"image",
-		"color"	=>		"color",
 		"size_id"	=>		"Size",
 		"desc_en"	=>		"Description En",
 		"desc_ar"	=>		"Description Ar",
@@ -157,7 +156,9 @@
 		"description"	=>		"Description",
 		"phone"	=>		"phone",
 		"email"	=>		"Email",
-		"name"	=>		"name",
 		"services"	=>		"service Request",
+		"name"	=>		"name",
+		"color"	=>		"color",
+		"colors"	=>		"Colors",
 
 ];

@@ -43,7 +43,7 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 	Route::apiResource("locations", "LocationsApi", ["as" => "api.locations"]);
 
 	Route::apiResource("contacts", "ContactsApi", ["as" => "api.contacts"]);
-	Route::apiResource("services", "servicesApi", ["as" => "api.services"]);
+	Route::apiResource("services", "Services", ["as" => "api.services"]);
 
 	Route::post('register', 'Auth\Register@Sigin');
 });

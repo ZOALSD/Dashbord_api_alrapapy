@@ -70,25 +70,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                <!-- Color Picker -->
-                <div class="col-md-11 col-sm-11 col-lg-11 col-xs-11">
-                    <div class="form-group">
-                        {!! Form::label('color',trans('admin.color')) !!}
-                        <div class="input-group">
 
-                            <select name="color_id" id="" class="form-control">
-                                @foreach (App\Models\Color::get() as $color )
-                                <option value="{{$color->id}}" style="background-color:{{$color->color}} !important">{{$color->name}}</option>
-                                @endforeach
-                            </select>
-                            {{-- <div class="input-group-append">
-                                <span class="input-group-text"><i class="fas fa-square"></i></span>
-                            </div> --}}
-                        </div>
-                        <!-- /.input group -->
-                    </div>
-                    <!-- /.form group -->
+            <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+                <div class="form-group">
+                    {!! Form::label('colors',trans('admin.color')) !!}
+                    {!! Form::select('colors[]',App\Models\Color::pluck('name','code'),'', ['class'=>'form-control
+                    select2' ,'multiple'=> 'multiple' ,'data-placeholder'=>'Select a State']) !!}
                 </div>
             </div>
             <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">

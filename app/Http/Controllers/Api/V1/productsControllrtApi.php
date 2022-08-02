@@ -21,12 +21,12 @@ class productsControllrtApi extends Controller
         "name",
         "price",
         "image",
-        'category_id',
-        'color_id',
+        'colors',
         "sizes",
         "desc_en",
         "desc_ar",
-        "available"
+        "available",
+        'category_id'
     ];
 
     /**
@@ -36,7 +36,7 @@ class productsControllrtApi extends Controller
      */
     public function arrWith()
     {
-        return ['category', 'color']; //
+        return ['category']; //
     }
 
 

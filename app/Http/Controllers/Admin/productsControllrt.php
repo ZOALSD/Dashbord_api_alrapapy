@@ -68,9 +68,11 @@ class productsControllrt extends Controller
     $data['image'] = "";
     $data['admin_id'] = admin()->id();
     $data['sizes'] = implode(',',$data['sizes']);
+    $data['colors'] = implode(',',$data['colors']);
 
+    
     $productscontrollrt = product::create($data);
-    // dd($productscontrollrt);
+     dd($productscontrollrt);
 
     if (request()->hasFile('image')) {
       $productscontrollrt->image = it()->upload('image', 'productscontrollrt/' . $productscontrollrt->id);

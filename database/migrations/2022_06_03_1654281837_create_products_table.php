@@ -22,7 +22,7 @@ class CreateproductsTable extends Migration
             $table->string('price')->nullable();
             $table->foreignId("category_id");
             $table->string('image')->nullable();
-            $table->string('color_id')->nullable();;
+            $table->string('colors')->nullable();;
             $table->string('sizes')->nullable();
             $table->boolean('available')->default(1);
             $table->longtext('desc_en');

@@ -161,11 +161,11 @@ class productsControllrtDataTable extends DataTable
                  'data'=>'color',
                  'title'=>trans('admin.color'),
 		    ],
-			// 	[
-            //      'name'=>'size_id.size',
-            //      'data'=>'size_id.size',
-            //      'title'=>trans('admin.size_id'),
-		    // ],
+				[
+                 'name'=>'sizes',
+                 'data'=>'sizes',
+                 'title'=>trans('admin.size_id'),
+		    ],
             [
 	                'name' => 'created_at',
 	                'data' => 'created_at',

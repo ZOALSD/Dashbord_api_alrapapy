@@ -23,7 +23,7 @@ class product extends Model
       'category_id',
 
       'image',
-      'color_id',
+      'colors',
       //  'size_id',
       'sizes',
 

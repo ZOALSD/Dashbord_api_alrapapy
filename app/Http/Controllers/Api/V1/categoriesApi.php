@@ -27,12 +27,12 @@ class categoriesApi extends Controller
         "name",
         "price",
         "image",
-        'category_id',
-        'color_id',
+        'colors',
         "sizes",
         "desc_en",
         "desc_ar",
-        "available"
+        "available",
+        'category_id'         
     ];
 
     /**
@@ -42,7 +42,7 @@ class categoriesApi extends Controller
      */
     public function arrWithPro()
     {
-        return ['category', 'color']; //
+        return ['category']; //
     }
 
 

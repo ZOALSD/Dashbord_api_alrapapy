@@ -21,10 +21,7 @@ class Color extends Model
       'updated_at',
    ];
 
-   protected $hidden = [
-      'created_at',
-      'updated_at',
-   ];
+
    /**
     * Static Boot method to delete or update or sort Data
     * @param void

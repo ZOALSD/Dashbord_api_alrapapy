@@ -26,8 +26,13 @@ class categoriesApi extends Controller
         "id",
         "name",
         "price",
-        "category_id",
         "image",
+        'category_id',
+        'color_id',
+        "sizes",
+        "desc_en",
+        "desc_ar",
+        "available"
     ];
 
     /**
@@ -35,9 +40,9 @@ class categoriesApi extends Controller
      * Baboon Api Script By [it v 1.6.40]
      * @return array to assign with index & show methods
      */
-    public function arrWith()
+    public function arrWithPro()
     {
-        return [];
+        return ['category', 'color']; //
     }
 
 
@@ -79,7 +84,7 @@ class categoriesApi extends Controller
          $count = category::where('Parent_id', $id)->count();
  
          if ($count == 0) {
-             $data = product::select($this->selectPro)->where('category_id', $id)->get();
+             $data = product::with($this->arrWithPro())->select($this->selectPro)->where('category_id', $id)->get();
              return response()->json(["Data" => $data, "Sup" => 0], 200);
          } else {
              $Sup = category::where('Parent_id', $id)->select($this->selectColumns)->get();

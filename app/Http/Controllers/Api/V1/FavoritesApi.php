@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use App\Models\Favorite;
 use Validator;
 use App\Http\Controllers\ValidationsApi\V1\FavoritesRequest;
+use Laravel\Sanctum\Sanctum;
+
 // Auto Controller Maker By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
@@ -29,6 +31,8 @@ class FavoritesApi extends Controller
    {
       return ['products'];
    }
+
+
 
 
    /**
@@ -53,7 +57,7 @@ class FavoritesApi extends Controller
    {
       // $data = $request->except("_token");
 
-    if(!Favorite::where('products_id', $request->products_id)->first()){
+    if(!Favorite::where('products_id', $request->products_id )->where('user_id',auth('sanctum')->id())->first()){
 
        $Favorite = Favorite::create(['user_id' => auth('sanctum')->id(), 'products_id' => $request->products_id]);
        

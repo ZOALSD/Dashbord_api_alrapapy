@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Http\Controllers\Controller;
+use Validator;
 
-use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\product;
-use Validator;
-use App\Http\Controllers\ValidationsApi\V1\productsControllrtRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use App\Http\Resources\productsResource;
+use App\Http\Controllers\ValidationsApi\V1\productsControllrtRequest;
 
 // Auto Controller Maker By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
@@ -47,8 +48,24 @@ class productsControllrtApi extends Controller
      */
     public function index()
     {
-        $product = product::select($this->selectColumns)->with($this->arrWith())->orderBy("id", "desc")->get();
-        return successResponseJson(["data" => $product]);
+
+
+        $data = DB::table('products')
+            ->leftJoin('favorites', function ($join) {
+                $join->on('products.id', '=', 'favorites.products_id')
+                    ->where('favorites.user_id', '=', auth('sanctum')->id());
+            })
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', 'favorites.products_id as favorit','categories.name as categoy','categories.image as categoy_image' )
+            ->get();
+
+
+        return response()->json($data, 200);
+
+        // $product = product::select($this->selectColumns)->with($this->arrWith())->orderBy("id", "desc")->get();
+        // return successResponseJson(["data" => $product]);
+
+
     }
 
 

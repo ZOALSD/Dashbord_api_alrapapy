@@ -56,8 +56,20 @@ class productsControllrtApi extends Controller
                     ->where('favorites.user_id', '=', auth('sanctum')->id());
             })
             ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
-            ->select('products.*', 'favorites.products_id as favorit','categories.name as categoy','categories.image as categoy_image' )
-            ->get();
+            ->select(
+                'products.id',
+                'products.name',
+                'products.price',
+                'products.image',
+                'products.colors',
+                'products.sizes',
+                'products.available',
+                'products.desc_en',
+                'products.desc_ar',
+                'favorites.products_id as favorit',
+                'categories.name as categoy',
+                'categories.image as categoy_image'
+            )->get();
 
 
         return response()->json($data, 200);

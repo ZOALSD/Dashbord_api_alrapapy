@@ -97,6 +97,7 @@ class Colors extends Controller
   public function edit($id)
   {
     $colors =  Color::find($id);
+
     return is_null($colors) || empty($colors) ?
       backWithError(trans("admin.undefinedRecord"), aurl("colors")) :
       view('admin.colors.edit', [
@@ -131,6 +132,7 @@ class Colors extends Controller
       return backWithError(trans("admin.undefinedRecord"), aurl("colors"));
     }
     $data = $this->updateFillableColumns();
+    $data['code'] = str_replace('#', '0xff', $data['color']);
     Color::where('id', $id)->update($data);
     $redirect = isset($request["save_back"]) ? "/" . $id . "/edit" : "";
     return redirectWithSuccess(aurl('colors' . $redirect), trans('admin.updated'));

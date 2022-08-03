@@ -142,6 +142,9 @@ class productsControllrt extends Controller
     }
     $data = $this->updateFillableColumns();
     $data['admin_id'] = admin()->id();
+    $data['sizes'] = implode(',',$data['sizes']);
+    $data['colors'] = implode(',',$data['colors']);
+    
     if (request()->hasFile('image')) {
       it()->delete($productscontrollrt->image);
       $data['image'] = it()->upload('image', 'productscontrollrt');

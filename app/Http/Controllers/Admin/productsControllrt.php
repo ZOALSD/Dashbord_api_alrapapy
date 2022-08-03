@@ -67,12 +67,12 @@ class productsControllrt extends Controller
     $data = $request->except("_token", "_method");
     $data['image'] = "";
     $data['admin_id'] = admin()->id();
-    $data['sizes'] = implode(',',$data['sizes']);
-    $data['colors'] = implode(',',$data['colors']);
+    $data['sizes'] = implode(',', $data['sizes']);
+    $data['colors'] = implode(',', $data['colors']);
+    $data['available'] = $request->available;
 
-    
     $productscontrollrt = product::create($data);
-    
+
     if (request()->hasFile('image')) {
       $productscontrollrt->image = it()->upload('image', 'productscontrollrt/' . $productscontrollrt->id);
       $productscontrollrt->save();
@@ -140,11 +140,12 @@ class productsControllrt extends Controller
     if (is_null($productscontrollrt) || empty($productscontrollrt)) {
       return backWithError(trans("admin.undefinedRecord"), aurl("productscontrollrt"));
     }
-    $data = $this->updateFillableColumns();
-    $data['admin_id'] = admin()->id();
-    $data['sizes'] = implode(',',$data['sizes']);
-    $data['colors'] = implode(',',$data['colors']);
     
+    $data = $this->updateFillableColumns();
+    if ($request->sizes) $data['sizes'] = implode(',', $data['sizes']);
+    if ($request->colors) $data['colors'] = implode(',', $data['colors']);
+    $data['available'] = $request->available;
+    $data['admin_id'] = admin()->id();
     if (request()->hasFile('image')) {
       it()->delete($productscontrollrt->image);
       $data['image'] = it()->upload('image', 'productscontrollrt');

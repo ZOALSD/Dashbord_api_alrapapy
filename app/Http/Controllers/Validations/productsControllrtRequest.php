@@ -33,6 +33,7 @@ class productsControllrtRequest extends FormRequest {
              'sizes'=>'required|array',
              'desc_en'=>'required|string',
              'desc_ar'=>'required|string',
+			 'available' => 'required'
 		];
 	}
 
@@ -42,10 +43,12 @@ class productsControllrtRequest extends FormRequest {
              'price'=>'sometimes|nullable|integer',
              'category_id'=>'sometimes|nullable|numeric',
              'image'=>'sometimes|nullable|file|image',
-             'colors'=>'required',
-             'sizes'=>'required|array',
+             'colors'=>'sometimes',
+             'sizes'=>'sometimes|array',
              'desc_en'=>'required|string',
              'desc_ar'=>'',
+			 'available' => 'required'
+
 		];
 	}
 

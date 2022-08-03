@@ -21,12 +21,10 @@ class product extends Model
       'name',
       'price',
       'category_id',
-
       'image',
       'colors',
-      //  'size_id',
       'sizes',
-
+       'available',
       'desc_en',
       'desc_ar',
       'created_at',

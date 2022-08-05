@@ -19,13 +19,12 @@ class productsResource extends JsonResource
             'name' => $this->name,
             'price' => $this->price,
             'image' => $this->image,
-            'color' => $this->color,
+            'colors' => $this->color,
+            'sizes' => $this->sizes,
+            'available' => $this->available,
             'desc_en' => $this->desc_en,
             'desc_ar' => $this->desc_ar,
-            'created_at' => $this->created_at,
-            'category_id' => CategoriseResource::collection($this->category),
-            // 'sizes' => $this->SizesResource::collection($this->size),
-
+            'desc_en' => $this->desc_en
         ];
     }
 }

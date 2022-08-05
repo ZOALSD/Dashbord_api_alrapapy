@@ -46,4 +46,7 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 	Route::apiResource("services", "Services", ["as" => "api.services"]);
 
 	Route::post('register', 'Auth\Register@Sigin');
+
+	Route::get('myOrderTest','MyOrder@getMyOrder');
+
 });

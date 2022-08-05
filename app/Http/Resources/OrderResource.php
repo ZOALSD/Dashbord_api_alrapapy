@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\product;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class OrderResource extends JsonResource
@@ -17,10 +18,11 @@ class OrderResource extends JsonResource
         return [
             // "id" => $this->id,
             // "OrderId" => $this->card_id,
-            "product_id" => $this->product_id,
+            // "product_id" => product::where('id',$this->product_id)->all(),
             "quantity" => $this->quantity,
             "price" => $this->price,
             "summation" => $this->summation,
+            'product' => $this->product,
         ];
     }
 }

@@ -145,21 +145,19 @@ class FavoritesApi extends Controller
       $favorites = Favorite::where(['user_id' => auth('sanctum')->id(), 'products_id' => $id])->first();
       
       if (is_null($favorites) || empty($favorites)) {
-         
-         $favorites->delete();
          return response()->json([
-            "message" => "Successfully removed from favourites",
-            "status" => true,
+            "message" => "It has already been removed from your favourites",
+            "status" => false,
          ], 200);
-     
       }
 
 
-
+      $favorites->delete();
       return response()->json([
-         "message" => "It has already been removed from your favourites",
-         "status" => false,
+         "message" => "Successfully removed from favourites",
+         "status" => true,
       ], 200);
+    
    }
 
 

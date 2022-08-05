@@ -23,4 +23,9 @@ class Card extends Model
        return $this->hasMany(\App\Models\Order::class);
     }
     
+    public function product()
+    {
+    //    return $this->hasOne(\App\Models\product::class,'product_id','id');
+    return product::find($this->order->product_id)->get() ;
+    }
 }

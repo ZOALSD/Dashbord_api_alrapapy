@@ -142,13 +142,16 @@ class FavoritesApi extends Controller
     */
    public function destroy($id)
    {
-      $favorites = Favorite::where(['user_id' => auth('sanctum')->id(), 'products_id' => $id])->first()->delete();
-
+      $favorites = Favorite::where(['user_id' => auth('sanctum')->id(), 'products_id' => $id])->first();
+      
       if (is_null($favorites) || empty($favorites)) {
+         
+         $favorites->delete();
          return response()->json([
             "message" => "Successfully removed from favourites",
             "status" => true,
          ], 200);
+     
       }
 
 

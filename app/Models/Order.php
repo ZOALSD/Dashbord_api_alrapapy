@@ -16,4 +16,9 @@ class Order extends Model
         'price',
         'summation'
     ];
+
+    public function product(){
+        return $this->hasMany(\App\Models\product::class,'id','product_id');
+    }
+    
 }

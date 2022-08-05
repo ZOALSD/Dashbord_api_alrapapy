@@ -1,5 +1,6 @@
 <?php
 		return [
+			"manageorder" => "Manage Orders",
 		"productscontrollrt"	=>		"products",
 		"price"	=>		"price",
 		"category_id"	=>		"category",

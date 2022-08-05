@@ -10,7 +10,21 @@
         </h3>
         </div><!-- /.card-header -->
           <div class="card-body">
-            @livewire('show-invoices')
+            
+            <div class="col-lg-3 col-6">
+              <!-- small box -->
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h1 class="text-yallow">@livewire('show-invoices')</h1>
+                  <p>Orders</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-cart-plus"></i>
+                </div>
+                <a href="{{ aurl('admins') }}" class="small-box-footer">Orders <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
             <div class="row">
 
           @include('admin.layouts.statistics.module_counters')

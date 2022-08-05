@@ -19,14 +19,18 @@ class productsControllrtDataTable extends DataTable
     {
         return datatables($query)
             ->addColumn('actions', 'admin.productscontrollrt.buttons.actions')
+            ->addColumn('colors', 'admin.productscontrollrt.buttons.colors')
+            ->addColumn('availablety', 'admin.productscontrollrt.buttons.availablety')
 
             ->addColumn('image', '{!! view("admin.show_image",["image"=>$image])->render() !!}')
 
-   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
+   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   	
+			->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')     
+			       ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
-            ->rawColumns(['checkbox','actions',"image",]);
+            ->rawColumns(['checkbox','actions',"image","colors","availablety"]);
     }
   
 
@@ -81,6 +85,7 @@ class productsControllrtDataTable extends DataTable
 
                         //category_idname,price,category_id,image,color,size_id4
             ". filterElement('3', 'select', \App\Models\category::whereNotNull('parent_id')->pluck("name","name")) . "
+            ". filterElement('7', 'select', ["Not available", "available"],) . "
             //size_idname,price,category_id,image,color,size_id7
 
 
@@ -147,8 +152,8 @@ class productsControllrtDataTable extends DataTable
                  'title'=>trans('admin.price'),
 		    ],
 				[
-                 'name'=>'category_id.name',
-                 'data'=>'category_id.name',
+                 'name'=>'category.name',
+                 'data'=>'category.name',
                  'title'=>trans('admin.category_id'),
 		    ],
 				[
@@ -158,7 +163,7 @@ class productsControllrtDataTable extends DataTable
 		    ],
 				[
                  'name'=>'color',
-                 'data'=>'color',
+                 'data'=>'colors',
                  'title'=>trans('admin.color'),
 		    ],
 				[
@@ -167,13 +172,9 @@ class productsControllrtDataTable extends DataTable
                  'title'=>trans('admin.size_id'),
 		    ],
             [
-	                'name' => 'created_at',
-	                'data' => 'created_at',
-	                'title' => trans('admin.created_at'),
-	                'exportable' => false,
-	                'printable'  => false,
-	                'searchable' => false,
-	                'orderable'  => false,
+	                'name' => 'available',
+	                'data' => 'availablety',
+	                'title' => 'available',
 	            ],
 	                    [
 	                'name' => 'actions',

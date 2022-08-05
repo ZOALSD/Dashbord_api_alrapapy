@@ -42,7 +42,11 @@ class FavoritesApi extends Controller
     */
    public function index()
    {
-      $Favorite = Favorite::where('user_id', auth('sanctum')->id())->select($this->selectColumns)->with('products')->orderBy("id", "desc")->get();
+      $Favorite = Favorite::where('user_id', auth('sanctum')
+      ->id())->select($this->selectColumns)
+      ->with('products')->orderBy("id", "desc")
+      ->get();
+      
       return successResponseJson(["data" => $Favorite]);
    }
 

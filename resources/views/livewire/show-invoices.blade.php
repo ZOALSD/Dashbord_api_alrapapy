@@ -1,8 +1,7 @@
 <div>
-    <h2 wire:poll.5000m data-counter="counterup"
-    data-value="7800">
-
+    <h1 wire:poll.5000m data-counter="counterup"
+    data-value="9000">
         {{$count}}
-</h2>
+</h1>
 
 </div>

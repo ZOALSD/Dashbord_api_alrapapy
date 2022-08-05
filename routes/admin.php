@@ -63,6 +63,7 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		Route::resource('colors','Admin\Colors'); 
 		Route::post('colors/multi_delete','Admin\Colors@multi_delete'); 
 		////////AdminRoutes/*End*///////////////
+		Route::get('order/show','admin\ProductOrder@index')->name('orders');
 	});
 
 });

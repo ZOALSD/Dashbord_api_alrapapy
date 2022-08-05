@@ -43,10 +43,10 @@ class FavoritesApi extends Controller
    public function index()
    {
       $Favorite = Favorite::where('user_id', auth('sanctum')
-      ->id())->select($this->selectColumns)
-      ->with('products')->orderBy("id", "desc")
-      ->get();
-      
+         ->id())->select($this->selectColumns)
+         ->with('products')->orderBy("id", "desc")
+         ->get();
+
       return successResponseJson(["data" => $Favorite]);
    }
 
@@ -61,20 +61,20 @@ class FavoritesApi extends Controller
    {
       // $data = $request->except("_token");
 
-    if(!Favorite::where('products_id', $request->products_id )->where('user_id',auth('sanctum')->id())->first()){
+      if (!Favorite::where('products_id', $request->products_id)->where('user_id', auth('sanctum')->id())->first()) {
 
-       $Favorite = Favorite::create(['user_id' => auth('sanctum')->id(), 'products_id' => $request->products_id]);
-       
-       $Favorite = Favorite::with($this->arrWith())->find($Favorite->id, $this->selectColumns);
-       return successResponseJson([
-          "message" => trans("admin.added"),
-          "data" => $Favorite
+         $Favorite = Favorite::create(['user_id' => auth('sanctum')->id(), 'products_id' => $request->products_id]);
+
+         $Favorite = Favorite::with($this->arrWith())->find($Favorite->id, $this->selectColumns);
+         return successResponseJson([
+            "message" => trans("admin.added"),
+            "data" => $Favorite
          ]);
-      }else{
+      } else {
          return response()->json([
             "message" => 'already you add it',
             'status' => false
-         ], 200);   
+         ], 200);
       }
    }
 
@@ -144,18 +144,20 @@ class FavoritesApi extends Controller
    {
       $favorites = Favorite::where(['user_id' => auth('sanctum')->id(), 'products_id' => $id])->first();
       if (is_null($favorites) || empty($favorites)) {
-         return errorResponseJson([
-            "message" => trans("admin.undefinedRecord")
-         ]);
+         return response()->json([
+            "message" => "Successfully removed from favourites",
+            "status" => true,
+         ], 200);
       }
 
 
       it()->delete("favorite", $id);
 
       $favorites->delete();
-      return successResponseJson([
-         "message" => trans("admin.deleted")
-      ]);
+      return response()->json([
+         "message" => "It has already been removed from your favourites",
+         "status" => false,
+      ], 200);
    }
 
 

@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\Models\product;
 use App\Models\category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ValidationsApi\V1\categoriesRequest;
 // Auto Controller Maker By Baboon Script
@@ -84,7 +85,28 @@ class categoriesApi extends Controller
          $count = category::where('Parent_id', $id)->count();
  
          if ($count == 0) {
-             $data = product::with($this->arrWithPro())->select($this->selectPro)->where('category_id', $id)->get();
+            $data = DB::table('products')
+            ->leftJoin('favorites', function ($join) {
+                $join->on('products.id', '=', 'favorites.products_id')
+                    ->where('favorites.user_id', '=', auth('sanctum')->id());
+            })
+            ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+            ->select(
+                'products.id',
+                'products.name',
+                'products.price',
+                'products.image',
+                'products.colors',
+                'products.sizes',
+                'products.available',
+                'products.desc_en',
+                'products.desc_ar',
+                'favorites.products_id as favorit',
+                'categories.name as categoy',
+                'categories.image as categoy_image'
+            )->get();
+            
+            //  $data = product::with($this->arrWithPro())->select($this->selectPro)->where('category_id', $id)->get();
              return response()->json(["Data" => $data, "Sup" => 0], 200);
          } else {
              $Sup = category::where('Parent_id', $id)->select($this->selectColumns)->get();

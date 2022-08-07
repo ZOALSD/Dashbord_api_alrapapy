@@ -19,6 +19,8 @@ class CreateOrdersTable extends Migration
             $table->foreignId('product_id');
             $table->bigInteger('quantity')->default(1);
             $table->bigInteger('price');
+            $table->string('color')->nullable();
+            $table->string('size')->nullable();
             $table->bigInteger('summation');
             $table->timestamps();
         });

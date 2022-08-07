@@ -32,16 +32,24 @@ class Orders extends Controller
             if (!$data['quantity'])
                 return response()->json(['quantity is Required' => null], 200,);
 
+            if (!$data['color'])
+                return response()->json(['Color is Required' => null], 200,);
+
+            if (!$data['size'])
+                return response()->json(['size is Required' => null], 200,);
+
             Order::create([
                 "card_id" => $card_id,
                 "product_id" => $data["product_id"],
                 'price' => $data["price"],
                 'quantity' => $data['quantity'],
+                'color' => $data['color'],
+                'size' => $data['size'],
                 'summation' => $data['quantity'] * $data['price']
             ]);
             Card::where('id', $card_id)->update(['total' => Order::where('card_id', $card_id)->sum('summation')]);
-            
-            $card = cardResource::collection(Card::where('id',$card_id)->with('order')->get());
+
+            $card = cardResource::collection(Card::where('id', $card_id)->with('order')->get());
 
             return response()->json($card, 200);
         }
@@ -50,29 +58,29 @@ class Orders extends Controller
     public function card(Request $req)
     {
 
-        Card::create(['user_id' => auth('sanctum')->id()]);
-        $card_id = Card::where('user_id', auth('sanctum')->id())->orderBy('id', 'desc')->value('id');
+        $card_id = Card::where(['user_id' => auth('sanctum')->id(), 'status' => "0"])->orderBy('id', 'desc')->value('id');
+        if (!$card_id) {
+            $card =  Card::create(['user_id' => auth('sanctum')->id()]);
+            $card_id = $card->id;
+        }
 
-
-        foreach ($req as $key) {
-
-            foreach ($key as $data) {
-                if (is_array($data) && isset($data['product_id'])) {
-
-                    Order::create([
-                        "card_id" => $card_id,
-                        "product_id" => $data["product_id"],
-                        'price' => $data["price"],
-                        'quantity' => $data['quantity'],
-                        'summation' => $data['quantity'] * $data['price']
-                    ]);
-                }
-            }
+        foreach ($req->all() as $data) {
+            Order::create([
+                "card_id" => $card_id,
+                "product_id" => $data["product_id"],
+                'price' => $data["price"],
+                'quantity' => $data['quantity'],
+                'color' => $data['color'],
+                'size' => $data['size'],
+                'summation' => $data['quantity'] * $data['price']
+            ]);
         }
 
         Card::where('id', $card_id)->update(['total' => Order::where('card_id', $card_id)->sum('summation')]);
-        $orders = Order::where('card_id', $card_id)->select('product_id', 'price', 'quantity', 'summation')->get();
-        return response()->json(["Oder_Id" => $card_id, 'orders' => $orders], 200);
+        $count = Order::where('card_id', $card_id)->select('product_id', 'price', 'quantity', 'color', 'size', 'summation')->count();
+        $orders = Order::where('card_id', $card_id)->select('product_id', 'price', 'quantity', 'color', 'size', 'summation')->get();
+
+        return response()->json(["Oder_Id" => $card_id, 'count' => $count, 'orders' => $orders], 200);
     }
 
 

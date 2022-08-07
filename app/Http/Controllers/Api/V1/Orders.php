@@ -88,10 +88,10 @@ class Orders extends Controller
     public function confirmOrder(Request $req)
     {
 
-        $check = Card::where('id', $req->order_id)->count();
+        $check = Card::where(['id' => $req->order_id , 'status' => '0'])->count();
 
         if ($check == 0) {
-            return response()->json(['You Order ID Not Found', null], 201,);
+            return response()->json(['You Order Already Comfiram', null], 201,);
         }
 
         $image = "";

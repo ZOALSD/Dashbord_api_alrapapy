@@ -91,7 +91,7 @@ class Orders extends Controller
         $check = Card::where(['id' => $req->order_id , 'status' => '0'])->count();
 
         if ($check == 0) {
-            return response()->json(['You Order Already Comfiram', null], 201,);
+            return response()->json(['You are Already Comfiram Order', null], 201,);
         }
 
         $image = "";

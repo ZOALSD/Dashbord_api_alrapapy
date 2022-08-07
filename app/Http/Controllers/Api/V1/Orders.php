@@ -88,10 +88,10 @@ class Orders extends Controller
     public function confirmOrder(Request $req)
     {
 
-        $check = Card::where(['id' => $req->order_id , 'status' => '0'])->count();
+        $check = Card::where(['id' => $req->order_id, 'status' => '0'])->count();
 
         if ($check == 0) {
-            return response()->json(['You are Already Comfiram Order','status' => null], 201,);
+            return response()->json(['message' => 'You are Already Comfiram Order', 'status' => null], 201,);
         }
 
         $image = "";
@@ -109,6 +109,10 @@ class Orders extends Controller
         $card =   Card::where('id', $req->order_id)->with('order')->get();
         $data =  cardResource::collection($card);
 
-        return response()->json(['Successfully Comfiram Order', $data], 200);
+        return response()->json([
+            'message' => 'Successfully Comfiram Order',
+            'data' => $data,
+            'status' => true
+        ], 200);
     }
 }

@@ -13,12 +13,12 @@ class ApiLang {
 	 * @return mixed
 	 */
 	public function handle($request, Closure $next, $guard = null) {
-
-		if (request()->has('lang') && in_array(request('lang'), ['ar', 'en'])) {
-			app()->setlocale(request('lang'));
-		} else {
-			app()->setlocale('ar');
-		}
+		
+		app()->setlocale(request('lang'));
+		// if (request()->has('lang') && in_array(request('lang'), ['en'])) { //['ar', 'en']
+		// } else {
+		// 	app()->setlocale('ar');
+		// }
 
 		return $next($request);
 

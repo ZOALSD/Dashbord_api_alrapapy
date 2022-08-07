@@ -4,14 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 // Auto Models By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
 class product extends Model
 {
-
-   use SoftDeletes;
+   use SoftDeletes ,HasFactory;
    protected $dates = ['deleted_at'];
 
    protected $table    = 'products';

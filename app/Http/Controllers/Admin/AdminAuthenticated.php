@@ -79,6 +79,8 @@ class AdminAuthenticated extends Controller {
 		redirect(aurl('login'));
 
 	}
+
+
 	public function reset_password() {
 		$user = Admin::where('email', request('email'))->first();
 		if (!empty($user)) {
@@ -99,6 +101,8 @@ class AdminAuthenticated extends Controller {
 			return redirect(aurl('forgot/password'));
 		}
 	}
+
+	
 
 	public function account() {
 		return view('admin.account', ['title' => trans('admin.account')]);

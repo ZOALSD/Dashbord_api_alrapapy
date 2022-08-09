@@ -78,7 +78,7 @@
                     <p class="mb-1">
                         <a href="{{ aurl('login') }}">{{ trans('admin.login') }}</a>
                     </p>
-                    @if(count(L::all()) > 0)
+                    {{-- @if(count(L::all()) > 0)
                     <hr />
                     <center>
                     @php
@@ -92,7 +92,7 @@
                     {{ $i < count(L::all()) ?'.':'' }}
                     @endforeach
                     </center>
-                    @endif
+                    @endif --}}
                 </div>
                 <!-- /.card-body -->
             </div>

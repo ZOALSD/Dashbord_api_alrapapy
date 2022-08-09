@@ -6,7 +6,9 @@ use App\Models\Token;
 use Illuminate\Http\Request;
 use App\Http\Requests\AuthApi;
 use App\Http\Controllers\Controller;
+use App\Mail\ResetPhone;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 
@@ -59,6 +61,33 @@ class Register extends Controller {
 
         return response()->json(['stutus' => true, 'token' => $token, 'Data' => $dataa], 200);
 
+    }
+
+    public function otp(){
+       $up = User::where('id',auth('sanctum')->id())->update(['otp' =>rand(1,99999)]);
+       $user =  User::where('id',auth('sanctum')->id())->first();
+
+        $sendmail = Mail::to($user->email)->send(new ResetPhone([
+            'otp' => $user->otp,
+            'name' => $user->first_name." ".$user->last_name ,
+        ]));
+
+        return response()->json([
+            'status' => true,
+            'message'=>'Verification code send to your email'], 200);
+    }
+
+    public function ResetPhone(Request $req){
+         $up = User::where(['id'=> auth('sanctum')->id(),'otp' => $req->otp])->update(['phone' => $req->phone]);
+
+         if($up)
+         return response()->json(['status' => true ,
+          'message' => 'Successfully Updated your phone'], 200);
+
+
+          
+         return response()->json(['status' => false ,
+         'message' => 'your phone not updated try later'], 200);
     }
 
 

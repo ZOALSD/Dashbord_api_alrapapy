@@ -22,7 +22,8 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 		Route::get('myOrder','MyOrder@getMyOrder');
 		Route::post('confirmOrder','Orders@confirmOrder');
 		Route::apiResource("favorites", "FavoritesApi", ["as" => "api.favorites"]);
-
+        Route::get('otp','Auth\Register@otp');
+        Route::post('resetPhone','Auth\Register@ResetPhone');
 
 	});
 
@@ -48,5 +49,6 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 	Route::post('register', 'Auth\Register@Sigin');
 
 	Route::get('myOrderTest','MyOrder@getMyOrder');
+
 
 });

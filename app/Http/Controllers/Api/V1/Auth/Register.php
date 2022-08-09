@@ -78,6 +78,12 @@ class Register extends Controller {
     }
 
     public function ResetPhone(Request $req){
+
+        $data = $req->validate([
+            'phone' => 'required|unique:users|numeric',
+            'otp' => 'required',
+        ]);
+
          $up = User::where(['id'=> auth('sanctum')->id(),'otp' => $req->otp])
          ->update(['phone' => $req->phone , 'otp' => '']);
 

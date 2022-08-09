@@ -21,7 +21,8 @@ class User extends Authenticatable {
 		'address',
 		'email',
 		'password',
-        'phone'
+        'phone',
+		'otp'
 	];
 
 	/**

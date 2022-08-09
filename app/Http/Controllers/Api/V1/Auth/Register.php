@@ -78,7 +78,8 @@ class Register extends Controller {
     }
 
     public function ResetPhone(Request $req){
-         $up = User::where(['id'=> auth('sanctum')->id(),'otp' => $req->otp])->update(['phone' => $req->phone]);
+         $up = User::where(['id'=> auth('sanctum')->id(),'otp' => $req->otp])
+         ->update(['phone' => $req->phone , 'otp' => '']);
 
          if($up)
          return response()->json(['status' => true ,

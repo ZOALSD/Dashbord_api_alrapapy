@@ -3,11 +3,15 @@
 namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Card;
+use App\Models\User;
 use App\Models\Order;
+use App\Mail\NewOrders;
+use App\Models\product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\cardResource;
-
+use App\Models\Color;
+use Illuminate\Support\Facades\Mail;
 class Orders extends Controller
 {
 
@@ -80,6 +84,7 @@ class Orders extends Controller
         $count = Order::where('card_id', $card_id)->select('product_id', 'price', 'quantity', 'color', 'size', 'summation')->count();
         $orders = Order::where('card_id', $card_id)->select('product_id', 'price', 'quantity', 'color', 'size', 'summation')->get();
 
+
         return response()->json(["Oder_Id" => $card_id, 'count' => $count, 'orders' => $orders], 200);
     }
 
@@ -109,10 +114,46 @@ class Orders extends Controller
         $card =   Card::where('id', $req->order_id)->with('order')->get();
         $data =  cardResource::collection($card);
 
+        $user = User::where('id', auth('sanctum')->id())->first();
+
         return response()->json([
             'message' => 'Successfully Comfiram Order',
             'data' => $data,
             'status' => true
         ], 200);
     }
+    public function mail()
+    {
+
+
+        $user = User::where('id',3)->first();
+
+        $data =   Card::where('id',4)->with('order')->get();
+        foreach($data as $d){
+            $data = $d ;
+        }
+
+        foreach($data->order as $order){
+            $order->product_id = product::where('id',$order->product_id)->value('name');
+            $order->color = Color::where('code',$order->color)->value('name');
+        }
+
+        // foreach($data->order as $order){}
+        
+        Mail::to('Ahmed_moha2med@yahoo.com')->send(new NewOrders([
+            'data' => $data, 
+            'name' => $user->first_name ." ".$user->last_name,
+            'email' => $user->email,
+            'phone' => $user->phone,
+        ]));
+        
+        return $data;
+      
+    }
 }
+
+
+
+/*
+ 
+*/

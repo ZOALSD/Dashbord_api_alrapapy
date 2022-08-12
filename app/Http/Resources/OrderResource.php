@@ -21,6 +21,8 @@ class OrderResource extends JsonResource
             // "product_id" => product::where('id',$this->product_id)->all(),
             "quantity" => $this->quantity,
             "price" => $this->price,
+            "color" => $this->color,
+            "size" => $this->size,
             "summation" => $this->summation,
             'product' => $this->product,
         ];

@@ -67,7 +67,8 @@ class Register extends Controller {
        $up = User::where('id',auth('sanctum')->id())->update(['otp' =>rand(1,99999)]);
        $user =  User::where('id',auth('sanctum')->id())->first();
 
-        $sendmail = Mail::to($user->email)->send(new ResetPhone([
+        Mail::to($user->email)
+        ->send(new ResetPhone([
             'otp' => $user->otp,
             'name' => $user->first_name." ".$user->last_name ,
         ]));
@@ -83,6 +84,12 @@ class Register extends Controller {
             'phone' => 'required|unique:users|numeric',
             'otp' => 'required',
         ]);
+
+        $otp = User::where(['id'=> auth('sanctum')->id(),'otp' => $req->otp])->first();
+        
+        if(!$otp)
+        return response()->json(['status' => false ,
+        'message' => 'your Verification code is not vilad'], 200);
 
          $up = User::where(['id'=> auth('sanctum')->id(),'otp' => $req->otp])
          ->update(['phone' => $req->phone , 'otp' => '']);
@@ -107,7 +114,6 @@ class Register extends Controller {
             'last_name' => 'required|string|min:3',
             'address' => 'string|min:3',
             'email' => 'nullable|email|unique:users,email,' . $id,
-            'phone' => 'nullable|numeric|unique:users,phone,' . $id,
         ]);
 
         if ($request->email == null) {
@@ -128,17 +134,11 @@ class Register extends Controller {
             $last_name = $request->last_name;
         }
 
-        if ($request->phone == null) {
-            $phone = User::where('id', $id)->value('phone');
-        } else {
-            $phone = $request->phone;
-        }
 
                 $user = User::find($id);
                 $user->first_name = $first_name;
                 $user->last_name = $last_name;
                 $user->email = $email;
-                $user->phone = $phone;
                 $user->save();
       
             return response(['stuts' => 'Success Data Updated', 'Data' => $user]);

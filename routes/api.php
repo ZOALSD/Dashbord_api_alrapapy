@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\OrderEmail;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], function () {
@@ -43,12 +44,19 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 
 	Route::apiResource("locations", "LocationsApi", ["as" => "api.locations"]);
 
-	Route::apiResource("contacts", "ContactsApi", ["as" => "api.contacts"]);
+	Route::apiResource("contacts", "ContactsApi", ["as" => "api.contacts"]);		
 	Route::apiResource("services", "Services", ["as" => "api.services"]);
 
 	Route::post('register', 'Auth\Register@Sigin');
 
-	Route::get('myOrderTest','MyOrder@getMyOrder');
+///=====================test 
+Route::get('mail','Orders@mail');
 
+
+Route::get('send-email', function(){
+	
+    dispatch(new OrderEmail());
+    return response()->json(['message'=>'Mail Send Successfully!!']);
+});
 
 });

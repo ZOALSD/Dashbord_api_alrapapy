@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
@@ -25,6 +26,18 @@ Route::group(
 Route::get('/', function () {
 	return view('welcome');
 });
+
+Route::get('dropall/15/8/22',function(){
+	Artisan::call('migrate:fresh --seed');
+	return "All Data Deleted ...";
+});
+
+
+
+Route::get('down/15/8/22',function(){
+	Artisan::call('down');
+});
+
 
 // Route::any('storage/app/*',function(){
 // 	abort(404);

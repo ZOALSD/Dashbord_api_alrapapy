@@ -21,6 +21,7 @@ class CreateContactsTable extends Migration
             $table->longtext('details');
             $table->bigInteger('phone');
 			$table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -15,11 +15,7 @@ class AdminGroupsDataTable extends DataTable
 	public function dataTable(DataTables $dataTables, $query)
 	{
 		return datatables($query)
-			->addColumn('actions', 'admin.admingroups.buttons.actions')
-			->addColumn('checkbox', '<div  class="icheck-danger">
-                  <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata" value="{{ $id }}" >
-                  <label for="selectdata"></label>
-                </div>')
+			->addColumn('actions', 'admin.admingroups.buttons.actions')		
 			->rawColumns(['checkbox', 'actions']);
 	}
 
@@ -53,10 +49,11 @@ class AdminGroupsDataTable extends DataTable
 					// ['extend' => 'pdf', 'className' => 'btn red btn-outline', 'text' => '<i class="fa fa-file-pdf"> </i> ' . trans('admin.export_pdf')],
 					// ['extend' => 'csv', 'className' => 'btn purple btn-outline', 'text' => '<i class="fa fa-file-excel"> </i> ' . trans('admin.export_csv')],
 					['extend' => 'reload', 'className' => 'btn blue btn-outline', 'text' => '<i class="fa fa-sync-alt"></i> ' . trans('admin.reload')],
+					// [
+					// 	'text' => '<i class="fa fa-trash"></i> ' . trans('admin.delete'),
+					// 	'className' => 'btn red btn-outline deleteBtn',
+					// ], 
 					[
-						'text' => '<i class="fa fa-trash"></i> ' . trans('admin.delete'),
-						'className' => 'btn red btn-outline deleteBtn',
-					], [
 						'text' => '<i class="fa fa-plus"></i> ' . trans('admin.add'),
 						'className' => 'btn btn-primary',
 						'action' => 'function(){
@@ -111,20 +108,21 @@ class AdminGroupsDataTable extends DataTable
 	protected function getColumns()
 	{
 		return [
-			[
-				'name' => 'checkbox',
-				'data' => 'checkbox',
-				'title' => '<div  class="icheck-danger">
-                  <input type="checkbox" class="select-all" id="select-all"  onclick="select_all()" >
-                  <label for="select-all"></label>
-                </div>',
-				'orderable' => false,
-				'searchable' => false,
-				'exportable' => false,
-				'printable' => false,
-				'width' => '10px',
-				'aaSorting' => 'none',
-			], [
+			// [
+			// 	'name' => 'checkbox',
+			// 	'data' => 'checkbox',
+			// 	'title' => '<div  class="icheck-danger">
+            //       <input type="checkbox" class="select-all" id="select-all"  onclick="select_all()" >
+            //       <label for="select-all"></label>
+            //     </div>',
+			// 	'orderable' => false,
+			// 	'searchable' => false,
+			// 	'exportable' => false,
+			// 	'printable' => false,
+			// 	'width' => '10px',
+			// 	'aaSorting' => 'none',
+			// ],
+			 [
 				'name' => 'id',
 				'data' => 'id',
 				'title' => trans('admin.record_id'),

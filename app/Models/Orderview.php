@@ -6,38 +6,33 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 // Auto Models By Baboon Script
 // Baboon Maker has been Created And Developed By  [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
-class category extends Model {
+class Orderview extends Model {
 
-	use SoftDeletes;
+	// use SoftDeletes;
 	protected $dates = ['deleted_at'];
 
-protected $table    = 'categories';
+protected $table    = 'cards';
 protected $fillable = [
 		'id',
 		'admin_id',
-        'name',
-        'parent_id',
-        'image',
+        'user_id',
+        'total',
+        'number_notification',
+        'image notification',
+        'seen',
+
 		'created_at',
 		'updated_at',
-		'deleted_at',
 	];
 
 	/**
-	 * admin id relation method to get how add this data
-	 * @type hasOne
-	 * @param void
-	 * @return object data
-	 */
-   public function admin_id() {
-	   return $this->hasOne(\App\Models\Admin::class, 'id', 'admin_id');
+    * user_id relation method
+    * @param void
+    * @return object data
+    */
+   public function user_id(){
+      return $this->hasOne(\App\Models\User::class,'id','user_id');
    }
-	
- 
-	public function parent()
-	{
-	   return $this->hasOne(\App\Models\category::class, 'id', 'parent_id');
-	}
 
  	/**
     * Static Boot method to delete or update or sort Data
@@ -47,8 +42,8 @@ protected $fillable = [
    protected static function boot() {
       parent::boot();
       // if you disable constraints should by run this static method to Delete children data
-         static::deleting(function($category) {
-			product::where('category_id',$category->id)->delete();
+         static::deleting(function($orderview) {
+			//$orderview->user_id()->delete();
          });
    }
 		

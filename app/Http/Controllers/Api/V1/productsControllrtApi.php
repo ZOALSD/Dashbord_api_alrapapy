@@ -50,8 +50,9 @@ class productsControllrtApi extends Controller
     {
 
 
-        $data = DB::table('products')
-            ->leftJoin('favorites', function ($join) {
+        // $data = DB::table('products')
+        //     ->where('deleted_at', '=', '')
+        $data = product::leftJoin('favorites', function ($join) {
                 $join->on('products.id', '=', 'favorites.products_id')
                     ->where('favorites.user_id', '=', auth('sanctum')->id());
             })

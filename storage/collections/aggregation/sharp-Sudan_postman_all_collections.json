@@ -1,7 +1,7 @@
 {
     "info": {
-        "_postman_id": "3acc91bb-2398-4ef8-a91a-b4153bf6e410",
-        "name": null,
+        "_postman_id": "bdcff142-0294-4bef-964c-f7e9302f6144",
+        "name": "sharp-Sudan",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
     "variable": [
@@ -1328,10 +1328,6 @@
                     "response": []
                 }
             ]
-        },
-        {
-            "name": "orderviews",
-            "item": []
         },
         {
             "name": "productscontrollrt",

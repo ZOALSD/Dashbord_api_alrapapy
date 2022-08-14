@@ -22,6 +22,7 @@ class CreateCardsTable extends Migration
             $table->boolean('status')->default(false);
             $table->boolean('seen')->default(false);
             $table->timestamps();
+            
         });
     }
 

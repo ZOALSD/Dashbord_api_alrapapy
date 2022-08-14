@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('size')->nullable();
             $table->bigInteger('summation');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

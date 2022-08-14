@@ -18,6 +18,7 @@ class CreateProductSizesTable extends Migration
             $table->string('size_id');
             $table->string('products_id');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

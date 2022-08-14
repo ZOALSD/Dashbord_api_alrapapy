@@ -20,6 +20,7 @@ class CreatevideosTable extends Migration
             $table->foreignId("admin_id")->constrained("admins");
             $table->string('link');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -23,11 +23,6 @@ class categoriesDataTable extends DataTable
             ->addColumn('actions', 'admin.categories.buttons.actions')
 
             ->addColumn('image', '{!! view("admin.show_image",["image"=>$image])->render() !!}')
-
-            ->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')->addColumn('checkbox', '<div  class="icheck-danger">
-                  <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
-                  <label for="selectdata{{ $id }}"></label>
-                </div>')
             ->rawColumns(['checkbox', 'actions', "image",]);
     }
 
@@ -66,10 +61,7 @@ class categoriesDataTable extends DataTable
                         'extend' => 'reload',
                         'className' => 'btn btn-outline',
                         'text' => '<i class="fa fa-sync-alt"></i> ' . trans('admin.reload')
-                    ],    [
-                        'text' => '<i class="fa fa-trash"></i> ' . trans('admin.delete'),
-                        'className'    => 'btn btn-outline deleteBtn',
-                    ],     [
+                    ],[
                         'text' => '<i class="fa fa-plus"></i> ' . trans('admin.add'),
                         'className'    => 'btn btn-primary',
                         'action'    => 'function(){
@@ -78,11 +70,7 @@ class categoriesDataTable extends DataTable
                     ],
                 ],
                 'initComplete' => "function () {
-
-
-            
-            
-
+                    " . filterElement('1,2', 'input') . "
 	            }",
                 'order' => [[1, 'desc']],
 
@@ -126,21 +114,6 @@ class categoriesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-
-            [
-                'name' => 'checkbox',
-                'data' => 'checkbox',
-                'title' => '<div  class="icheck-danger">
-                  <input type="checkbox" class="select-all" id="select-all"  onclick="select_all()" >
-                  <label for="select-all"></label>
-                </div>',
-                'orderable'      => false,
-                'searchable'     => false,
-                'exportable'     => false,
-                'printable'      => false,
-                'width'          => '10px',
-                'aaSorting'      => 'none'
-            ],
             [
                 'name' => 'id',
                 'data' => 'id',

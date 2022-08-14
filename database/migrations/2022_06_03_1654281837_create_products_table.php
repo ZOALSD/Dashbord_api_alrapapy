@@ -20,7 +20,7 @@ class CreateproductsTable extends Migration
             $table->foreignId("admin_id");
             $table->string('name');
             $table->string('price')->nullable();
-            $table->foreignId("category_id");
+            $table->foreignId("category_id")->constrained("categories")->onUpdate("cascade")->onDelete("cascade");
             $table->string('image')->nullable();
             $table->string('colors')->nullable();
             $table->string('sizes')->nullable();
@@ -28,7 +28,6 @@ class CreateproductsTable extends Migration
             $table->longtext('desc_en');
             $table->longtext('desc_ar')->nullable();
             $table->softDeletes();
-
             $table->timestamps();
         });
     }

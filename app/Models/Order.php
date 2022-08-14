@@ -20,7 +20,7 @@ class Order extends Model
     ];
 
     public function product(){
-        return $this->hasMany(\App\Models\product::class,'id','product_id');
+        return $this->hasOne(\App\Models\product::class,'id','product_id');
     }
     
 }

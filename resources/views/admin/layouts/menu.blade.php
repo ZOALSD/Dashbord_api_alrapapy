@@ -379,3 +379,49 @@ with font-awesome or any other icon font library -->
 </li>
 @endif
 <!--colors_end_route-->
+
+<!--customers_start_route-->
+@if(admin()->user()->role("customers_show"))
+<li class="nav-item">
+  <a href="{{aurl('customers')}}" class="nav-link  {{active_link('customers','active')}}">
+    <i class="fa fa-icons nav-icon"></i>
+    <p>{{trans('admin.customers')}} </p>
+  </a>
+</li>
+
+{{-- <li class="nav-item {{active_link('customers','menu-open')}} ">
+  <a href="#" class="nav-link {{active_link('customers','active')}}">
+    <i class="nav-icon fa fa-icons"></i>
+    <p>
+      {{trans('admin.customers')}} 
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{aurl('customers')}}" class="nav-link  {{active_link('customers','active')}}">
+        <i class="fa fa-icons nav-icon"></i>
+        <p>{{trans('admin.customers')}} </p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ aurl('customers/create') }}" class="nav-link">
+        <i class="fas fa-plus nav-icon"></i>
+        <p>{{trans('admin.create')}} </p>
+      </a>
+    </li>
+  </ul>
+</li> --}}
+@endif
+<!--customers_end_route-->
+
+<!--orderviews_start_route-->
+@if(admin()->user()->role("orderviews_show"))
+<li class="nav-item">
+  <a href="{{aurl('orderviews')}}" class="nav-link  {{active_link('orderviews','active')}}">
+    <i class="fa fa-icons nav-icon"></i>
+    <p>{{trans('admin.orderviews')}} </p>
+  </a>
+</li>
+@endif
+<!--orderviews_end_route-->

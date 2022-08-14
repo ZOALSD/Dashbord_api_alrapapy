@@ -13,10 +13,6 @@ class AdminsDataTable extends DataTable {
 		return datatables($query)
 			->addColumn('actions', 'admin.admins.buttons.actions')
 			->addColumn('photo_profile', '{!! view("admin.show_image",["image"=>$photo_profile])->render() !!}')
-			->addColumn('checkbox', '<div  class="icheck-danger">
-                  <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata" value="{{ $id }}" >
-                  <label for="selectdata"></label>
-                </div>')
 			->rawColumns(['checkbox', 'actions', 'photo_profile']);
 	}
 
@@ -49,10 +45,7 @@ class AdminsDataTable extends DataTable {
 					// ['extend' => 'pdf', 'className' => 'btn red btn-outline', 'text' => '<i class="fa fa-file-pdf"> </i> ' . trans('admin.export_pdf')],
 					// ['extend' => 'csv', 'className' => 'btn purple btn-outline', 'text' => '<i class="fa fa-file-excel"> </i> ' . trans('admin.export_csv')],
 					['extend' => 'reload', 'className' => 'btn blue btn-outline', 'text' => '<i class="fa fa-sync-alt"></i> ' . trans('admin.reload')],
-					[
-						'text' => '<i class="fa fa-trash"></i> ' . trans('admin.delete'),
-						'className' => 'btn red btn-outline deleteBtn',
-					], [
+					 [
 						'text' => '<i class="fa fa-plus"></i> ' . trans('admin.add'),
 						'className' => 'btn btn-primary',
 						'action' => 'function(){
@@ -63,8 +56,8 @@ class AdminsDataTable extends DataTable {
 				'initComplete' => "function () {
 
 
-            " . filterElement('1,2,4', 'input') . "
-            " . filterElement('5', 'select', \App\Models\AdminGroup::pluck("group_name", "group_name")) . "
+            " . filterElement('1,3,4', 'input') . "
+            " . filterElement('4', 'select', \App\Models\AdminGroup::pluck("group_name", "group_name")) . "
 
             }",
 				'order' => [[1, 'desc']],
@@ -108,19 +101,6 @@ class AdminsDataTable extends DataTable {
 	protected function getColumns() {
 		return [
 			[
-				'name' => 'checkbox',
-				'data' => 'checkbox',
-				'title' => '<div  class="icheck-danger d-inline ml-2">
-                  <input type="checkbox" class="select-all" id="select-all"  onclick="select_all()" >
-                  <label for="select-all"></label>
-                </div>',
-				'orderable' => false,
-				'searchable' => false,
-				'exportable' => false,
-				'printable' => false,
-				'width' => '10px',
-				'aaSorting' => 'none',
-			], [
 				'name' => 'id',
 				'data' => 'id',
 				'title' => trans('admin.record_id'),

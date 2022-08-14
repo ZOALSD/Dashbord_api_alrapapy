@@ -15,6 +15,7 @@ class product extends Model
    protected $dates = ['deleted_at'];
 
    protected $table    = 'products';
+   
    protected $fillable = [
       'id',
       'admin_id',
@@ -42,7 +43,6 @@ class product extends Model
    {
       return $this->hasOne(\App\Models\Admin::class, 'id', 'admin_id');
    }
-
 
    /**
     * category_id relation method
@@ -80,7 +80,7 @@ class product extends Model
       parent::boot();
       // if you disable constraints should by run this static method to Delete children data
       static::deleting(function ($product) {
-         //$product->category_id()->delete();
+         $product->category_id()->delete();
          //$product->category_id()->delete();
       });
    }

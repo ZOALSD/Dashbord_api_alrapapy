@@ -62,6 +62,10 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		Route::post('sizes/multi_delete','Admin\Sizes@multi_delete'); 
 		Route::resource('colors','Admin\Colors'); 
 		Route::post('colors/multi_delete','Admin\Colors@multi_delete'); 
+		Route::resource('customers','Admin\Customers'); 
+		// Route::get('customers','Admin\Customers@index'); 
+		Route::resource('orderviews','Admin\Orderviews'); 
+		Route::post('orderviews/multi_delete','Admin\Orderviews@multi_delete'); 
 		////////AdminRoutes/*End*///////////////
 		Route::get('order/show','admin\ProductOrder@index')->name('orders');
 	});

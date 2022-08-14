@@ -1,5 +1,10 @@
 <?php
 		return [
+		"customers"	=>		"Customers",
+		"first_name"	=>		"first_name",
+		"last_name"	=>		"last_name",
+		"email"	=>		"email",
+		"phone"	=>		"phone",
 		"productscontrollrt"	=>		"products",
 		"price"	=>		"price",
 		"category_id"	=>		"category",
@@ -147,13 +152,18 @@
 		"sizes"	=>		"Sizes",
 		"details"	=>		"Details",
 		"contacts"	=>		"Contact Us",
-		"user_id"	=>		"user_id",
 		"description"	=>		"Description",
-		"phone"	=>		"phone",
-		"email"	=>		"Email",
 		"services"	=>		"service Request",
 		"name"	=>		"name",
 		"color"	=>		"color",
 		"colors"	=>		"Colors",
+		"0"	=>		"no",
+		"1"	=>		"yes",
+		"seen"	=>		"seen",
+		"image notification"	=>		"image notification",
+		"number_notification"	=>		"number notification",
+		"total"	=>		"total",
+		"user_id"	=>		"user name",
+		"orderviews"	=>		"Orders",
 
 ];

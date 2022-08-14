@@ -33,7 +33,7 @@ class categoriesApi extends Controller
         "desc_en",
         "desc_ar",
         "available",
-        'category_id'         
+        'category_id'
     ];
 
     /**
@@ -54,7 +54,7 @@ class categoriesApi extends Controller
      */
     public function index()
     {
-        $category = category::select($this->selectColumns)->where('parent_id',null)->orderBy("id", "desc")->get();
+        $category = category::select($this->selectColumns)->where('parent_id', null)->orderBy("id", "desc")->get();
         return successResponseJson(["data" => $category]);
     }
 
@@ -79,43 +79,40 @@ class categoriesApi extends Controller
     }
 
 
-     //reTurn Categorise OR Data
-     public function SupCategorise($id)
-     {
-         $count = category::where('Parent_id', $id)->count();
- 
-         if ($count == 0) {
-            $data = DB::table('products')
-            ->leftJoin('favorites', function ($join) {
-                $join->on('products.id', '=', 'favorites.products_id')
-                    ->where('favorites.user_id', '=', auth('sanctum')->id());
-            })
-            ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
-            ->select(
-                'products.id',
-                'products.name',
-                'products.price',
-                'products.image',
-                'products.colors',
-                'products.sizes',
-                'products.available',
-                'products.desc_en',
-                'products.desc_ar',
-                'favorites.products_id as favorit',
-                'categories.name as categoy',
-                'categories.image as categoy_image'
-            )->get();
-            
+    //reTurn Categorise OR Data
+    public function SupCategorise($id)
+    {
+        $count = category::where('Parent_id', $id)->count();
+
+        if ($count == 0) {
+            $data = product::leftJoin('favorites', function ($join) {
+                    $join->on('products.id', '=', 'favorites.products_id')
+                        ->where('favorites.user_id', '=', auth('sanctum')->id());
+                })
+                ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
+                ->select(
+                    'products.id',
+                    'products.name',
+                    'products.price',
+                    'products.image',
+                    'products.colors',
+                    'products.sizes',
+                    'products.available',
+                    'products.desc_en',
+                    'products.desc_ar',
+                    'favorites.products_id as favorit',
+                    'categories.name as categoy',
+                    'categories.image as categoy_image'
+                )->get();
+
             //  $data = product::with($this->arrWithPro())->select($this->selectPro)->where('category_id', $id)->get();
-             return response()->json(["Data" => $data, "Sup" => 0], 200);
-         } else {
-             $Sup = category::where('Parent_id', $id)->select($this->selectColumns)->get();
-             $cate = category::where('id', $id)->select($this->selectColumns)->get();
-             return response()->json(["Categorise" => $cate, "Sup" => $Sup], 200);
- 
-         }
- 
-     }
+            return response()->json(["Data" => $data, "Sup" => 0], 200);
+        } else {
+            $Sup = category::where('Parent_id', $id)->select($this->selectColumns)->get();
+            $cate = category::where('id', $id)->select($this->selectColumns)->get();
+            return response()->json(["Categorise" => $cate, "Sup" => $Sup], 200);
+        }
+    }
 
     /**
      * Display the specified resource.

@@ -6,6 +6,8 @@
 * [it v 1.6.40]
 */
 return [
+	"orderviews"=>["create","read","update"],//"delete"],
+	"customers"=>["read"],
 	"colors"=>["create","read","update","delete"],
 	"services"=>["read"],
 	"contacts"=>["read"],
@@ -19,5 +21,4 @@ return [
 	"image"=>["create","read","update","delete"],
 	"admins"=>["create","read","update","delete"],
 	"admingroups"=>["create","read","update","delete"],
-	"manageorder"=>["create","read","update","delete"],
 ];

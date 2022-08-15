@@ -48,14 +48,10 @@ class productsControllrtApi extends Controller
      */
     public function index()
     {
-
-
-        // $data = DB::table('products')
-        //     ->where('deleted_at', '=', '')
         $data = product::leftJoin('favorites', function ($join) {
-                $join->on('products.id', '=', 'favorites.products_id')
-                    ->where('favorites.user_id', '=', auth('sanctum')->id());
-            })
+            $join->on('products.id', '=', 'favorites.products_id')
+                ->where('favorites.user_id', '=', auth('sanctum')->id());
+        })
             ->leftJoin('categories', 'products.category_id', '=', 'categories.id')
             ->select(
                 'products.id',

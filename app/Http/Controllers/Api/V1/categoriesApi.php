@@ -85,7 +85,8 @@ class categoriesApi extends Controller
         $count = category::where('Parent_id', $id)->count();
 
         if ($count == 0) {
-            $data = product::leftJoin('favorites', function ($join) {
+            $data = product::where('category_id', $id)
+                ->leftJoin('favorites', function ($join) {
                     $join->on('products.id', '=', 'favorites.products_id')
                         ->where('favorites.user_id', '=', auth('sanctum')->id());
                 })

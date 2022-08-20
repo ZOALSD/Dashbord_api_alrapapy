@@ -93,6 +93,15 @@
 					,['class'=>'form-control','placeholder'=>trans('admin.location')]) !!}
 				</div>
 			</div>
+
+			<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+				<div class="form-group">
+					{!! Form::label('phone',trans('admin.phone'),['class'=>'control-label']) !!}
+					{!! Form::text('phone', $locations->phone
+					,['class'=>'form-control','placeholder'=>trans('admin.phone')]) !!}
+				</div>
+			</div>
+
 			<div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 				<div class="form-group">
 					{!! Form::label('lat',trans('admin.lat'),['class'=>'control-label']) !!}

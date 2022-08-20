@@ -66,6 +66,9 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		// Route::get('customers','Admin\Customers@index'); 
 		Route::resource('orderviews','Admin\Orderviews'); 
 		Route::post('orderviews/multi_delete','Admin\Orderviews@multi_delete'); 
+		Route::get('/orderviews/seen/{id}','Admin\Orderviews@seen');
+		Route::resource('generals','Admin\Generals'); 
+		Route::post('generals/multi_delete','Admin\Generals@multi_delete'); 
 		////////AdminRoutes/*End*///////////////
 		Route::get('order/show','admin\ProductOrder@index')->name('orders');
 	});

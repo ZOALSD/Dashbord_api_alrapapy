@@ -21,6 +21,7 @@ class CreateCardsTable extends Migration
             $table->string('image_notification')->nullable();
             $table->boolean('status')->default(false);
             $table->boolean('seen')->default(false);
+            $table->boolean('delivery')->default(false);
             $table->timestamps();
             
         });

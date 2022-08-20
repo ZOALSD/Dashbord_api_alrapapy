@@ -1,12 +1,12 @@
 <?php
 namespace App\DataTables;
-use App\Models\Location;
+use App\Models\General;
 use Yajra\DataTables\DataTables;
 use Yajra\DataTables\Services\DataTable;
 // Auto DataTable By Baboon Script
 // Baboon Maker has been Created And Developed By [it v 1.6.40]
 // Copyright Reserved [it v 1.6.40]
-class LocationsDataTable extends DataTable
+class GeneralsDataTable extends DataTable
 {
     	
 
@@ -18,9 +18,11 @@ class LocationsDataTable extends DataTable
     public function dataTable(DataTables $dataTables, $query)
     {
         return datatables($query)
-            ->addColumn('actions', 'admin.locations.buttons.actions')
+            ->addColumn('actions', 'admin.generals.buttons.actions')
 
-   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   		->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')            ->addColumn('checkbox', '<div  class="icheck-danger">
+   		->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')   	
+			->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')   
+			         ->addColumn('checkbox', '<div  class="icheck-danger">
                   <input type="checkbox" class="selected_data" name="selected_data[]" id="selectdata{{ $id }}" value="{{ $id }}" >
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
@@ -35,7 +37,7 @@ class LocationsDataTable extends DataTable
      */
 	public function query()
     {
-        return Location::query()->select("locations.*");
+        return General::query()->select("generals.*");
 
     }
     	
@@ -52,24 +54,14 @@ class LocationsDataTable extends DataTable
             //->ajax('')
             ->parameters([
                'searching'   => false,
-               'paging'   => true,
+               'paging'   => false,
                'bLengthChange'   => false,
                'bInfo'   => false,
                'responsive'   => true,
                 'dom' => 'Blfrtip',
                 "lengthMenu" => [[10, 25, 50,100, -1], [10, 25, 50,100, trans('admin.all_records')]],
                 'buttons' => [
-                	[
-					'extend' => 'reload',
-					'className' => 'btn btn-outline',
-					'text' => '<i class="fa fa-sync-alt"></i> '.trans('admin.reload')
-					],	[
-                        'text' => '<i class="fa fa-plus"></i> '.trans('admin.add'),
-                        'className'    => 'btn btn-primary',
-                        'action'    => 'function(){
-                        	window.location.href =  "'.\URL::current().'/create";
-                        }',
-                    ],
+                
                 ],
                 'initComplete' => "function () {
 
@@ -122,49 +114,11 @@ class LocationsDataTable extends DataTable
 	    {
 	        return [
 	       	
-[
-                'name' => 'id',
-                'data' => 'id',
-                'title' => trans('admin.record_id'),
-                'width'          => '10px',
-                'aaSorting'      => 'none'
-            ],
 				[
-                 'name'=>'days_wrok',
-                 'data'=>'days_wrok',
-                 'title'=>trans('admin.days_wrok'),
+                 'name'=>'price',
+                 'data'=>'price',
+                 'title'=>trans('admin.price'),
 		    ],
-				[
-                 'name'=>'location',
-                 'data'=>'location',
-                 'title'=>trans('admin.location'),
-		    ],
-			
-			[
-				'name'=>'phone',
-				'data'=>'phone',
-				'title'=>trans('admin.phone'),
-		   ],
-				[
-                 'name'=>'lat',
-                 'data'=>'lat',
-                 'title'=>trans('admin.lat'),
-		    ],
-				[
-                 'name'=>'lng',
-                 'data'=>'lng',
-                 'title'=>trans('admin.lng'),
-		    ],
-			[
-				'name'=>'hour_start',
-				'data'=>'hour_start',
-				'title'=>trans('admin.hour_start'),
-		   ],
-		   [
-			'name'=>'hour_end',
-			'data'=>'hour_end',
-			'title'=>trans('admin.hour_end'),
-	   ],
             [
 	                'name' => 'actions',
 	                'data' => 'actions',
@@ -184,7 +138,7 @@ class LocationsDataTable extends DataTable
 	     */
 	    protected function filename()
 	    {
-	        return 'locations_' . time();
+	        return 'generals_' . time();
 	    }
     	
 }

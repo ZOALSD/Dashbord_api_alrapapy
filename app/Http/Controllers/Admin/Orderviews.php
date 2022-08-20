@@ -114,6 +114,12 @@ class Orderviews extends Controller
       ]);
   }
 
+  public function seen($id,OrderviewsDataTable $orderviews)
+  {
+    Card::where('id',$id)->update(['seen' => 1]);
+    return $orderviews->render('admin.orderviews.index', ['title' => trans('admin.orderviews')]);
+  }
+
 
   /**
    * Baboon Script By [it v 1.6.40]

@@ -4,14 +4,16 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Models\Card;
 use App\Models\User;
+use App\Models\Color;
 use App\Models\Order;
 use App\Mail\NewOrders;
+use App\Models\General;
 use App\Models\product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\cardResource;
-use App\Models\Color;
 use Illuminate\Support\Facades\Mail;
+
 class Orders extends Controller
 {
 
@@ -83,9 +85,9 @@ class Orders extends Controller
         Card::where('id', $card_id)->update(['total' => Order::where('card_id', $card_id)->sum('summation')]);
         $count = Order::where('card_id', $card_id)->select('product_id', 'price', 'quantity', 'color', 'size', 'summation')->count();
         $orders = Order::where('card_id', $card_id)->select('product_id', 'price', 'quantity', 'color', 'size', 'summation')->get();
+        $deliveyPrice = General::where('id',1)->value('price');
 
-
-        return response()->json(["Oder_Id" => $card_id, 'count' => $count, 'orders' => $orders], 200);
+        return response()->json(["Oder_Id" => $card_id, 'Delivery_Price' => $deliveyPrice , 'count' => $count, 'orders' => $orders], 200);
     }
 
 
@@ -108,6 +110,7 @@ class Orders extends Controller
         $card =  Card::where('id', $req->order_id)->update([
             "image_notification" => $image,
             "number_notification" => $req->number_notification,
+            "delivery" => $req->delivery,
             "status" => true
         ]);
 

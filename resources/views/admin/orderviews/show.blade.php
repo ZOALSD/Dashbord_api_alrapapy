@@ -53,8 +53,8 @@
 				<span class="float-right mr-3 text-bold text-lg">
 					Total : {{$summation}}</span>
 
-		<button class="btn btn-success float-right mx-2">Done</button>
-		<button class="btn btn-info float-right mx-2">back</button>
+		<button class="btn btn-outline-success float-right mx-2"><a href="{{aurl('/orderviews/seen/'.$card->id)}}">Seen</a></button>
+		<button class="btn btn-outline-primary float-right mx-2"><a href="{{aurl('/orderviews')}}">Back</a></button>
 	</div>
 </div>
 @endsection

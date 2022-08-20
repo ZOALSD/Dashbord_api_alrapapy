@@ -23,6 +23,8 @@ class OrderviewsDataTable extends DataTable
       ->addColumn('actions', 'admin.orderviews.buttons.actions')
 
       ->addColumn('seen', '{{ trans("admin.".$seen) }}')
+      ->addColumn('delivery', '{{ trans("admin.".$delivery) }}')
+      // ->addColumn('delivery', 'admin.orderviews.buttons.delivery')
 
       ->addColumn('created_at', '{{ date("Y-m-d H:i:s",strtotime($created_at)) }}')
       ->addColumn('updated_at', '{{ date("Y-m-d H:i:s",strtotime($updated_at)) }}')
@@ -31,7 +33,7 @@ class OrderviewsDataTable extends DataTable
                   <label for="selectdata{{ $id }}"></label>
                 </div>')
      ->addColumn('image_notification', '{!! view("admin.show_image",["image"=>$image_notification])->render() !!}')
-      ->rawColumns(['checkbox', 'actions','image_notification']);
+      ->rawColumns(['checkbox', 'actions','image_notification','delivery']);
   }
 
 
@@ -66,9 +68,14 @@ class OrderviewsDataTable extends DataTable
         "lengthMenu" => [[10, 25, 50, 100, -1], [10, 25, 50, 100, trans('admin.all_records')]],
         'buttons' => [],
         'initComplete' => "function () {
-            " . filterElement('1,2,3,4,5,7', 'input') . "
+            " . filterElement('1,2,3,4,5,8', 'input') . "
                         //seenuser_id,total,number_notification,image notification,seen6
-            " . filterElement('7', 'select', [
+            " . filterElement('8', 'select', [
+          '1' => trans('admin.1'),
+          '0' => trans('admin.0'),
+        ]) . "
+
+        " . filterElement('7', 'select', [
           '1' => trans('admin.1'),
           '0' => trans('admin.0'),
         ]) . "
@@ -154,6 +161,11 @@ class OrderviewsDataTable extends DataTable
         'name' => 'image_notification',
         'data' => 'image_notification',
         'title' => trans('admin.image notification'),
+      ],
+      [
+        'name' => 'cards.delivery',
+        'data' => 'delivery',
+        'title' => 'delivery',
       ],
       [
         'name' => 'cards.seen',

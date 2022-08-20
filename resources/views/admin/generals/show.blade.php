@@ -10,23 +10,23 @@
 				<span class="sr-only"></span>
 			</a>
 			<div class="dropdown-menu" role="menu">
-				<a href="{{aurl('locations')}}" class="dropdown-item"  style="color:#343a40">
+				<a href="{{aurl('generals')}}" class="dropdown-item"  style="color:#343a40">
 				<i class="fas fa-list"></i> {{trans('admin.show_all')}}</a>
-				<a class="dropdown-item"  style="color:#343a40" href="{{aurl('locations/'.$locations->id.'/edit')}}">
+				<a class="dropdown-item"  style="color:#343a40" href="{{aurl('generals/'.$generals->id.'/edit')}}">
 					<i class="fas fa-edit"></i> {{trans('admin.edit')}}
 				</a>
-				<a class="dropdown-item"  style="color:#343a40" href="{{aurl('locations/create')}}">
+				<a class="dropdown-item"  style="color:#343a40" href="{{aurl('generals/create')}}">
 					<i class="fas fa-plus"></i> {{trans('admin.create')}}
 				</a>
 				<div class="dropdown-divider"></div>
-				<a data-toggle="modal" data-target="#deleteRecord{{$locations->id}}" class="dropdown-item"  style="color:#343a40" href="#">
+				<a data-toggle="modal" data-target="#deleteRecord{{$generals->id}}" class="dropdown-item"  style="color:#343a40" href="#">
 					<i class="fas fa-trash"></i> {{trans('admin.delete')}}
 				</a>
 			</div>
 		</div>
 		</h3>
 		@push('js')
-		<div class="modal fade" id="deleteRecord{{$locations->id}}">
+		<div class="modal fade" id="deleteRecord{{$generals->id}}">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -34,12 +34,12 @@
 						<button class="close" data-dismiss="modal">x</button>
 					</div>
 					<div class="modal-body">
-						<i class="fa fa-exclamation-triangle"></i>  {{trans('admin.ask_del')}} {{trans('admin.id')}} ({{$locations->id}})
+						<i class="fa fa-exclamation-triangle"></i>  {{trans('admin.ask_del')}} {{trans('admin.id')}} ({{$generals->id}})
 					</div>
 					<div class="modal-footer">
 						{!! Form::open([
                'method' => 'DELETE',
-               'route' => ['locations.destroy', $locations->id]
+               'route' => ['generals.destroy', $generals->id]
                ]) !!}
                 {!! Form::submit(trans('admin.approval'), ['class' => 'btn btn-danger btn-flat']) !!}
 						 <a class="btn btn-default" data-dismiss="modal">{{trans('admin.cancel')}}</a>
@@ -58,48 +58,15 @@
 	<div class="card-body">
 		<div class="row">
 			<div class="col-md-12 col-lg-12 col-xs-12">
-				<b>{{trans('admin.id')}} :</b> {{$locations->id}}
+				<b>{{trans('admin.id')}} :</b> {{$generals->id}}
 			</div>
 			<div class="clearfix"></div>
 			<hr />
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.days_wrok')}} :</b>
-				{!! $locations->days_wrok !!}
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<b>{{trans('admin.price')}} :</b>
+				{!! $generals->price !!}
 			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.location')}} :</b>
-				{!! $locations->location !!}
-			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.phone')}} :</b>
-				{!! $locations->phone !!}
-			</div>
-
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.lat')}} :</b>
-				{!! $locations->lat !!}
-			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.lng')}} :</b>
-				{!! $locations->lng !!}
-			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.hour_start')}} :</b>
-				{!! $locations->hour_start !!}
-			</div>
-
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				<b>{{trans('admin.hour_end')}} :</b>
-				{!! $locations->hour_end !!}
-			</div>
-
-			<!-- /.row -->
+			<!-- /.row -->
 		</div>
 	</div>
 	<!-- /.card-body -->

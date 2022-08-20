@@ -15,7 +15,8 @@ class Card extends Model
         'total',
         'number_notification',
         'image_notification',
-        'status'
+        'status',
+        'delivery'
     ];
 
     public function order()

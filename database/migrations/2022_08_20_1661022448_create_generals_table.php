@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 // Auto Schema  By Baboon Script
 // Baboon Maker has been Created And Developed By [it v 1.6.40]
 // Copyright Reserved  [it v 1.6.40]
-class CreateLocationsTable extends Migration
+class CreateGeneralsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,17 +14,9 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('generals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('days_wrok');
-            $table->string('location');
-            $table->string('lat')->nullable();
-            $table->string('lng')->nullable();
-            $table->string('hour_start');
-            $table->string('hour_end');
-            $table->string('phone');
-			$table->softDeletes();
-
+            $table->bigInteger('price');
 			$table->timestamps();
         });
     }
@@ -36,6 +28,6 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('locations');
+        Schema::dropIfExists('generals');
     }
 }

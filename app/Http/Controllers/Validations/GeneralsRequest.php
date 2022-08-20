@@ -5,7 +5,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class LocationsRequest extends FormRequest {
+class GeneralsRequest extends FormRequest {
 
 	/**
 	 * Baboon Script By [it v 1.6.40]
@@ -25,25 +25,13 @@ class LocationsRequest extends FormRequest {
 	 */
 	protected function onCreate() {
 		return [
-             'days_wrok'=>'required|array',
-             'location'=>'required|string',
-             'phone'=>'required',
-             'lat'=>'string',
-             'lng'=>'string',
-             'hour_start'=>'required',
-             'hour_end'=>'required',
+             'price'=>'required|numeric',
 		];
 	}
 
 	protected function onUpdate() {
 		return [
-             'days_wrok'=>'required|array',
-             'location'=>'required|string',
-			 'phone'=>'required',
-             'lat'=>'string',
-             'lng'=>'string',
-             'hour_start'=>'required',
-             'hour_end'=>'required',
+             'price'=>'required|numeric',
 		];
 	}
 
@@ -61,13 +49,7 @@ class LocationsRequest extends FormRequest {
 	 */
 	public function attributes() {
 		return [
-             'days_wrok'=>trans('admin.days_wrok'),
-             'location'=>trans('admin.location'),
-             'phone'=>trans('admin.phone'),
-             'lat'=>trans('admin.lat'),
-             'lng'=>trans('admin.lng'),
-             'hour_start'=>trans('admin.hour_start'),
-             'hour_end'=>trans('admin.hour_end'),
+             'price'=>trans('admin.price'),
 		];
 	}
 

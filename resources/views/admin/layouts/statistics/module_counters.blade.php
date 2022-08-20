@@ -261,3 +261,21 @@
 </div>
 @endif
 <!--customers_end-->
+@if(admin()->user()->role("generals_show"))
+
+<!--generals_start-->
+<div class="col-lg-3 col-6">
+    <!-- small box -->
+    <div class="small-box bg-primary">
+      <div class="inner">
+        <h3>{{ App\Models\General::where('id',1)->value('price') ." ". "SD"}}</h3>
+        <p>{{ trans("admin.generals") }}</p>
+      </div>
+      <div class="icon">
+        <i class="fa fa-icons"></i>
+      </div>
+      <a href="{{ aurl('/generals/1/edit') }}" class="small-box-footer">{{ trans("admin.generals") }} <i class="fas fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<!--generals_end-->
+@endif

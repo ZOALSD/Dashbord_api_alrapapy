@@ -425,3 +425,39 @@ with font-awesome or any other icon font library -->
 </li>
 @endif
 <!--orderviews_end_route-->
+
+<!--generals_start_route-->
+@if(admin()->user()->role("generals_show"))
+
+<li class="nav-item">
+  <a href="{{aurl('generals')}}" class="nav-link  {{active_link('generals','active')}}">
+    <i class="fa fa-icons nav-icon"></i>
+    <p>{{trans('admin.generals')}} </p>
+  </a>
+</li>
+
+{{-- <li class="nav-item {{active_link('generals','menu-open')}} ">
+  <a href="#" class="nav-link {{active_link('generals','active')}}">
+    <i class="nav-icon fa fa-icons"></i>
+    <p>
+      {{trans('admin.generals')}} 
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{aurl('generals')}}" class="nav-link  {{active_link('generals','active')}}">
+        <i class="fa fa-icons nav-icon"></i>
+        <p>{{trans('admin.generals')}} </p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ aurl('generals/create') }}" class="nav-link">
+        <i class="fas fa-plus nav-icon"></i>
+        <p>{{trans('admin.create')}} </p>
+      </a>
+    </li>
+  </ul>
+</li> --}}
+@endif
+<!--generals_end_route-->

@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "3acc91bb-2398-4ef8-a91a-b4153bf6e410",
+        "_postman_id": "01dee880-c326-4474-9108-f060fbc4b24f",
         "name": null,
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
     },
@@ -1022,6 +1022,10 @@
                     "response": []
                 }
             ]
+        },
+        {
+            "name": "generals",
+            "item": []
         },
         {
             "name": "image",

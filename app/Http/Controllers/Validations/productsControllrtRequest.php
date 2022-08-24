@@ -26,7 +26,7 @@ class productsControllrtRequest extends FormRequest {
 	protected function onCreate() {
 		return [
              'name'=>'required|string',
-             'price'=>'sometimes|nullable|integer',
+             'price'=>'sometimes|nullable',
              'category_id'=>'sometimes|nullable|numeric',
              'image'=>'sometimes|nullable|file|image',
              'colors'=>'required',

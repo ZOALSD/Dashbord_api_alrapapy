@@ -49,7 +49,7 @@ class Register extends Controller {
             'first_name' => 'required|string|min:3',
             'last_name' => 'required|string|min:3',
             'address' => 'string|min:3',
-            'email' => 'required|email|unique:users',
+            'email' => 'sometimes|nullable|email|unique:users',
             'phone' => 'required|unique:users|numeric',
             // 'device_name' => 'required',
         ]);

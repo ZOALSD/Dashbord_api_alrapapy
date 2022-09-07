@@ -49,7 +49,6 @@ Route::group(['middleware' => ['ApiLang', 'cors'], 'namespace' => 'Api\V1'], fun
 
 	Route::post('register', 'Auth\Register@Sigin');
 
-///=====================test 
 Route::get('mail','Orders@mail');
 
 

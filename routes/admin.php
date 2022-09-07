@@ -40,9 +40,6 @@ Route::group(['prefix'=>app('admin'),'middleware'=>'Lang'],function(){
 		Route::resource('productscontrollrt','Admin\productsControllrt');
 		Route::post('productscontrollrt/multi_delete','Admin\productsControllrt@multi_delete');
 		
-		
-		
-		
 		Route::resource('videos','Admin\Videos');
 		Route::post('videos/multi_delete','Admin\Videos@multi_delete');
 		

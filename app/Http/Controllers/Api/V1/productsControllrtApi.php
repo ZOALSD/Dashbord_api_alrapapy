@@ -48,7 +48,7 @@ class productsControllrtApi extends Controller
      */
     public function index()
     {
-        $data = product::leftJoin('favorites', function ($join) {
+        $data = product::orderBy('category_id','asc')->leftJoin('favorites', function ($join) {
             $join->on('products.id', '=', 'favorites.products_id')
                 ->where('favorites.user_id', '=', auth('sanctum')->id());
         })
@@ -69,7 +69,7 @@ class productsControllrtApi extends Controller
             )->get();
 
 
-        return response()->json($data, 200);
+        return response()->json($data,200);
 
         // $product = product::select($this->selectColumns)->with($this->arrWith())->orderBy("id", "desc")->get();
         // return successResponseJson(["data" => $product]);

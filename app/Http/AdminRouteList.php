@@ -6,6 +6,7 @@
 * [it v 1.6.40]
 */
 return [
+	"infoimages"=>["create","read","update","delete"],
 	"generals"=>["read","update"],
 	"orderviews"=>["create","read","update"],
 	"customers"=>["read"],

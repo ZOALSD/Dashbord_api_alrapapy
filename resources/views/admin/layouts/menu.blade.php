@@ -461,3 +461,31 @@ with font-awesome or any other icon font library -->
 </li> --}}
 @endif
 <!--generals_end_route-->
+
+<!--infoimages_start_route-->
+@if(admin()->user()->role("infoimages_show"))
+<li class="nav-item {{active_link('infoimages','menu-open')}} ">
+  <a href="#" class="nav-link {{active_link('infoimages','active')}}">
+    <i class="nav-icon fa fa-icons"></i>
+    <p>
+      {{trans('admin.infoimages')}} 
+      <i class="right fas fa-angle-left"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li class="nav-item">
+      <a href="{{aurl('infoimages')}}" class="nav-link  {{active_link('infoimages','active')}}">
+        <i class="fa fa-icons nav-icon"></i>
+        <p>{{trans('admin.infoimages')}} </p>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a href="{{ aurl('infoimages/create') }}" class="nav-link">
+        <i class="fas fa-plus nav-icon"></i>
+        <p>{{trans('admin.create')}} </p>
+      </a>
+    </li>
+  </ul>
+</li>
+@endif
+<!--infoimages_end_route-->

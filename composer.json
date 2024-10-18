@@ -19,7 +19,7 @@
         "livewire/livewire": "^2.10",
         "maatwebsite/excel": "^3.1",
         "mpdf/mpdf": "^8.1",
-        "phpanonymous/c3js": "^0.0.6",
+        "phpanonymous/c3js": "^0.0.10",
         "phpanonymous/it": "^1.6",
         "phpoffice/phpspreadsheet": "^1.23",
         "spatie/laravel-honeypot": "^3.0",
@@ -29,10 +29,10 @@
         "yajra/laravel-datatables-editor": "^1.25",
         "yajra/laravel-datatables-fractal": "^1.6",
         "yajra/laravel-datatables-html": "^4.41",
-        "yajra/laravel-datatables-oracle": "^9.20"
+        "yajra/laravel-datatables-oracle": "^9.20",
+        "darkaonline/l5-swagger": "^8.0"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.6",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",

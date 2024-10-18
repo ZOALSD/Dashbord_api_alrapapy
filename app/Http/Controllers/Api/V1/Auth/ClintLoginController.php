@@ -10,9 +10,30 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
+/**
+ * @OA\Info(
+ *     title="My API",
+ *     version="1.0.0"
+ * )
+ */
 class ClintLoginController extends Controller
 {
-
+    /**
+     * @OA\Post(
+     *     path="/api/register",
+     *     summary="Register a new user",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string", example="John Doe"),
+     *             @OA\Property(property="email", type="string", example="john.doe@example.com"),
+     *             @OA\Property(property="phone", type="string", example="1234567890"),
+     *             @OA\Property(property="device_name", type="string", example="device_name")
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="User registered successfully")
+     * )
+     */
     public function Register(Request $request)
     {
         return response()->json("hi", 200);
@@ -20,10 +41,7 @@ class ClintLoginController extends Controller
         $data = $request->validate([
             'name' => 'required|string|min:3',
             'email' => 'required|email|unique:users',
-            // 'password' => 'nullable',
             'phone' => 'required|unique:users|numeric',
-            // 'year' => 'required|numeric',
-            // 'type' => 'required|numeric',
             'device_name' => 'required',
         ]);
 
@@ -34,9 +52,26 @@ class ClintLoginController extends Controller
         $dataa = User::where('id', $user->id)->first();
 
         return response()->json(['stutus' => true, 'token' => $token, 'Data' => $dataa], 200);
-
     }
 
+    /**
+     * @OA\Put(
+     *     path="/api/user/update",
+     *     summary="Update user information",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="name", type="string", example="John Doe"),
+     *             @OA\Property(property="email", type="string", example="john.doe@example.com"),
+     *             @OA\Property(property="phone", type="string", example="1234567890"),
+     *             @OA\Property(property="year", type="integer", example=2023),
+     *             @OA\Property(property="old_password", type="string", example="old_password"),
+     *             @OA\Property(property="new_password", type="string", example="new_password")
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="User updated successfully")
+     * )
+     */
     public function UserUpdate(Request $request)
     {
         $id = Auth::user()->id;
@@ -48,9 +83,6 @@ class ClintLoginController extends Controller
             'phone' => 'nullable|numeric|unique:users,phone,' . $id,
             'year' => 'nullable|numeric',
         ]);
-
-        // $data['password'] = Hash::make($request->password);
-        // $user = User::create($data);
 
         if ($request->email == null) {
             $email = User::where('id', $id)->value('email');
@@ -82,7 +114,6 @@ class ClintLoginController extends Controller
             $check = Hash::check($request->old_password, $user->password);
 
             if ($check) {
-
                 $user = User::find($id);
                 $user->name = $name;
                 $user->email = $email;
@@ -94,11 +125,9 @@ class ClintLoginController extends Controller
                 $user->save();
 
                 return response(['stuts' => 'Success Data Updated', 'Data' => $user]);
-
             } else {
                 return response('old Password incorrect');
             }
-
         } else {
             $user = User::find($id);
             $user->name = $name;
@@ -108,24 +137,50 @@ class ClintLoginController extends Controller
             $user->save();
 
             return response(['stuts' => 'Success Data Updated', 'Data' => $user]);
-
         }
 
         return response()->json(['stutus' => 'Successfully Data Updated'], 200);
-
     }
 
+    /**
+     * @OA\Get(
+     *     path="/api/data",
+     *     summary="Get data",
+     *     @OA\Response(response="200", description="Data retrieved successfully")
+     * )
+     */
     public function data()
     {
-
         return response()->json(['Data' => User::where('id', 1)->get()]);
-
     }
+
+    /**
+     * @OA\Get(
+     *     path="/api/user/data",
+     *     summary="Get authenticated user data",
+     *     @OA\Response(response="200", description="User data retrieved successfully")
+     * )
+     */
     public function UserData()
     {
         return Auth::user();
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/login",
+     *     summary="Login user",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="phone", type="string", example="1234567890"),
+     *             @OA\Property(property="password", type="string", example="password"),
+     *             @OA\Property(property="device_name", type="string", example="device_name")
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="User logged in successfully")
+     * )
+     */
     public function login(Request $request)
     {
         $request->validate([
@@ -154,15 +209,27 @@ class ClintLoginController extends Controller
                 return response()->json(['stutus' => true, 'token' => $token, 'Data' => $user], 200);
             } else {
                 return response()->json(['Stutus' => false, 'Message' => 'This App Only For Clint'], 200);
-
             }
         } else {
             return response()->json(['Stutus' => false, 'Message' => 'Your Number Phone Is Wrong'], 200);
-
         }
-
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/login_seller",
+     *     summary="Login seller",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="phone", type="string", example="1234567890"),
+     *             @OA\Property(property="password", type="string", example="password"),
+     *             @OA\Property(property="device_name", type="string", example="device_name")
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Seller logged in successfully")
+     * )
+     */
     public function login_seller(Request $request)
     {
         $request->validate([
@@ -190,11 +257,24 @@ class ClintLoginController extends Controller
             }
         } else {
             return response()->json(['Stutus' => false, 'Message' => 'Your Number Phone Is Wrong'], 200);
-
         }
-
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/login_deliver",
+     *     summary="Login deliver",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             @OA\Property(property="phone", type="string", example="1234567890"),
+     *             @OA\Property(property="password", type="string", example="password"),
+     *             @OA\Property(property="device_name", type="string", example="device_name")
+     *         )
+     *     ),
+     *     @OA\Response(response="200", description="Deliver logged in successfully")
+     * )
+     */
     public function login_deliver(Request $request)
     {
         $request->validate([
@@ -223,21 +303,23 @@ class ClintLoginController extends Controller
                 return response()->json(['stutus' => true, 'token' => $token, 'Data' => $user], 200);
             } else {
                 return response()->json(['Stutus' => false, 'Message' => 'This App Only For Delivery'], 200);
-
             }
         } else {
             return response()->json(['Stutus' => false, 'Message' => 'Your Number Phone Is Wrong'], 200);
-
         }
-
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/logout",
+     *     summary="Logout user",
+     *     @OA\Response(response="200", description="User logged out successfully")
+     * )
+     */
     public function logout()
     {
-
         // Auth::user()->currentAccessToken()->delete();
         $data = "We will miss you, don't be late to me !!";
         return response()->json($data, 200);
     }
-
 }
